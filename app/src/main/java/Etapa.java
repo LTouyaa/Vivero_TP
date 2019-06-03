@@ -32,8 +32,31 @@ public class Etapa {
 
      }
 
+     public int getTempMax()
+     {return tempMax;}
+
+    public int getHumMax()
+    {return humMax;}
+
+    public int getHumMin()
+    {return humMin;}
 
 
+    public int getTempMin()
+    {return tempMin;}
+
+    public int getLuzMax()
+    {return luzMax;}
+
+    public int getLuzMin()
+    {return luzMin;}
+
+
+    public void setTempMax(int tempMax) {
+        this.tempMax = tempMax;
     }
+
+
+}
 
 
