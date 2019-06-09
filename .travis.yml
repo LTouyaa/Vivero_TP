@@ -3,11 +3,12 @@ dist: trusty
 android:
   components:
     - tools # to get the new `repository-11.xml`
-    - tools # see https://github.com/travis-ci/travis-ci/issues/6040#issuecomment-219367943)
     - platform-tools
     - build-tools-28.0.3
     - android-28
     - add-on
+    - $ANDROID_TARGET
+    - sys-img-armeabi-v7a-$ANDROID_TARGET
     - extra
     - extra-android-m2repository
     - extra-google-m2repository
@@ -25,5 +26,10 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
     - $HOME/.android/build-cache
+before_script:
+  - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
+  - emulator -avd test -no-skin -no-audio -no-window &
+  - adb wait-for-device
+  - adb shell input keyevent 82 &
 script:
-  - ./gradlew build connectedCheck
+  - ./gradlew connectedAndroidTest
