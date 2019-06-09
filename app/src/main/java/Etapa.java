@@ -55,6 +55,8 @@ public class Etapa {
     public int getDuracion()
     {return duracion;}
 
+    //Revisar si les parece adecuada la implementacion.
+
     public boolean unPaso(){
         if(edad < duracion){
             edad+=1;
