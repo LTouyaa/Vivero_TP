@@ -1,6 +1,5 @@
 language: android
 dist: trusty
-install: ant deps
 android:
   components:
     - tools # to get the new `repository-11.xml`
