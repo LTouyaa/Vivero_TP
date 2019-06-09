@@ -43,54 +43,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         login = findViewById(R.id.btm_1);
         ver = findViewById(R.id.btm_view_model);
 
-        model = ViewModelProviders.of(this).get(ViewModel.class);
-
-        model.getNombPlantas().observe( this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                Toast.makeText(context, "Main:" , Toast.LENGTH_LONG).show();
-            }
-        });
-
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(context, AgregarPlantaActivity.class);
-                startActivity(intent);
-
-                Toast.makeText(context, "Hola Mundo", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        ver.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-
-// Podrás mostrar el icono de la notificación, en este caso una alerta
-                Notification notification = new Notification(android.R.drawable.stat_sys_warning,
-                        "Notificación", System.currentTimeMillis());
-
-                CharSequence titulo = "Alerta";
-
-// Clase de Notification
-//        Intent notificationIntent = new Intent(this, NotificationActivity.class);
-//        PendingIntent contIntent = PendingIntent.getActivity(this, , notificationIntent, );
-//        notification.setLatestEventInfo(this, "Aviso de notificación", "Esto es un ejemplo de notificación", contIntent);
-//
-//        notification.flags |= Notification.FLAG_AUTO_CANCEL;
-
-//importante
-                int not_id = 1;
-                notificationManager.notify(not_id, notification);
-
-
-
-            }
-        });
-
 
     }
 
