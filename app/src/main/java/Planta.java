@@ -69,6 +69,10 @@ public abstract class Planta{
         return sustrato;
     }
 
+    public ArrayList<Etapa> listaEtapas(){
+        return etapas;
+    }
+
     public boolean tempCorrecta()
     {
         if ((tempActual>etapas.get(0).getTempMax())||(tempActual<etapas.get(0).getTempMin()))
