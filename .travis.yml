@@ -25,3 +25,7 @@ before_script:
 script:
   - android list target
   - ./gradlew connectedAndroidTest -PdisablePreDex
+notifications:
+  email:
+    recipients:
+	- peschiutta.lucho@gmail.com	
