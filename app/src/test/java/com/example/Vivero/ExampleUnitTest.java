@@ -1,4 +1,4 @@
-package com.example.nuevaprueba;
+package com.example.Vivero;
 
 import org.junit.Test;
 
@@ -13,5 +13,10 @@ public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
+    }
+
+    @Test
+    public void test_no_pasa(){
+        assertTrue(5>1);
     }
 }
