@@ -1,4 +1,8 @@
+package com.example.Vivero.Model;
+
 import android.widget.Toast;
+
+import com.example.Vivero.Object.Planta;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -43,7 +47,6 @@ public class Modelo {
    public void avanzar(){
        Collection<Planta> C = obtenerColeccion();
        for(Planta P: C){
-           //Actualizar Planta;
        }
    }
 }
