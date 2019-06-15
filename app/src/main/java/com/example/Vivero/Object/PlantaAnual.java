@@ -8,7 +8,7 @@ public abstract class PlantaAnual extends Planta {
 
     @Override
     public void actualizarEtapa() {
-        if(listaEtapas().get(0).unPaso()){
+        if (listaEtapas().get(0).unPaso()) {
             listaEtapas().remove(0);
         }
     }

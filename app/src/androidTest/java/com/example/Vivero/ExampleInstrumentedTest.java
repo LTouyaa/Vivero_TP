@@ -1,4 +1,4 @@
-package com.example.nuevaprueba;
+package com.example.Vivero;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

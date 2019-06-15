@@ -14,11 +14,10 @@ public class Etapa {
     private int duracion;
     private int edad;
 
-    public Etapa(String nombre,int duracion, int tempMax, int tempMin, int humMax, int humMin, int hormona, int luzMax, int luzMin, int sustrato)
-    {
+    public Etapa(String nombre, int duracion, int tempMax, int tempMin, int humMax, int humMin, int hormona, int luzMax, int luzMin, int sustrato) {
 
         this.nombre = nombre;
-        this.duracion= duracion;
+        this.duracion = duracion;
         this.humMax = humMax;
         this.humMin = humMin;
         this.luzMax = luzMax;
@@ -30,40 +29,49 @@ public class Etapa {
         edad = 0;
     }
 
-    public int getTempMax()
-    {return tempMax;}
+    public int getTempMax() {
+        return tempMax;
+    }
 
-    public int getHumMax()
-    {return humMax;}
+    public int getHumMax() {
+        return humMax;
+    }
 
-    public int getHumMin()
-    {return humMin;}
+    public int getHumMin() {
+        return humMin;
+    }
 
-    public int getTempMin()
-    {return tempMin;}
+    public int getTempMin() {
+        return tempMin;
+    }
 
-    public int getLuzMax()
-    {return luzMax;}
+    public int getLuzMax() {
+        return luzMax;
+    }
 
-    public int getLuzMin()
-    {return luzMin;}
+    public int getLuzMin() {
+        return luzMin;
+    }
 
-    public int getHormona()
-    {return hormona;}
+    public int getHormona() {
+        return hormona;
+    }
 
-    public int getSustrato()
-    {return sustrato;}
+    public int getSustrato() {
+        return sustrato;
+    }
 
-    public int getDuracion()
-    {return duracion;}
+    public int getDuracion() {
+        return duracion;
+    }
 
     //Revisar si les parece adecuada la implementacion.
 
-    public boolean unPaso(){
-        if(edad < duracion){
-            edad+=1;
+    public boolean unPaso() {
+        if (edad < duracion) {
+            edad += 1;
             return false;
-        } else{
+        } else {
             return true;
         }
     }
