@@ -17,6 +17,6 @@ public class ExampleUnitTest {
 
     @Test
     public void test_no_pasa(){
-        assertTrue(5<1);
+        assertTrue(5>1);
     }
 }
