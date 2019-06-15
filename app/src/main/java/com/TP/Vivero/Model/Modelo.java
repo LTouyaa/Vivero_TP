@@ -1,8 +1,6 @@
-package com.example.Vivero.Model;
+package com.TP.Vivero.Model;
 
-import android.widget.Toast;
-
-import com.example.Vivero.Object.Planta;
+import com.TP.Vivero.Object.Planta;
 
 import java.util.Collection;
 import java.util.HashMap;

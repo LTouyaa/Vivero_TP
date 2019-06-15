@@ -1,17 +1,17 @@
-package com.example.Vivero;
+package com.TP.Vivero;
 
 import android.arch.lifecycle.ViewModel;
 import android.content.Context;
-import android.database.sqlite.SQLiteQuery;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.Vivero.Object.Planta;
-import com.example.Vivero.Object.PlantaAnual;
-import com.example.Vivero.Object.PlantaPerenne;
+import com.TP.Vivero.Object.Planta;
+import com.TP.Vivero.Object.PlantaAnual;
+import com.TP.Vivero.Object.PlantaPerenne;
+import com.TP.Vivero.R;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
