@@ -2,12 +2,16 @@ package com.example.Vivero;
 
 import android.arch.lifecycle.ViewModel;
 import android.content.Context;
+import android.database.sqlite.SQLiteQuery;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.Vivero.Object.Planta;
+import com.example.Vivero.Object.PlantaAnual;
+import com.example.Vivero.Object.PlantaPerenne;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -34,10 +38,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         login = findViewById(R.id.btm_1);
         ver = findViewById(R.id.btm_view_model);
 
+       Planta planta = new PlantaAnual("Hola");
+       Planta planta2 = new PlantaPerenne("Adios");
+
+       ((PlantaAnual) planta).siguiente();
+
+       ((PlantaPerenne) planta2).siguiente();
+
+       Planta plantaAnual = new PlantaAnual("adada");
+
+
+
+
+
+
     }
 
     @Override
     public void onClick(View v) {
 
     }
+
+
 }

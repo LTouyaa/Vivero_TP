@@ -1,10 +1,8 @@
 package com.example.Vivero.Object;
 
-import com.example.Vivero.Object.Etapa;
-
 import java.util.ArrayList;
 
-public abstract class Planta {
+public class Planta {
 
     private ArrayList<Etapa> etapas;
     private String id = "";
@@ -95,8 +93,4 @@ public abstract class Planta {
         setTempActual(tempActual);
         setLuzActual(luzActual);
     }
-
-    public abstract void actualizarEtapa();
-
-
 }
