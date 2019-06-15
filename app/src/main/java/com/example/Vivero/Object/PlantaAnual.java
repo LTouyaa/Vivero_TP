@@ -1,4 +1,6 @@
-public abstract class PlantaAnual extends Planta{
+package com.example.Vivero.Object;
+
+public abstract class PlantaAnual extends Planta {
 
     public PlantaAnual(String id) {
         super(id);
