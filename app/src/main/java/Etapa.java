@@ -53,6 +53,8 @@ public class Etapa {
 
 
     public void setTempMax(int tempMax) {
+
+        tempMax ++;
         this.tempMax = tempMax;
     }
 
