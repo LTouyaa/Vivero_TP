@@ -3,11 +3,12 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.example.nuevaprueba"
+        applicationId "com.example.Vivero"
         minSdkVersion 15
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
+        testApplicationId = "com.example.nuevaprueba"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

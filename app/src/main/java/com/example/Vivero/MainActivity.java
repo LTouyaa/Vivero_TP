@@ -1,9 +1,10 @@
-package com.example.nuevaprueba;
+package com.example.Vivero;
 
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
@@ -16,8 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.nuevaprueba.model.ViewModel;
-import com.example.nuevaprueba.ui.activity.AgregarPlantaActivity;
+import com.example.nuevaprueba.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
