@@ -2,6 +2,7 @@ package com.TP.Vivero;
 
 import android.arch.lifecycle.ViewModel;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -12,6 +13,7 @@ import com.TP.Vivero.Object.Planta;
 import com.TP.Vivero.Object.PlantaAnual;
 import com.TP.Vivero.Object.PlantaPerenne;
 import com.TP.Vivero.R;
+import com.TP.Vivero.Vista.Activity.MainMenuActivity;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -46,6 +48,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
        ((PlantaPerenne) planta2).siguiente();
 
        Planta plantaAnual = new PlantaAnual("adada");
+
+       login.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+
+               Intent intent = new Intent(context, MainMenuActivity.class);
+               startActivity(intent);
+
+           }
+       });
 
 
 
