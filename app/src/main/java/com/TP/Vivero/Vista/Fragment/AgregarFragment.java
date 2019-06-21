@@ -3,6 +3,7 @@ package com.TP.Vivero.Vista.Fragment;
 import android.R.layout;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,12 +11,16 @@ import android.view.LayoutInflater;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.TP.Vivero.R;
+
+import java.security.PublicKey;
 
 import static android.R.*;
 import static android.R.layout.simple_expandable_list_item_1;
@@ -63,6 +68,14 @@ public class AgregarFragment extends Fragment {
         Adapter_list adapter = new Adapter_list(context, lista_plantas, plantadas);
 
         listaPlantas.setAdapter(adapter);
+
+        listaPlantas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                adapter.cambiarVisibilidad(position);
+            }
+        });
 
 
 
