@@ -2,10 +2,12 @@ package com.TP.Vivero.Vista.Fragment;
 
 import android.app.Activity;
 import android.content.Context;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.TP.Vivero.R;
@@ -47,7 +49,9 @@ public class Adapter_list extends ArrayAdapter<Plantas> {
 
             holder = new lista_holder();
             holder.name = (TextView) row.findViewById(R.id.text_1);
-            holder.date = (TextView) row.findViewById(R.id.text_2);
+            holder.date = (LinearLayout) row.findViewById(R.id.parametros);
+            holder.datoTexto = (TextView) row.findViewById(R.id.dato1) ;
+
 
             row.setTag(holder);
 
@@ -58,7 +62,7 @@ public class Adapter_list extends ArrayAdapter<Plantas> {
 
         Plantas planta  = plantas[posicion];
         holder.name.setText(planta.nombre);
-        holder.date.setText(planta.dato);
+        holder.datoTexto.setText(planta.dato);
         holders.add(holder);
 
 
@@ -84,8 +88,11 @@ public class Adapter_list extends ArrayAdapter<Plantas> {
 
     static class lista_holder
     {
+
         TextView name;
-        TextView date;
+        LinearLayout date;
+        TextView datoTexto;
+
     }
 
 
