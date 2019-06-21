@@ -18,6 +18,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.TP.Vivero.Object.Planta;
 import com.TP.Vivero.R;
 
 import java.security.PublicKey;
@@ -33,9 +34,24 @@ public class AgregarFragment extends Fragment {
     public Context context;
     ListView listaPlantas;
 
-    public Plantas[] plantadas = new Plantas[]{
-            new Plantas("Planta1", "Dato1"),
-            new Plantas("Planta2","Dato2")
+    public Planta[] plantadas = new Planta[]{
+            new Planta( "Rosa", 23, 34, 21,23,34),
+            new Planta( "Albahaca", 35, 34, 21,23,34),
+            new Planta( "Rucula", 36, 34, 21,23,34),
+            new Planta( "Rosa2", 45, 34, 21,23,34),
+            new Planta( "Margarita", 23, 65, 21,23,34),
+            new Planta( "Lechuga", 23, 34, 21,23,34),
+            new Planta( "Tomate", 23, 34, 34,23,34),
+            new Planta( "Acelga", 30, 34, 21,23,34),
+            new Planta( "Rucula2", 23, 34, 21,0,12),
+            new Planta( "Rosa3", 25, 34, 21,23,34),
+            new Planta( "Rosa blanca", 23, 34, 21,23,34),
+            new Planta( "Romero", 23, 34, 21,23,34),
+
+
+
+            
+
     };
 
 
