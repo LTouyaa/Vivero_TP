@@ -10,11 +10,16 @@ import android.widget.TextView;
 
 import com.TP.Vivero.R;
 
+import java.util.ArrayList;
+
 public class Adapter_list extends ArrayAdapter<Plantas> {
 
     Context context;
     int layout_list;
     Plantas[] plantas;
+    ArrayList<lista_holder> holders;
+    int cont;
+    Boolean flag;
 
     public Adapter_list(Context context, int layout_list, Plantas[] plantas)
     {
@@ -23,6 +28,9 @@ public class Adapter_list extends ArrayAdapter<Plantas> {
         this.context=context;
         this.layout_list = layout_list;
         this.plantas = plantas;
+        holders = new ArrayList<lista_holder>();
+        flag= false;
+
 
 
 
@@ -51,16 +59,36 @@ public class Adapter_list extends ArrayAdapter<Plantas> {
         Plantas planta  = plantas[posicion];
         holder.name.setText(planta.nombre);
         holder.date.setText(planta.dato);
+        holders.add(holder);
 
 
 
         return row;
     }
 
+    public void cambiarVisibilidad(int posicion)
+    {
+        if(!flag)
+        {
+            holders.get(posicion).date.setVisibility( View.VISIBLE);
+            flag = true;
+        }
+        else
+        {
+            flag= false;
+            holders.get(posicion).date.setVisibility( View.GONE);
+        }
+
+    }
+
+
     static class lista_holder
     {
         TextView name;
         TextView date;
     }
+
+
+
 
 }
