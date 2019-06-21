@@ -25,8 +25,9 @@ import static com.TP.Vivero.R.layout.support_simple_spinner_dropdown_item;
 
 public class AgregarFragment extends Fragment {
 
-    public Context context = getActivity();
-    public ListView listaPlantas;
+    public Context context;
+    ListView listaPlantas;
+
     public Plantas[] plantadas = new Plantas[]{
             new Plantas("Planta1", "Dato1"),
             new Plantas("Planta2","Dato2")
@@ -55,11 +56,14 @@ public class AgregarFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        context = getActivity();
+
         listaPlantas = (ListView) getView().findViewById(R.id.listaPlantas);
 
         Adapter_list adapter = new Adapter_list(context, lista_plantas, plantadas);
 
         listaPlantas.setAdapter(adapter);
+
 
 
 
