@@ -117,10 +117,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues(); //Creo un contenedor con el que le voy a cargar. Sería el equivalente a los Bundle que usamos para transmitir
                                                     // datos entre Activitys.
-        values.put("idplanta", planta.getID());     //Le cargo datos. put(key, valor). Muy parecido a un HashMap.
+        values.put("idplanta", planta.getId());     //Le cargo datos. put(key, valor). Muy parecido a un HashMap.
         values.put("nombre", planta.getNombre());
 
-        if(this.existPlanta(planta.getID())) db.update("planta", values, "idplanta=?", new String[]{planta.getID()});
+        if(this.existPlanta(planta.getId())) db.update("planta", values, "idplanta=?", new String[]{planta.getId()});
         else db.insert("planta", null, values);
         //Primero veo si el elemento ya existe en la base de datos, si es así lo actualizo y si no lo agrego.
 
@@ -242,7 +242,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put("duracion", etapa.getDuracion());
         values.put("edad", etapa.getEdad());
 
-        if(this.existEtapa(etapa.getNombre(), etapa.getEdad())) db.update("etapa", values, "nombre=?, edad=?", new String[]{etapa.getNombre(), Integer.toString(etapa.getEdad())});
+        if(this.existEtapa(etapa.getNombre(), etapa.getEdad())) db.update("etapa", values, "nombre=? AND edad=?", new String[]{etapa.getNombre(), Integer.toString(etapa.getEdad())});
         else db.insert("etapa", null, values);
 
         db.close();
@@ -335,13 +335,52 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return null;
     }
 
+    public List<Etapa> getAllEtapaByName(String nombre){
+
+        List<Etapa> etapaList = new ArrayList<>();
+
+        SQLiteDatabase db = getReadableDatabase();
+
+        String sql = "SELECT * FROM etapa WHERE nombre=?";
+        String[] argSql = new String[]{nombre};
+
+        Cursor cursor = db.rawQuery(sql, argSql);
+
+        if(cursor!=null && cursor.getCount()>0){
+            cursor.moveToFirst();
+            do{
+
+                Etapa etapa = new Etapa();
+
+                etapa.setNombre(cursor.getString(cursor.getColumnIndex("nombre")));
+                etapa.setTempMax(cursor.getInt(cursor.getColumnIndex("tempMax")));
+                etapa.setTempMin(cursor.getInt(cursor.getColumnIndex("tempMin")));
+                etapa.setHumMax(cursor.getInt(cursor.getColumnIndex("humMax")));
+                etapa.setHumMin(cursor.getInt(cursor.getColumnIndex("humMin")));
+                etapa.setLuzMax(cursor.getInt(cursor.getColumnIndex("luzMax")));
+                etapa.setLuzMin(cursor.getInt(cursor.getColumnIndex("luzMin")));
+                etapa.setHormona(cursor.getInt(cursor.getColumnIndex("hormona")));
+                etapa.setSustrato(cursor.getInt(cursor.getColumnIndex("sustrato")));
+                etapa.setDuracion(cursor.getInt(cursor.getColumnIndex("duracion")));
+                etapa.setEdad(cursor.getInt(cursor.getColumnIndex("edad")));
+
+                etapaList.add(etapa);
+            } while (cursor.moveToNext());
+
+            db.close();
+            return etapaList;
+        }
+        db.close();
+        return null;
+    }
+
     public void savePlantadas(Planta planta){
 
         SQLiteDatabase db = getWritableDatabase();
 
         ContentValues values = new ContentValues();
 
-        values.put("idplanta", planta.getID());
+        values.put("idplanta", planta.getId());
         values.put("nombre", planta.getNombre());
         values.put("tempActual", planta.getTempActual());
         values.put("humedadActual", planta.getHumedadActual());
@@ -349,7 +388,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put("hormona", planta.getHormona());
         values.put("sustrato", planta.getSustrato());
 
-        if(this.existPlantada(planta.getID())) db.update("plantada", values, "idplanta=?", new String[]{planta.getID()});
+        if(this.existPlantada(planta.getId())) db.update("plantada", values, "idplanta=?", new String[]{planta.getId()});
         else db.insert("plantada", null, values);
 
         db.close();
