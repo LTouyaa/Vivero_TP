@@ -6,16 +6,34 @@ public class Planta {
 
     private ArrayList<Etapa> etapas;
     private String id = "";
+    private String nombre;
     private int tempActual;
     private int humedadActual;
     private int luzActual;
     private int hormona;
     private int sustrato;
 
+    public Planta(){}
 
     public Planta(String id) {
         etapas = new ArrayList<Etapa>();
         this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public void agregarEtapa(Etapa etapa) {
