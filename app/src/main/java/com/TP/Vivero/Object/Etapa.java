@@ -1,7 +1,6 @@
 package com.TP.Vivero.Object;
 
 public class Etapa {
-
     private String nombre;
     private int tempMax;
     private int tempMin;
@@ -13,6 +12,8 @@ public class Etapa {
     private int sustrato;
     private int duracion;
     private int edad;
+
+    public Etapa(){}
 
     public Etapa(String nombre, int duracion, int tempMax, int tempMin, int humMax, int humMin, int hormona, int luzMax, int luzMin, int sustrato) {
 
@@ -27,6 +28,22 @@ public class Etapa {
         this.hormona = hormona;
         this.sustrato = sustrato;
         edad = 0;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
 
     public int getTempMax() {
@@ -63,6 +80,42 @@ public class Etapa {
 
     public int getDuracion() {
         return duracion;
+    }
+
+    public void setTempMax(int tempMax) {
+        this.tempMax = tempMax;
+    }
+
+    public void setTempMin(int tempMin) {
+        this.tempMin = tempMin;
+    }
+
+    public void setHumMax(int humMax) {
+        this.humMax = humMax;
+    }
+
+    public void setHumMin(int humMin) {
+        this.humMin = humMin;
+    }
+
+    public void setLuzMax(int luzMax) {
+        this.luzMax = luzMax;
+    }
+
+    public void setLuzMin(int luzMin) {
+        this.luzMin = luzMin;
+    }
+
+    public void setHormona(int hormona) {
+        this.hormona = hormona;
+    }
+
+    public void setSustrato(int sustrato) {
+        this.sustrato = sustrato;
+    }
+
+    public void setDuracion(int duracion) {
+        this.duracion = duracion;
     }
 
     //Revisar si les parece adecuada la implementacion.
