@@ -18,6 +18,19 @@ public class Planta {
         this.id = id;
     }
 
+    public Planta(String id, int tempActual, int humedadActual, int luzActual, int hormona, int sustrato) {
+        etapas = new ArrayList<Etapa>();
+        this.id = id;
+        this.tempActual= tempActual;
+        this.humedadActual= humedadActual;
+        this.luzActual = luzActual;
+        this.hormona = hormona;
+        this.sustrato = sustrato;
+    }
+
+
+
+
     public void agregarEtapa(Etapa etapa) {
         etapas.add(etapa);
     }
@@ -92,5 +105,10 @@ public class Planta {
         setHumedadActual(humedadActual);
         setTempActual(tempActual);
         setLuzActual(luzActual);
+    }
+
+    public Etapa getEtapaActual()
+    {
+        return etapas.get(0);
     }
 }

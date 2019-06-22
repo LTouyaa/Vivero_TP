@@ -18,6 +18,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.TP.Vivero.Object.Etapa;
 import com.TP.Vivero.Object.Planta;
 import com.TP.Vivero.R;
 
@@ -34,6 +35,7 @@ public class AgregarFragment extends Fragment {
     public Context context;
     ListView listaPlantas;
 
+    public Etapa etapa = new Etapa("lalala",2,3,4,7,3,47,2,5,3);
     public Planta[] plantadas = new Planta[]{
             new Planta( "Rosa", 23, 34, 21,23,34),
             new Planta( "Albahaca", 35, 34, 21,23,34),
@@ -50,7 +52,8 @@ public class AgregarFragment extends Fragment {
 
 
 
-            
+
+
 
     };
 
@@ -76,6 +79,11 @@ public class AgregarFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        for (Planta planta : plantadas)
+        {
+            planta.agregarEtapa(etapa);
+        }
 
         context = getActivity();
 

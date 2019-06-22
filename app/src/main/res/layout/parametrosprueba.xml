@@ -9,13 +9,53 @@
     android:id="@+id/parametros">
 
     <TextView
-        android:id="@+id/dato1"
+        android:id="@+id/temp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
         tools:layout_editor_absoluteX="-267dp"
         tools:layout_editor_absoluteY="76dp"
         />
+
+    <TextView
+        android:id="@+id/hum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="-267dp"
+        tools:layout_editor_absoluteY="76dp"
+        />
+
+    <TextView
+        android:id="@+id/luz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="-267dp"
+        tools:layout_editor_absoluteY="76dp"
+        />
+
+    <TextView
+        android:id="@+id/hormonas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="-267dp"
+        tools:layout_editor_absoluteY="76dp"
+        />
+
+    <TextView
+        android:id="@+id/sustrato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="-267dp"
+        tools:layout_editor_absoluteY="76dp"
+        />
+
+
+
+
 
 
 </LinearLayout>
