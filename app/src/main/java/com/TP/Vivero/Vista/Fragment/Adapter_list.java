@@ -10,20 +10,21 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.TP.Vivero.Object.Planta;
 import com.TP.Vivero.R;
 
 import java.util.ArrayList;
 
-public class Adapter_list extends ArrayAdapter<Plantas> {
+public class Adapter_list extends ArrayAdapter<Planta> {
 
     Context context;
     int layout_list;
-    Plantas[] plantas;
+    Planta[] plantas;
     ArrayList<lista_holder> holders;
     int cont;
     Boolean flag;
 
-    public Adapter_list(Context context, int layout_list, Plantas[] plantas)
+    public Adapter_list(Context context, int layout_list, Planta[] plantas)
     {
         super(context,layout_list,plantas);
 
@@ -50,7 +51,11 @@ public class Adapter_list extends ArrayAdapter<Plantas> {
             holder = new lista_holder();
             holder.name = (TextView) row.findViewById(R.id.text_1);
             holder.date = (LinearLayout) row.findViewById(R.id.parametros);
-            holder.datoTexto = (TextView) row.findViewById(R.id.dato1) ;
+            holder.datoTemp = (TextView)  row.findViewById(R.id.temp) ;
+            holder.datoHum = (TextView) row.findViewById(R.id.hum) ;
+            holder.datoLuz = (TextView) row.findViewById(R.id.luz) ;
+            holder.datoHormona = (TextView) row.findViewById(R.id.hormonas) ;
+            holder.datoSustrato = (TextView) row.findViewById(R.id.sustrato) ;
 
 
             row.setTag(holder);
@@ -60,9 +65,14 @@ public class Adapter_list extends ArrayAdapter<Plantas> {
         {holder = (lista_holder) row.getTag();
         }
 
-        Plantas planta  = plantas[posicion];
-        holder.name.setText(planta.nombre);
-        holder.datoTexto.setText(planta.dato);
+        Planta planta  = plantas[posicion];
+        holder.name.setText(((Planta) planta).getID());
+        holder.datoTemp.setText("Temperatura: "+Integer.toString(planta.getEtapaActual().getTempMin())+" - "+Integer.toString(((Planta) planta).getTempActual())+" - "+Integer.toString(planta.getEtapaActual().getTempMax())+"  °C");
+        holder.datoHum.setText("Humedad: "+Integer.toString(planta.getEtapaActual().getHumMin())+" - "+Integer.toString(((Planta)  planta).getHumedadActual())+" - "+Integer.toString(planta.getEtapaActual().getHumMax())+" %");
+        holder.datoLuz.setText("Luz: "+Integer.toString(planta.getEtapaActual().getLuzMin())+" - "+Integer.toString(((Planta) planta).getLuzActual())+ " - "+Integer.toString(planta.getEtapaActual().getLuzMin()));
+        holder.datoHormona.setText("Hormona: "+Integer.toString(planta.getEtapaActual().getHormona())+" - "+Integer.toString(((Planta) planta).getHormona()));
+        holder.datoSustrato.setText("Sustrato: "+Integer.toString(planta.getEtapaActual().getSustrato())+" - "+Integer.toString(((Planta) planta).getSustrato()));
+
         holders.add(holder);
 
 
@@ -91,7 +101,12 @@ public class Adapter_list extends ArrayAdapter<Plantas> {
 
         TextView name;
         LinearLayout date;
-        TextView datoTexto;
+        TextView datoTemp;
+        TextView datoHum;
+        TextView datoLuz;
+        TextView datoHormona;
+        TextView datoSustrato;
+
 
     }
 
