@@ -19,12 +19,12 @@ public class Adapter_list extends ArrayAdapter<Planta> {
 
     Context context;
     int layout_list;
-    Planta[] plantas;
+    ArrayList<Planta> plantas;
     ArrayList<lista_holder> holders;
     int cont;
     Boolean flag;
 
-    public Adapter_list(Context context, int layout_list, Planta[] plantas)
+    public Adapter_list(Context context, int layout_list, ArrayList<Planta> plantas)
     {
         super(context,layout_list,plantas);
 
@@ -65,7 +65,7 @@ public class Adapter_list extends ArrayAdapter<Planta> {
         {holder = (lista_holder) row.getTag();
         }
 
-        Planta planta  = plantas[posicion];
+        Planta planta  = plantas.get(posicion);
         holder.name.setText(((Planta) planta).getID());
         holder.datoTemp.setText("Temperatura: "+Integer.toString(planta.getEtapaActual().getTempMin())+" - "+Integer.toString(((Planta) planta).getTempActual())+" - "+Integer.toString(planta.getEtapaActual().getTempMax())+"  °C");
         holder.datoHum.setText("Humedad: "+Integer.toString(planta.getEtapaActual().getHumMin())+" - "+Integer.toString(((Planta)  planta).getHumedadActual())+" - "+Integer.toString(planta.getEtapaActual().getHumMax())+" %");

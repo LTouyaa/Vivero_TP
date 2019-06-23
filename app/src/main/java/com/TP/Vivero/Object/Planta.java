@@ -20,7 +20,7 @@ public class Planta {
         this.id = id;
     }
 
-<<<<<<< HEAD
+
     public Planta(String id, int tempActual, int humedadActual, int luzActual, int hormona, int sustrato) {
         etapas = new ArrayList<Etapa>();
         this.id = id;
@@ -33,7 +33,7 @@ public class Planta {
 
 
 
-=======
+
     public String getId() {
         return id;
     }
@@ -49,7 +49,7 @@ public class Planta {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
->>>>>>> de94541d3d10ea8e7aa12c7147965c229673cd12
+
 
     public void agregarEtapa(Etapa etapa) {
         etapas.add(etapa);

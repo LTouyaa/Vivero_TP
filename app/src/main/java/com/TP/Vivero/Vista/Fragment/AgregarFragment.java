@@ -18,11 +18,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.TP.Vivero.Model.DatabaseHandler;
 import com.TP.Vivero.Object.Etapa;
 import com.TP.Vivero.Object.Planta;
+import com.TP.Vivero.Object.PlantaAnual;
+import com.TP.Vivero.Object.PlantaPerenne;
 import com.TP.Vivero.R;
 
 import java.security.PublicKey;
+import java.util.ArrayList;
 
 import static android.R.*;
 import static android.R.layout.simple_expandable_list_item_1;
@@ -35,27 +39,15 @@ public class AgregarFragment extends Fragment {
     public Context context;
     ListView listaPlantas;
 
-    public Etapa etapa = new Etapa("lalala",2,3,4,7,3,47,2,5,3);
-    public Planta[] plantadas = new Planta[]{
-            new Planta( "Rosa", 23, 34, 21,23,34),
-            new Planta( "Albahaca", 35, 34, 21,23,34),
-            new Planta( "Rucula", 36, 34, 21,23,34),
-            new Planta( "Rosa2", 45, 34, 21,23,34),
-            new Planta( "Margarita", 23, 65, 21,23,34),
-            new Planta( "Lechuga", 23, 34, 21,23,34),
-            new Planta( "Tomate", 23, 34, 34,23,34),
-            new Planta( "Acelga", 30, 34, 21,23,34),
-            new Planta( "Rucula2", 23, 34, 21,0,12),
-            new Planta( "Rosa3", 25, 34, 21,23,34),
-            new Planta( "Rosa blanca", 23, 34, 21,23,34),
-            new Planta( "Romero", 23, 34, 21,23,34),
+    public Etapa etapa;
+    public ArrayList<Planta> plantadas ;
+    public Planta p1;
+    public Planta p2;
+    public DatabaseHandler bd;
 
 
 
 
-
-
-    };
 
 
 
@@ -80,10 +72,30 @@ public class AgregarFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        bd = new DatabaseHandler(context);
+        p1 = new PlantaPerenne("01");
+        p2= new PlantaAnual("02");
+        p1.setNombre("p1");
+        bd.savePlanta(p1);
+        p2.setNombre("p2");
+        bd.savePlanta(p2);
+        bd.savePlantadas(p1);
+        bd.savePlantadas(p2);
+        etapa = new Etapa("p1",2,3,4,7,3,47,2,5,3);
+        bd.saveEtapa(etapa);
+        ArrayList<Etapa> allEtapa= (ArrayList) bd.getAllEtapa();
+        plantadas = (ArrayList) bd.getAllPlantada();
+
         for (Planta planta : plantadas)
         {
-            planta.agregarEtapa(etapa);
+            planta.agregarEtapa(allEtapa.get(0));
         }
+
+
+
+
+
+
 
         context = getActivity();
 
