@@ -37,13 +37,13 @@ import static com.TP.Vivero.R.layout.support_simple_spinner_dropdown_item;
 public class AgregarFragment extends Fragment {
 
     public Context context;
-    ListView listaPlantas;
-
-    public Etapa etapa;
-    public ArrayList<Planta> plantadas ;
-    public Planta p1;
-    public Planta p2;
+    public ListView listaPlantas;
     public DatabaseHandler bd;
+    public Planta p1;
+    public Etapa etapa;
+    ArrayList<Planta> plantadas;
+
+
 
 
 
@@ -71,25 +71,18 @@ public class AgregarFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        context = getActivity();
         bd = new DatabaseHandler(context);
-        p1 = new PlantaPerenne("01");
-        p2= new PlantaAnual("02");
+        p1= new PlantaAnual("01");
         p1.setNombre("p1");
         bd.savePlanta(p1);
-        p2.setNombre("p2");
-        bd.savePlanta(p2);
         bd.savePlantadas(p1);
-        bd.savePlantadas(p2);
-        etapa = new Etapa("p1",2,3,4,7,3,47,2,5,3);
-        bd.saveEtapa(etapa);
-        ArrayList<Etapa> allEtapa= (ArrayList) bd.getAllEtapa();
-        plantadas = (ArrayList) bd.getAllPlantada();
+        etapa = new Etapa("01",1,2,3,4,6,87,3,3,2);
 
-        for (Planta planta : plantadas)
-        {
-            planta.agregarEtapa(allEtapa.get(0));
-        }
+        plantadas = (ArrayList<Planta>) bd.getAllPlantada();
+
+        System.out.println("Hay planta?"+ plantadas.size()+" : "+plantadas.get(0).getNombre());
+        plantadas.get(1).agregarEtapa(etapa);
 
 
 
@@ -97,7 +90,9 @@ public class AgregarFragment extends Fragment {
 
 
 
-        context = getActivity();
+
+
+
 
         listaPlantas = (ListView) getView().findViewById(R.id.listaPlantas);
 
