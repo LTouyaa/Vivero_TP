@@ -31,6 +31,8 @@ public class AgregarPlantaFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        context = getActivity();
+
         boton = (Button)getView().findViewById(R.id.boton_crear);
 
         boton.setOnClickListener(new View.OnClickListener(){
