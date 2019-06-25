@@ -36,9 +36,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      * El usuario ingresara un nombre y la app cargará los datos restantes.
      */
     private static final String CREATE_TABLA1 = "CREATE TABLE planta (" +
-            "idplanta TEXT, " +
             "nombre TEXT, " +
-            "PRIMARY KEY (idplanta))";
+            "PRIMARY KEY (nombre))";
 
     /**
      * Segunda tabla, etapa. Esta es la estrucutra que tendrá cada etapa.
@@ -75,14 +74,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      * Como ser temperatura actual (tempActual), el sustrato acutal (sustrato), etc.
      */
     private static final String CREATE_TABLA3 = "CREATE TABLE plantada (" +
-            "idplanta TEXT, " +
+            "ubicacion INT, " +
             "nombre TEXT, " +
             "tempActual INT, " +
             "humedadActual INT, " +
             "luzActual INT, " +
             "hormona INT, " +
             "sustrato INT, " +
-            "PRIMARY KEY (idplanta))";
+            "PRIMARY KEY (ubicacion))";
 
 
     private Context context;
@@ -117,10 +116,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues(); //Creo un contenedor con el que le voy a cargar. Sería el equivalente a los Bundle que usamos para transmitir
                                                     // datos entre Activitys.
-        values.put("idplanta", planta.getId());     //Le cargo datos. put(key, valor). Muy parecido a un HashMap.
         values.put("nombre", planta.getNombre());
 
-        if(this.existPlanta(planta.getId())) db.update("planta", values, "idplanta=?", new String[]{planta.getId()});
+        if(this.existPlanta(planta.getNombre())) db.update("planta", values, "nombre=?", new String[]{planta.getNombre()});
         else db.insert("planta", null, values);
         //Primero veo si el elemento ya existe en la base de datos, si es así lo actualizo y si no lo agrego.
 
@@ -129,17 +127,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     /**
      * Comprueba la exista de dicho planta mediante la bsuqueda por su PRIMARY KEY
-     * @param idplanta
+     * @param nombre
      * @return
      */
-    public boolean existPlanta(String idplanta){
+    public boolean existPlanta(String nombre){
 
         boolean aux = false;
 
         SQLiteDatabase db = getReadableDatabase();  //Ahora lo que hago es 'tomar' la base de datos, pero solo para leer.
 
-        String sql = "SELECT * FROM planta WHERE idplanta=?";   //Comando de SQL: eligo la tabla 'planta', y su PRIMARY KEY se llama 'idplanta'.
-        String[] argSql = new String[]{idplanta};   //Creo que array de Strings con el que le podria pasar todos los PRIMARY KEY que fueran necearios.
+        String sql = "SELECT * FROM planta WHERE nombre=?";   //Comando de SQL: eligo la tabla 'planta', y su PRIMARY KEY se llama 'idplanta'.
+        String[] argSql = new String[]{nombre};   //Creo que array de Strings con el que le podria pasar todos los PRIMARY KEY que fueran necearios.
                                                     //En este caso es solamente idplanta.
         Cursor cursor = db.rawQuery(sql, argSql);   //Creo un cursos, que vendria a ser un puntero a la posicion que encuentre en la tabla con los parametros que le paso.
 
@@ -153,17 +151,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     /**
      * Devuelve un obj. planta a partir del idplanta que se le pasa.
-     * @param idplanta
+     * @param nombre
      * @return
      */
-    public Planta getPlantaByIdplanta(String idplanta){
+    public Planta getPlantaByNomb(String nombre){
 
         Planta planta = new Planta();   //Creo un objeto planta que será el que devuelva.
 
         SQLiteDatabase db = getReadableDatabase();
 
-        String sql = "SELECT * FROM planta WHERE idplanta=?";
-        String[] argSql = new String[]{idplanta};
+        String sql = "SELECT * FROM planta WHERE nombre=?";
+        String[] argSql = new String[]{nombre};
 
         Cursor cursor = db.rawQuery(sql, argSql);
 
@@ -171,10 +169,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
             cursor.moveToFirst();   //Lo muevo al prinicpio, siempre necesario.
 
-            planta.setId(cursor.getString(cursor.getColumnIndex("idplanta"))); //Y le cargo al obj. planta que quiero devolver los parametros que quiero que vaya a tener.
+            planta.setNombre(cursor.getString(cursor.getColumnIndex("nombre"))); //Y le cargo al obj. planta que quiero devolver los parametros que quiero que vaya a tener.
                                                                                             // Para eso, lo que hago es agarrar un valor String al que este apuntando el cursor (cursor.getString(index))
                                                                                             //Después, agarro el valor que se encuentra en la columna cuyo nombre coincide (cursor(getColumnIndex""))
-            planta.setNombre(cursor.getString(cursor.getColumnIndex("nombre")));
+            planta.setEtapas((ArrayList<Etapa>) this.getAllEtapaByName(nombre));
         }
         db.close(); //Ciero la bd, importantisimo, no olvidar.
         return planta;
@@ -203,10 +201,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
                 Planta planta = new Planta();   //obj. planta auxialiar que usare para ir rellenando con List<Plantas> que voy a devolver.
 
-                planta.setId(cursor.getString(cursor.getColumnIndex("idplanta")));
                 planta.setNombre(cursor.getString(cursor.getColumnIndex("nombre")));
 
+                planta.setEtapas((ArrayList<Etapa>) this.getAllEtapaByName(planta.getNombre()));
+
                 plantaList.add(planta);
+
             } while (cursor.moveToNext());  //Una vez que hace lo que hay en el 'do', pasa a la siguiente posicion si es que existe.
 
             db.close();
@@ -380,7 +380,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
 
-        values.put("idplanta", planta.getId());
+        values.put("ubicacion", planta.getUbicacion());
         values.put("nombre", planta.getNombre());
         values.put("tempActual", planta.getTempActual());
         values.put("humedadActual", planta.getHumedadActual());
@@ -388,20 +388,20 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put("hormona", planta.getHormona());
         values.put("sustrato", planta.getSustrato());
 
-        if(this.existPlantada(planta.getId())) db.update("plantada", values, "idplanta=?", new String[]{planta.getId()});
+        if(this.existPlantada(planta.getUbicacion())) db.update("plantada", values, "ubicacion=?", new String[]{Integer.toString(planta.getUbicacion())});
         else db.insert("plantada", null, values);
 
         db.close();
     }
 
-    public boolean existPlantada(String idplanta){
+    public boolean existPlantada(int ubicacion){
 
         boolean aux = false;
 
         SQLiteDatabase db = getReadableDatabase();
 
-        String sql = "SELECT * FROM plantada WHERE idplanta=?";
-        String[] argSql = new String[]{idplanta};
+        String sql = "SELECT * FROM plantada WHERE ubicacion=?";
+        String[] argSql = new String[]{Integer.toString(ubicacion)};
 
         Cursor cursor = db.rawQuery(sql, argSql);
 
@@ -413,14 +413,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return aux;
     }
 
-    public Planta getPlantadaByIdplanta(String idplanta){
+    public Planta getPlantadaByUbicacion(int ubicacion){
 
         Planta planta = new Planta();
 
         SQLiteDatabase db = getReadableDatabase();
 
-        String sql = "SELECT * FROM plantada WHERE idplanta=?";
-        String[] argSql = new String[]{idplanta};
+        String sql = "SELECT * FROM plantada WHERE ubicacion=?";
+        String[] argSql = new String[]{Integer.toString(ubicacion)};
 
         Cursor cursor = db.rawQuery(sql, argSql);
 
@@ -428,13 +428,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
             cursor.moveToFirst();
 
-            planta.setId(cursor.getString(cursor.getColumnIndex("idplanta")));
+            planta.setUbicacion(cursor.getInt(cursor.getColumnIndex("ubicacion")));
             planta.setNombre(cursor.getString(cursor.getColumnIndex("nombre")));
             planta.setTempActual(cursor.getInt(cursor.getColumnIndex("tempActual")));
             planta.setHumedadActual(cursor.getInt(cursor.getColumnIndex("humedadActual")));
             planta.setLuzActual(cursor.getInt(cursor.getColumnIndex("luzActual")));
             planta.setHormona(cursor.getInt(cursor.getColumnIndex("hormona")));
             planta.setSustrato(cursor.getInt(cursor.getColumnIndex("sustrato")));
+
+            planta.setEtapas((ArrayList<Etapa>) this.getAllEtapaByName(planta.getNombre()));
         }
         db.close();
         return planta;
@@ -456,13 +458,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
                 Planta planta = new Planta();
 
-                planta.setId(cursor.getString(cursor.getColumnIndex("idplanta")));
+                planta.setUbicacion(cursor.getInt(cursor.getColumnIndex("ubicacion")));
                 planta.setNombre(cursor.getString(cursor.getColumnIndex("nombre")));
                 planta.setTempActual(cursor.getInt(cursor.getColumnIndex("tempActual")));
                 planta.setHumedadActual(cursor.getInt(cursor.getColumnIndex("humedadActual")));
                 planta.setLuzActual(cursor.getInt(cursor.getColumnIndex("luzActual")));
                 planta.setHormona(cursor.getInt(cursor.getColumnIndex("hormona")));
                 planta.setSustrato(cursor.getInt(cursor.getColumnIndex("sustrato")));
+
+                planta.setEtapas((ArrayList<Etapa>) getAllEtapaByName(planta.getNombre()));
 
                 plantadaList.add(planta);
             } while (cursor.moveToNext());
@@ -473,6 +477,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         db.close();
         return null;
+    }
+
+    public void deleteAll(){
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        String sql = "SELECT * FROM";
+        db.delete(sql, null, null);
+        db.close();
     }
 }
 

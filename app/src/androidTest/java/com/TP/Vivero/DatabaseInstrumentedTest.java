@@ -59,27 +59,25 @@ public class DatabaseInstrumentedTest {
 
         //Creo un obj. planta estandard.
         Planta planta = new Planta();
-        planta.setId("123");
         planta.setNombre("Rosa");
 
         db.savePlanta(planta);  //Loa grego a la base de datos.
 
-        assertTrue(db.existPlanta(planta.getId())); //Compruebo que exista en la base de datos y que se haya agregado correctamente.
+        assertTrue(db.existPlanta(planta.getNombre())); //Compruebo que exista en la base de datos y que se haya agregado correctamente.
 
         assertFalse(db.existPlanta("555")); //Compruebo que este no exista en bd y que por tanto el metodo funcione correctamente.
 
         assertTrue(db.getAllPlanta().size()>0); //Compruebo que el metodo que me devuelve un List<Planta> sea mayor a 0, porqué hay una planta agregada
 
-        assertEquals(planta.getNombre(), db.getPlantaByIdplanta(planta.getId()).getNombre());   //Compruebo que el nombre de la planta de la bd coincida con el de la planta que cree al prinicpio.
+        assertEquals(planta.getNombre(), db.getPlantaByNomb(planta.getNombre()).getNombre());   //Compruebo que el nombre de la planta de la bd coincida con el de la planta que cree al prinicpio.
 
         //Creo una segunda planta con un Id diferente.
         Planta planta2 = new Planta();
-        planta2.setId("321");
         planta2.setNombre("Pino");
 
         db.savePlanta(planta2);
 
-        assertTrue(db.existPlanta(planta2.getId()));
+        assertTrue(db.existPlanta(planta2.getNombre()));
 
         assertEquals(2, db.getAllPlanta().size());  //Compruebo que el List<Planta> haya aumentado de tamaño.
 
@@ -142,7 +140,7 @@ public class DatabaseInstrumentedTest {
         assertNotNull(db);
 
         Planta planta = new Planta();
-        planta.setId("123");
+        planta.setUbicacion(123);
         planta.setNombre("Rosa");
         planta.setTempActual(15);
         planta.setHumedadActual(5);
@@ -152,16 +150,16 @@ public class DatabaseInstrumentedTest {
 
         db.savePlantadas(planta);
 
-        assertTrue(db.existPlantada(planta.getId()));
+        assertTrue(db.existPlantada(planta.getUbicacion()));
 
-        assertFalse(db.existPlantada("555"));
+        assertFalse(db.existPlantada(555));
 
         assertTrue(db.getAllPlantada().size()>0);
 
-        assertEquals(planta.getNombre(), db.getPlantadaByIdplanta(planta.getId()).getNombre());
+        assertEquals(planta.getNombre(), db.getPlantadaByUbicacion(planta.getUbicacion()).getNombre());
 
         Planta planta2 = new Planta();
-        planta2.setId("321");
+        planta2.setUbicacion(321);
         planta2.setNombre("Pino");
         planta.setTempActual(15);
         planta.setHumedadActual(5);
@@ -171,7 +169,7 @@ public class DatabaseInstrumentedTest {
 
         db.savePlantadas(planta2);
 
-        assertTrue(db.existPlantada(planta2.getId()));
+        assertTrue(db.existPlantada(planta2.getUbicacion()));
 
         assertEquals(2, db.getAllPlantada().size());
 
@@ -190,13 +188,7 @@ public class DatabaseInstrumentedTest {
 
         assertNotNull(db);
 
-        Planta planta = db.getPlantaByIdplanta("123");  //Agarro la planta con ese Id.
-
-        List<Etapa> etapaList = db.getAllEtapaByName(planta.getNombre());   //Las etapas de esa planta.
-
-        assertNotNull(etapaList);
-
-        planta.setEtapas((ArrayList<Etapa>) etapaList);
+        Planta planta = db.getPlantaByNomb("Rosa");  //Agarro la planta con ese Id.
 
         assertNotNull(planta.getEtapas());
 
@@ -212,7 +204,7 @@ public class DatabaseInstrumentedTest {
     public void initDb(){
 
         Planta planta = new Planta();
-        planta.setId("123");
+        planta.setUbicacion(123);
         planta.setNombre("Rosa");
         planta.setTempActual(15);
         planta.setHumedadActual(5);
@@ -221,7 +213,7 @@ public class DatabaseInstrumentedTest {
         planta.setSustrato(46);
 
         Planta planta2 = new Planta();
-        planta2.setId("321");
+        planta2.setUbicacion(321);
         planta2.setNombre("Pino");
         planta.setTempActual(15);
         planta.setHumedadActual(5);
