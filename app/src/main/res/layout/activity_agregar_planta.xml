@@ -8,7 +8,7 @@
     tools:context=".ui.activity.AgregarPlantaActivity">
 
     <EditText
-        android:id="@+id/edit_nom_plant"
+        android:id="@+id/edit_nombre_planta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
