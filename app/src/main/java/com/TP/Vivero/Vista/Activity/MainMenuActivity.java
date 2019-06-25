@@ -1,11 +1,8 @@
 package com.TP.Vivero.Vista.Activity;
 
 import android.app.FragmentManager;
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +12,6 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.TP.Vivero.Model.DatabaseHandler;
-import com.TP.Vivero.Model.Model;
 import com.TP.Vivero.Object.Etapa;
 import com.TP.Vivero.Object.Planta;
 import com.TP.Vivero.R;
@@ -36,8 +32,6 @@ public class MainMenuActivity extends AppCompatActivity implements BottomNavigat
     private AgregarPlantaFragment agregarPlantaFragment;
     private RemoverPlantaFragment removerPlantaFragment;
     private FragmentManager fm;
-
-    private DatabaseHandler db;
 
     private Context context;
 
@@ -92,14 +86,6 @@ public class MainMenuActivity extends AppCompatActivity implements BottomNavigat
          * este fragment que estoy 'inflando' sea sacado dandole atras el fragment que se va a cargar no será el que estaba antes sino el que cargué en
          * algun momento en el fm con dicho TAG.
          */
-
-        db = new DatabaseHandler(context);
-
-        Model model = ViewModelProviders.of(this).get(Model.class);
-        model.getPlant().observe(this, planta -> Toast.makeText(context, "Hubo un cambio", Toast.LENGTH_LONG).show());
-
-
-
     }
 
     @Override
