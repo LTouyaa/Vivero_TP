@@ -62,33 +62,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         login.setOnClickListener(v -> {
 
-            if(usr.getText().toString().equals("Hola") && pass.getText().toString().equals("Mundo")){
+//            if(usr.getText().toString().equals("Hola") && pass.getText().toString().equals("Mundo")){
 
                 Intent intent = new Intent(context, MainMenuActivity.class);
                 startActivity(intent);
-            }else{
-
-                AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-                dialog.setTitle("ERROR");
-                dialog.setMessage("Usuario ó Contraseña incorrectos");
-
-                dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(context, "sos un puto, pero ok", Toast.LENGTH_LONG).show();
-                    }
-                });
-
-                dialog.setNegativeButton("CANCELAR", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        Toast.makeText(context, "sos un puto, cancelar", Toast.LENGTH_LONG).show();
-
-                    }
-                });
-                dialog.show();
-            }
+//            }else{
+//
+//                AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+//                dialog.setTitle("ERROR");
+//                dialog.setMessage("Usuario ó Contraseña incorrectos");
+//
+//                dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        Toast.makeText(context, "sos un puto, pero ok", Toast.LENGTH_LONG).show();
+//                    }
+//                });
+//
+//                dialog.setNegativeButton("CANCELAR", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//
+//                        Toast.makeText(context, "sos un puto, cancelar", Toast.LENGTH_LONG).show();
+//
+//                    }
+//                });
+//                dialog.show();
+//            }
         });
     }
 

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.TP.Vivero.Controller.Controller;
 import com.TP.Vivero.Model.DatabaseHandler;
 import com.TP.Vivero.Object.Planta;
 import com.TP.Vivero.R;
@@ -19,7 +20,7 @@ public class AgregarPlantaFragment extends Fragment {
     private Context context;
     private Button boton;
 
-
+    Controller controller;
 
     @Nullable
     @Override
@@ -91,6 +92,10 @@ public class AgregarPlantaFragment extends Fragment {
         }
 
 
+    }
+
+    public void setController(Controller controller){
+        this.controller = controller;
     }
 
 }

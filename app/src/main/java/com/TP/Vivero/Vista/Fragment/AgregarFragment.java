@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.TP.Vivero.Controller.Controller;
 import com.TP.Vivero.Model.DatabaseHandler;
 import com.TP.Vivero.Model.SimuladorAleatorios;
 import com.TP.Vivero.Object.Planta;
@@ -23,12 +24,10 @@ import static com.TP.Vivero.R.layout.lista_plantas;
 
 public class AgregarFragment extends Fragment {
 
-
     Context context;
     ListView listaPlantas;
 
-
-
+    Controller controller;
 
     @Nullable
     @Override
@@ -59,8 +58,9 @@ public class AgregarFragment extends Fragment {
                 adapter.cambiarVisibilidad(position);
             }
         });
+    }
 
-
-
-        }
+    public void setController(Controller controller){
+        this.controller = controller;
+    }
 }
