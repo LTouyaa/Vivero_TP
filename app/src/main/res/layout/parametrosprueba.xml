@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/parametros">
+
+    <TextView
+        android:id="@+id/temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="-267dp"
+        tools:layout_editor_absoluteY="76dp"
+        />
+
+    <TextView
+        android:id="@+id/hum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="-267dp"
+        tools:layout_editor_absoluteY="76dp"
+        />
+
+    <TextView
+        android:id="@+id/luz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="-267dp"
+        tools:layout_editor_absoluteY="76dp"
+        />
+
+    <TextView
+        android:id="@+id/hormonas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="-267dp"
+        tools:layout_editor_absoluteY="76dp"
+        />
+
+    <TextView
+        android:id="@+id/sustrato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="-267dp"
+        tools:layout_editor_absoluteY="76dp"
+        />
+
+
+
+
+
+
+</LinearLayout>

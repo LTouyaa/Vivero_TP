@@ -4,38 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.TP.Vivero.MainActivity"
+    tools:context=".Vista.Activity.MainMenuActivity"
     android:orientation="vertical"
     >
 
-    <EditText
-        android:id="@+id/edt_1"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_main_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:hint="Nombre"
+        android:background="@color/colorPrimary"
         />
 
-    <EditText
-        android:id="@+id/ed_2"
+    <FrameLayout
+        android:id="@+id/frm_main_menu"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:hint="Apellido"
-        />
-    <Button
-        android:id="@+id/btm_1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:hint="LOGIN"
+        android:layout_height="match_parent"
+        android:layout_weight="9"
         />
 
-    <Button
-        android:id="@+id/btm_view_model"
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/btm_nav_main_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="VER"
+        android:layout_gravity="start"
+        app:menu="@menu/menu_boton_navigation"
+        android:background="@color/colorPrimary"
+        android:layout_weight="0"
         />
+
+
+
+
 
 </LinearLayout>

@@ -4,38 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.TP.Vivero.MainActivity"
     android:orientation="vertical"
-    >
+    tools:context=".ui.activity.AgregarPlantaActivity">
 
     <EditText
-        android:id="@+id/edt_1"
+        android:id="@+id/edit_nombre_planta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:hint="Nombre"
-        />
-
-    <EditText
-        android:id="@+id/ed_2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:hint="Apellido"
-        />
-    <Button
-        android:id="@+id/btm_1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:hint="LOGIN"
+        android:hint="NOMBRE"
         />
 
     <Button
-        android:id="@+id/btm_view_model"
+        android:id="@+id/btm_add_plant"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="VER"
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        android:hint="AGREGAR"
         />
+
 
 </LinearLayout>
