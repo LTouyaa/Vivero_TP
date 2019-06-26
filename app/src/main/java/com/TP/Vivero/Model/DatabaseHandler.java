@@ -115,7 +115,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();  //Agarro la base de datos para escribirla.
 
         ContentValues values = new ContentValues(); //Creo un contenedor con el que le voy a cargar. Sería el equivalente a los Bundle que usamos para transmitir
-                                                    // datos entre Activitys.
+        // datos entre Activitys.
         values.put("nombre", planta.getNombre());
 
         if(this.existPlanta(planta.getNombre())) db.update("planta", values, "nombre=?", new String[]{planta.getNombre()});
@@ -138,7 +138,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         String sql = "SELECT * FROM planta WHERE nombre=?";   //Comando de SQL: eligo la tabla 'planta', y su PRIMARY KEY se llama 'idplanta'.
         String[] argSql = new String[]{nombre};   //Creo que array de Strings con el que le podria pasar todos los PRIMARY KEY que fueran necearios.
-                                                    //En este caso es solamente idplanta.
+        //En este caso es solamente idplanta.
         Cursor cursor = db.rawQuery(sql, argSql);   //Creo un cursos, que vendria a ser un puntero a la posicion que encuentre en la tabla con los parametros que le paso.
 
         if(cursor!=null && cursor.getCount()==1){   //Si lo encuentra ...
@@ -170,8 +170,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             cursor.moveToFirst();   //Lo muevo al prinicpio, siempre necesario.
 
             planta.setNombre(cursor.getString(cursor.getColumnIndex("nombre"))); //Y le cargo al obj. planta que quiero devolver los parametros que quiero que vaya a tener.
-                                                                                            // Para eso, lo que hago es agarrar un valor String al que este apuntando el cursor (cursor.getString(index))
-                                                                                            //Después, agarro el valor que se encuentra en la columna cuyo nombre coincide (cursor(getColumnIndex""))
+            // Para eso, lo que hago es agarrar un valor String al que este apuntando el cursor (cursor.getString(index))
+            //Después, agarro el valor que se encuentra en la columna cuyo nombre coincide (cursor(getColumnIndex""))
             planta.setEtapas((ArrayList<Etapa>) this.getAllEtapaByName(nombre));
         }
         db.close(); //Ciero la bd, importantisimo, no olvidar.

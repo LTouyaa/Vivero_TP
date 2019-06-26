@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/edit_ubicacion_plantaremover"
+        android:id="@+id/edit_ubicacion_planta_remover"
         android:layout_width="match_parent"
         android:layout_height="@android:dimen/notification_large_icon_height"
         android:layout_marginStart="8dp"
@@ -16,7 +16,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="numberSigned|textPersonName"
         android:text="UBICACION"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,5 +34,5 @@
         android:text="REMOVER"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_ubicacion_plantaremover" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_ubicacion_planta_remover" />
 </android.support.constraint.ConstraintLayout>

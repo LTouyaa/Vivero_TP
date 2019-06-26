@@ -56,19 +56,19 @@ public class AgregarPlantaFragment extends Fragment {
         
         Planta P;
 
-        if(nombrePlanta.getText()!=null && ubicacionPlanta.getText()!=null){
+        if(nombrePlanta.getText()!=null && ubicacionPlanta.getText()!=null){    //Compruebo que no esten los campos vacios
 
-            if(BasedeDatos.existPlanta(nombrePlanta.getText().toString())){
+            if(BasedeDatos.existPlanta(nombrePlanta.getText().toString())){     //Compruebo que el nombre de la planta sea un dato valido
 
-                if(true /*Comprobamos si la ubicacion esta disponible*/){
+                if(BasedeDatos.existPlantada(Integer.parseInt(ubicacionPlanta.getText().toString()))){  //Compruebo que la ubicacion no este ocupada
 
-                    P = BasedeDatos.getPlantaByNomb(nombrePlanta.getText().toString());
+                    P = BasedeDatos.getPlantaByNomb(nombrePlanta.getText().toString()); //Recibo una nueva planta de la base de datos mediante el ingreso del nombre
                     assert(P!=null);
                     assert(P.getNombre()!=null);
 
-                    //Seguro falta algo de hacer
+                    P.setUbicacion(Integer.parseInt(ubicacionPlanta.getText().toString())); //Seteo su ubicacion
 
-                    BasedeDatos.savePlantadas(P);
+                    BasedeDatos.savePlantadas(P);   //Guardo la nueva planta en la base de datos
 
 
 
