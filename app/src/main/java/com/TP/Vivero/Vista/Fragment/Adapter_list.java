@@ -2,6 +2,7 @@ package com.TP.Vivero.Vista.Fragment;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +26,7 @@ public class Adapter_list extends ArrayAdapter<Planta> {
     ArrayList<lista_holder> holders;
     int cont;
     Boolean flag;
+    int redColor = Color.RED;
 
     public Adapter_list(Context context, int layout_list, ArrayList<Planta> plantas)
     {
@@ -47,8 +49,10 @@ public class Adapter_list extends ArrayAdapter<Planta> {
             row = inflater.inflate(layout_list, parent,false);
 
             holder = new lista_holder();
+
             holder.name = (TextView) row.findViewById(R.id.text_1);
             holder.date = (LinearLayout) row.findViewById(R.id.parametros);
+            holder.ubic=(TextView) row.findViewById(R.id.ubic);
             holder.datoTemp = (TextView)  row.findViewById(R.id.temp) ;
             holder.datoHum = (TextView) row.findViewById(R.id.hum) ;
             holder.datoLuz = (TextView) row.findViewById(R.id.luz) ;
@@ -70,6 +74,7 @@ public class Adapter_list extends ArrayAdapter<Planta> {
 
 
         holder.name.setText(((Planta) planta).getNombre());
+        holder.ubic.setText(planta.getUbicacion());
         holder.datoTemp.setText("Temperatura: "+Integer.toString(planta.getEtapaActual().getTempMin())+" - "+Integer.toString(((Planta) planta).getTempActual())+" - "+Integer.toString(planta.getEtapaActual().getTempMax())+"  °C");
         holder.datoHum.setText("Humedad: "+Integer.toString(planta.getEtapaActual().getHumMin())+" - "+Integer.toString(((Planta)  planta).getHumedadActual())+" - "+Integer.toString(planta.getEtapaActual().getHumMax())+" %");
         holder.datoLuz.setText("Luz: "+Integer.toString(planta.getEtapaActual().getLuzMin())+" - "+Integer.toString(((Planta) planta).getLuzActual())+ " - "+Integer.toString(planta.getEtapaActual().getLuzMin()));
@@ -99,17 +104,75 @@ public class Adapter_list extends ArrayAdapter<Planta> {
 
     }
 
+    public void addPlantas(Planta planta) {
+        plantas.add(planta);
+
+        notifyDataSetChanged();
+    }
+
+    public void addPlantas (ArrayList<Planta> arrayPlantas)
+    {
+        for( Planta planta: arrayPlantas)
+        {
+            plantas.add(planta);
+        }
+        notifyDataSetChanged();
+    }
+
+    public Boolean TempFueraDeRango(int Ubicacion)
+    {
+        for(lista_holder holder: holders)
+        {
+            if(Ubicacion == Integer.parseInt(holder.ubic.getText().toString()))
+            {
+                holder.datoTemp.setTextColor(Color.RED);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Boolean HumFueraDeRango(int Ubicacion)
+    {
+        for(lista_holder holder: holders)
+        {
+            if(Ubicacion == Integer.parseInt(holder.ubic.getText().toString()))
+            {
+                holder.datoHum.setTextColor(Color.RED);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Boolean LuzFueraDeRango(int Ubicacion)
+    {
+        for(lista_holder holder: holders)
+        {
+            if(Ubicacion == Integer.parseInt(holder.ubic.getText().toString()))
+            {
+                holder.datoLuz.setTextColor(Color.RED);
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
 
     static class lista_holder
     {
 
         TextView name;
         LinearLayout date;
+        TextView ubic;
         TextView datoTemp;
         TextView datoHum;
         TextView datoLuz;
         TextView datoHormona;
         TextView datoSustrato;
+        TextView ubicacion;
 
 
     }

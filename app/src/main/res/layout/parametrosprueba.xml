@@ -9,6 +9,15 @@
     android:id="@+id/parametros">
 
     <TextView
+        android:id="@+id/ubic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="-267dp"
+        tools:layout_editor_absoluteY="76dp"
+        />
+
+    <TextView
         android:id="@+id/temp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

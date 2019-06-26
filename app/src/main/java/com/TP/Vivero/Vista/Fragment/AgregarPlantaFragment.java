@@ -17,10 +17,9 @@ import com.TP.Vivero.R;
 
 public class AgregarPlantaFragment extends Fragment {
 
+
     private Context context;
     private Button boton;
-
-
 
     @Nullable
     @Override
@@ -43,8 +42,6 @@ public class AgregarPlantaFragment extends Fragment {
                 crearPlanta();
             }
         });
-
-
     }
 
     public void crearPlanta(){
@@ -55,11 +52,6 @@ public class AgregarPlantaFragment extends Fragment {
         DatabaseHandler BasedeDatos = new DatabaseHandler(context);
         
         Planta P;
-
-
-
-
-
 
         if(!nombrePlanta.getText().toString().isEmpty() && !ubicacionPlanta.getText().toString().isEmpty()){
 
@@ -78,35 +70,17 @@ public class AgregarPlantaFragment extends Fragment {
                     BasedeDatos.savePlantadas(P);
 
                     Toast.makeText(context,"La planta se agregó correctamente", Toast.LENGTH_SHORT).show();
-
-
-
                 } else{
-
-
                     Toast.makeText(context,"La ubicacion esta ocupada",Toast.LENGTH_SHORT).show();
                     //Medida a tomar si la ubicacion ya esta ocupada
-
                 }
 
-
             } else{
-
             Toast.makeText(context,"El nombre ingresado no es valido",Toast.LENGTH_SHORT).show();
                 //Medida a tomar si el nombre de la planta ingresado no se corresponde con alguno de la base de datos
-
-
             }
 
-
         } else{
-
             //Medida a tomar si no se ingresan textos en los EditText
             Toast.makeText(context,"Datos vacios",Toast.LENGTH_SHORT).show();
-
-        }
-
-
-    }
-
-}
+        }}}
