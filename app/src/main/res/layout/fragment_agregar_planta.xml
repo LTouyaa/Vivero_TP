@@ -12,9 +12,11 @@
         android:layout_height="@android:dimen/notification_large_icon_height"
         android:layout_margin="8dp"
         android:layout_marginTop="16dp"
+        android:inputType="text"
         android:hint="NOMBRE"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="8dp" />
+        tools:layout_editor_absoluteX="8dp"
+        />
 
     <EditText
         android:id="@+id/edit_ubicacion_planta"

@@ -57,14 +57,19 @@ public class AgregarPlantaFragment extends Fragment {
         Planta P;
 
 
-        if(nombrePlanta.getText()!=null && ubicacionPlanta.getText()!=null){
+
+
+
+
+        if(!nombrePlanta.getText().toString().isEmpty() && !ubicacionPlanta.getText().toString().isEmpty()){
 
             if(BasedeDatos.existPlanta(nombrePlanta.getText().toString())){
 
-                Integer integer =  Integer.getInteger(ubicacionPlanta.getText().toString());
-                if(BasedeDatos.existPlantada(integer )){
+
+                if(!BasedeDatos.existPlantada(Integer.parseInt(ubicacionPlanta.getText().toString()))){
 
                     P = BasedeDatos.getPlantaByNomb(nombrePlanta.getText().toString());
+                    P.setUbicacion(Integer.parseInt(ubicacionPlanta.getText().toString()));
                     assert(P!=null);
                     assert(P.getNombre()!=null);
 
