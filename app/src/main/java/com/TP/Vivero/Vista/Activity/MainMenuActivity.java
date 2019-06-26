@@ -10,9 +10,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.TP.Vivero.Model.DatabaseHandler;
+import com.TP.Vivero.Object.Etapa;
+import com.TP.Vivero.Object.Planta;
 import com.TP.Vivero.R;
 import com.TP.Vivero.Vista.Fragment.AgregarFragment;
 import com.TP.Vivero.Vista.Fragment.MenuFragment;
+
+import java.util.ArrayList;
 
 public class MainMenuActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -74,7 +79,6 @@ public class MainMenuActivity extends AppCompatActivity implements BottomNavigat
          * este fragment que estoy 'inflando' sea sacado dandole atras el fragment que se va a cargar no será el que estaba antes sino el que cargué en
          * algun momento en el fm con dicho TAG.
          */
-
     }
 
     @Override

@@ -2,8 +2,7 @@ package com.TP.Vivero.Object;
 
 public class PlantaAnual extends Planta {
 
-    public PlantaAnual(String id) {
-        super(id);
+    public PlantaAnual() {
     }
 
     public void siguiente(){

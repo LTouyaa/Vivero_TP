@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Planta {
 
     private ArrayList<Etapa> etapas;
-    private String id = "";
+    private int ubicacion;
     private String nombre;
     private int tempActual;
     private int humedadActual;
@@ -15,25 +15,19 @@ public class Planta {
 
     public Planta(){}
 
-    public Planta(String id) {
-        etapas = new ArrayList<Etapa>();
-        this.id = id;
-    }
 
     public ArrayList<Etapa> getEtapas() {
         return etapas;
     }
 
     public void setEtapas(ArrayList<Etapa> etapas) {
+        if(etapas==null) this.etapas = new ArrayList<>();
         this.etapas = etapas;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    public void agregarEtapa(Etapa etapa){
+        if(this.etapas == null) this.etapas = new ArrayList<>();
+        etapas.add(etapa);
     }
 
     public String getNombre() {
@@ -118,5 +112,13 @@ public class Planta {
         } else {
             return true;
         }
+    }
+
+    public int getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(int ubicacion) {
+        this.ubicacion = ubicacion;
     }
 }
