@@ -4,14 +4,15 @@ import java.util.ArrayList;
 
 public class Planta {
 
-    private ArrayList<Etapa> etapas;
-    private int ubicacion;
-    private String nombre;
-    private int tempActual;
-    private int humedadActual;
-    private int luzActual;
-    private int hormona;
-    private int sustrato;
+    protected ArrayList<Etapa> etapas;
+    protected int ubicacion;
+    protected String nombre;
+    protected int tempActual;
+    protected int humedadActual;
+    protected int luzActual;
+    protected int hormona;
+    protected int sustrato;
+    protected String fecha_plantado;
 
     public Planta(){}
 
@@ -78,6 +79,22 @@ public class Planta {
         this.sustrato = sustrato;
     }
 
+    public int getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(int ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+
+    public String getFecha_plantado() {
+        return fecha_plantado;
+    }
+
+    public void setFecha_plantado(String fecha_plantado) {
+        this.fecha_plantado = fecha_plantado;
+    }
+
     public boolean tempCorrecta() {
         if ((tempActual > etapas.get(0).getTempMax()) || (tempActual < etapas.get(0).getTempMin())) {
             return false;
@@ -102,23 +119,6 @@ public class Planta {
         setLuzActual(luzActual);
     }
 
-    public boolean unPaso(){
+    public void siguiente(){}
 
-        if(etapas.isEmpty()) return false;
-
-        if (etapas.get(0).getEdad() < etapas.get(0).getDuracion()) {
-            etapas.remove(0);
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    public int getUbicacion() {
-        return ubicacion;
-    }
-
-    public void setUbicacion(int ubicacion) {
-        this.ubicacion = ubicacion;
-    }
 }

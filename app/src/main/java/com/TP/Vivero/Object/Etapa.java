@@ -2,6 +2,9 @@ package com.TP.Vivero.Object;
 
 public class Etapa {
     private String nombre;
+    private int numetapa;
+    private int duracion;
+    private int progreso_duracion;
     private int tempMax;
     private int tempMin;
     private int humMax;
@@ -10,14 +13,13 @@ public class Etapa {
     private int luzMin;
     private int hormona;
     private int sustrato;
-    private int duracion;
-    private int edad;
 
     public Etapa(){}
 
-    public Etapa(String nombre, int duracion, int tempMax, int tempMin, int humMax, int humMin, int hormona, int luzMax, int luzMin, int sustrato) {
+    public Etapa(String nombre, int numetapa, int duracion, int tempMax, int tempMin, int humMax, int humMin, int hormona, int luzMax, int luzMin, int sustrato) {
 
         this.nombre = nombre;
+        this.numetapa = numetapa;
         this.duracion = duracion;
         this.humMax = humMax;
         this.humMin = humMin;
@@ -27,23 +29,23 @@ public class Etapa {
         this.tempMin = tempMin;
         this.hormona = hormona;
         this.sustrato = sustrato;
-        edad = 0;
+        progreso_duracion = 0;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public int getNumetapa(){
+        return numetapa;
     }
 
-    public int getEdad() {
-        return edad;
+    public int getDuracion() {
+        return duracion;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
+    public int getProgreso_duracion(){
+        return progreso_duracion;
     }
 
     public int getTempMax() {
@@ -78,8 +80,20 @@ public class Etapa {
         return sustrato;
     }
 
-    public int getDuracion() {
-        return duracion;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setNumetapa(int numetapa){
+        this.numetapa = numetapa;
+    }
+
+    public void setDuracion(int duracion) {
+        this.duracion = duracion;
+    }
+
+    public void setProgreso_duracion(int progreso_duracion){
+        this.progreso_duracion = progreso_duracion;
     }
 
     public void setTempMax(int tempMax) {
@@ -114,15 +128,13 @@ public class Etapa {
         this.sustrato = sustrato;
     }
 
-    public void setDuracion(int duracion) {
-        this.duracion = duracion;
-    }
+
 
     //Revisar si les parece adecuada la implementacion.
 
     public boolean unPaso() {
-        if (edad < duracion) {
-            edad += 1;
+        if (progreso_duracion < duracion) {
+            progreso_duracion += 1;
             return false;
         } else {
             return true;

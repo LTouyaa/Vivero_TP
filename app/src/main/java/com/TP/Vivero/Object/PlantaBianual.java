@@ -2,13 +2,14 @@ package com.TP.Vivero.Object;
 
 public class PlantaBianual extends Planta{
 
+    CambioEtapaBianual cambioEtapaBianual;
+
     public PlantaBianual() {
+        super();
+        cambioEtapaBianual = new CambioEtapaBianual();
     }
 
     public void siguiente(){
-
-        CambioEtapaBianual cambioEtapaBianual = new CambioEtapaBianual();
-
-        cambioEtapaBianual.siguiente();
+        cambioEtapaBianual.siguiente(etapas);
     }
 }
