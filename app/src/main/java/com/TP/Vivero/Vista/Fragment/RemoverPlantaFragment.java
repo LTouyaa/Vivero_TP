@@ -1,16 +1,24 @@
 package com.TP.Vivero.Vista.Fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
+import com.TP.Vivero.Model.DatabaseHandler;
 import com.TP.Vivero.R;
 
 public class RemoverPlantaFragment extends Fragment {
+
+
+    private Context context;
+    private Button boton;
 
 
     @Nullable
@@ -23,6 +31,44 @@ public class RemoverPlantaFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        context = getActivity();
+
+        boton = (Button)getView().findViewById(R.id.boton_remover);
+
+        boton.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                removerPlanta();
+            }
+        });
+
+
+    }
+
+    public void removerPlanta(){
+
+        EditText ubicacionPlanta = (EditText)getView().findViewById(R.id.edit_ubicacion_planta_remover);
+
+        DatabaseHandler BasedeDatos = new DatabaseHandler(context);
+
+        if(ubicacionPlanta.getText()!=null){
+
+            if(BasedeDatos.existPlantada(Integer.parseInt(ubicacionPlanta.getText().toString()))){
+
+                //Eliminar la planta ingresando la ubicacion en la base de datos
+
+            }else{
+
+                //Medida a tomar si la ubicacion ingresada no tiene ninguna planta
+
+            }
+
+        }else{
+
+            //Medida a tomar si el campo esta vacio
+
+        }
 
 
     }
