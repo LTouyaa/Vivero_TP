@@ -81,6 +81,10 @@ public class DatabaseInstrumentedTest {
 
         assertEquals(2, db.getAllPlanta().size());  //Compruebo que el List<Planta> haya aumentado de tamaño.
 
+        db.deletePlantaByName(planta.getNombre());
+
+        assertEquals(1, db.getAllPlanta().size());
+
         assertNotNull(db.getAllPlanta().get(0));    //Compruebo que la lista no me devuelve un obj. null.
 
 }
@@ -121,17 +125,38 @@ public class DatabaseInstrumentedTest {
         etapa1.setSustrato(450);
         etapa1.setEdad(1);
 
+        Etapa etapa2 = new Etapa();
+        etapa2.setNombre("Pino");
+        etapa2.setDuracion(50);
+        etapa2.setHumMax(20);
+        etapa2.setHumMin(10);
+        etapa2.setLuzMax(200);
+        etapa2.setLuzMin(50);
+        etapa2.setTempMax(250);
+        etapa2.setTempMin(100);
+        etapa2.setHormona(5000);
+        etapa2.setSustrato(450);
+        etapa2.setEdad(1);
+
         db.saveEtapa(etapa1);
+
+        db.saveEtapa(etapa2);
 
         assertTrue(db.existEtapa(etapa1.getNombre(), etapa1.getEdad()));
 
-        assertEquals(2, db.getAllEtapa().size());
+        assertEquals(3, db.getAllEtapa().size());
 
         assertNotSame(db.getEtapaByNombreEdad(etapa.getNombre(), etapa.getEdad()), db.getEtapaByNombreEdad(etapa1.getNombre(), etapa1.getEdad()));
 
         assertEquals(2, db.getAllEtapaByName("Rosa").size());
 
-        assertNull(db.getAllEtapaByName("Pino"));
+        db.deleteEtapaByName(etapa.getNombre());
+
+        assertEquals(1, db.getAllEtapa().size());
+
+        assertNotNull(db.getAllEtapaByName("Pino"));
+
+        assertNull(db.getAllEtapaByName("Girasol"));
     }
 
     @Test
@@ -172,6 +197,10 @@ public class DatabaseInstrumentedTest {
         assertTrue(db.existPlantada(planta2.getUbicacion()));
 
         assertEquals(2, db.getAllPlantada().size());
+
+        db.deletePlantadaByUbicacion(planta.getUbicacion());
+
+        assertEquals(1, db.getAllPlantada().size());
 
         assertNotNull(db.getAllPlantada().get(0));
     }

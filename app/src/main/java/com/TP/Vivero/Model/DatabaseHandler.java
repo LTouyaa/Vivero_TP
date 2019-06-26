@@ -219,6 +219,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //OJO
     }
 
+    public void deletePlantaByName(String nombre){
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        String sql = "DELETE FROM planta WHERE nombre=?";
+        String[] argsSql = new String[]{nombre};
+
+        db.execSQL(sql, argsSql);
+
+        db.close();
+    }
+
+
     /**
      *De acá para abajo es basicamente lo mimso, pero con las otras dos tablas.
      */
@@ -374,6 +387,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return null;
     }
 
+    public void deleteEtapaByName(String nombre){
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        String sql = "DELETE FROM etapa WHERE nombre=?";
+        String[] argsSql = new String[]{nombre};
+
+        db.execSQL(sql, argsSql);
+
+        db.close();
+    }
+
     public void savePlantadas(Planta planta){
 
         SQLiteDatabase db = getWritableDatabase();
@@ -479,11 +504,25 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return null;
     }
 
+    public void deletePlantadaByUbicacion(int ubicacion){
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        String sql = "DELETE FROM plantada WHERE ubicacion=?";
+        String[] argsSql = new String[]{ Integer.toString(ubicacion)};
+
+        db.execSQL(sql, argsSql);
+
+        db.close();
+    }
+
+
+
     public void deleteAll(){
 
         SQLiteDatabase db = getWritableDatabase();
 
-        String sql = "SELECT * FROM";
+        String sql = "DELETE * FROM";
         db.delete(sql, null, null);
         db.close();
     }
