@@ -3,18 +3,23 @@ package com.TP.Vivero;
 import android.arch.lifecycle.ViewModel;
 import android.content.Context;
 import android.content.Intent;
+import android.icu.text.UnicodeSetSpanner;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.TP.Vivero.Model.DatabaseHandler;
+import com.TP.Vivero.Object.Etapa;
 import com.TP.Vivero.Object.Planta;
 import com.TP.Vivero.Object.PlantaAnual;
 import com.TP.Vivero.Object.PlantaPerenne;
 import com.TP.Vivero.R;
 import com.TP.Vivero.Vista.Activity.MainMenuActivity;
 
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -26,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     ViewModel model;
 
+    DatabaseHandler db;
+
     private Context context;
 
     @Override
@@ -35,37 +42,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         context = this;
 
+        db = new DatabaseHandler(this);
+
         nombre = findViewById(R.id.edt_1);
         apellido = findViewById(R.id.ed_2);
         login = findViewById(R.id.btm_1);
         ver = findViewById(R.id.btm_view_model);
 
-       Planta planta = new PlantaAnual("Hola");
-       Planta planta2 = new PlantaPerenne("Adios");
+//       Planta planta = new PlantaAnual("Hola");
+//       Planta planta2 = new PlantaPerenne("Adios");
 
-       ((PlantaAnual) planta).siguiente();
+//       ((PlantaAnual) planta).siguiente();
 
-       ((PlantaPerenne) planta2).siguiente();
+//       ((PlantaPerenne) planta2).siguiente();
 
+//       Planta plantaAnual = new PlantaAnual("adada");
 
+        login.setOnClickListener(v -> {
 
-       Planta plantaAnual = new PlantaAnual("adada");
-
-       login.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-
-               Intent intent = new Intent(context, MainMenuActivity.class);
-               startActivity(intent);
-
-           }
-       });
-
-
-
-
-
-
+            Intent intent = new Intent(context, MainMenuActivity.class);
+            startActivity(intent);
+        });
     }
 
     @Override

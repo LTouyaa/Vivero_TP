@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Planta {
 
     private ArrayList<Etapa> etapas;
-    private String id = "";
+    private int ubicacion;
     private String nombre;
     private int tempActual;
     private int humedadActual;
@@ -15,31 +15,19 @@ public class Planta {
 
     public Planta(){}
 
-    public Planta(String id) {
-        etapas = new ArrayList<Etapa>();
-        this.id = id;
+
+    public ArrayList<Etapa> getEtapas() {
+        return etapas;
     }
 
-
-    public Planta(String id, int tempActual, int humedadActual, int luzActual, int hormona, int sustrato) {
-        etapas = new ArrayList<Etapa>();
-        this.id = id;
-        this.tempActual= tempActual;
-        this.humedadActual= humedadActual;
-        this.luzActual = luzActual;
-        this.hormona = hormona;
-        this.sustrato = sustrato;
+    public void setEtapas(ArrayList<Etapa> etapas) {
+        if(etapas==null) this.etapas = new ArrayList<>();
+        this.etapas = etapas;
     }
 
-
-
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    public void agregarEtapa(Etapa etapa){
+        if(this.etapas == null) this.etapas = new ArrayList<>();
+        etapas.add(etapa);
     }
 
     public String getNombre() {
@@ -50,57 +38,44 @@ public class Planta {
         this.nombre = nombre;
     }
 
-
-    public void agregarEtapa(Etapa etapa) {
-        etapas.add(etapa);
-    }
-
-    public String getID() {
-        return id;
+    public int getTempActual() {
+        return tempActual;
     }
 
     public void setTempActual(int tempActual) {
         this.tempActual = tempActual;
     }
 
-    public int getTempActual() {
-        return tempActual;
+    public int getHumedadActual() {
+        return humedadActual;
     }
 
     public void setHumedadActual(int humedadActual) {
         this.humedadActual = humedadActual;
     }
 
-    public int getHumedadActual() {
-        return humedadActual;
+    public int getLuzActual() {
+        return luzActual;
     }
 
     public void setLuzActual(int luzActual) {
         this.luzActual = luzActual;
     }
 
-    public int getLuzActual() {
-        return luzActual;
+    public int getHormona() {
+        return hormona;
     }
 
     public void setHormona(int hormona) {
         this.hormona = hormona;
     }
 
-    public int getHormona() {
-        return hormona;
-    }
-
-    public void setSustrato(int sustrato) {
-        this.sustrato = sustrato;
-    }
-
     public int getSustrato() {
         return sustrato;
     }
 
-    public ArrayList<Etapa> listaEtapas() {
-        return etapas;
+    public void setSustrato(int sustrato) {
+        this.sustrato = sustrato;
     }
 
     public boolean tempCorrecta() {
@@ -127,8 +102,23 @@ public class Planta {
         setLuzActual(luzActual);
     }
 
-    public Etapa getEtapaActual()
-    {
-        return etapas.get(0);
+    public boolean unPaso(){
+
+        if(etapas.isEmpty()) return false;
+
+        if (etapas.get(0).getEdad() < etapas.get(0).getDuracion()) {
+            etapas.remove(0);
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public int getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(int ubicacion) {
+        this.ubicacion = ubicacion;
     }
 }

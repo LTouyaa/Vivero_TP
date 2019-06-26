@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.TP.Vivero.Model.DatabaseHandler;
 import com.TP.Vivero.Object.Planta;
@@ -61,7 +62,7 @@ public class AgregarPlantaFragment extends Fragment {
 
                 if(true /*Comprobamos si la ubicacion esta disponible*/){
 
-                    P = BasedeDatos.getPlantaByIdplanta(nombrePlanta.getText().toString());
+                    P = BasedeDatos.getPlantaByNomb(nombrePlanta.getText().toString());
                     assert(P!=null);
                     assert(P.getNombre()!=null);
 
@@ -70,7 +71,9 @@ public class AgregarPlantaFragment extends Fragment {
                     BasedeDatos.savePlantadas(P);
 
 
+
                 } else{
+
 
                     //Medida a tomar si la ubicacion ya esta ocupada
 
@@ -81,12 +84,14 @@ public class AgregarPlantaFragment extends Fragment {
 
                 //Medida a tomar si el nombre de la planta ingresado no se corresponde con alguno de la base de datos
 
+
             }
 
 
         } else{
 
             //Medida a tomar si no se ingresan textos en los EditText
+
 
         }
 

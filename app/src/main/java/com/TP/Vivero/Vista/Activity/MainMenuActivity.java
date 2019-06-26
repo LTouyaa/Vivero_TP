@@ -4,15 +4,23 @@ import android.app.FragmentManager;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.TP.Vivero.Model.DatabaseHandler;
+import com.TP.Vivero.Object.Etapa;
+import com.TP.Vivero.Object.Planta;
 import com.TP.Vivero.R;
 import com.TP.Vivero.Vista.Fragment.AgregarFragment;
+import com.TP.Vivero.Vista.Fragment.AgregarPlantaFragment;
 import com.TP.Vivero.Vista.Fragment.MenuFragment;
+import com.TP.Vivero.Vista.Fragment.RemoverPlantaFragment;
+
+import java.util.ArrayList;
 
 public class MainMenuActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -21,6 +29,8 @@ public class MainMenuActivity extends AppCompatActivity implements BottomNavigat
 
     private MenuFragment menuFragment;
     private AgregarFragment agregarFragment;
+    private AgregarPlantaFragment agregarPlantaFragment;
+    private RemoverPlantaFragment removerPlantaFragment;
     private FragmentManager fm;
 
     private Context context;
@@ -55,6 +65,8 @@ public class MainMenuActivity extends AppCompatActivity implements BottomNavigat
 
         menuFragment = new MenuFragment();
         agregarFragment = new AgregarFragment();
+        agregarPlantaFragment = new AgregarPlantaFragment();
+        removerPlantaFragment = new RemoverPlantaFragment();
 
         fm = getFragmentManager();
         fm.beginTransaction().replace(R.id.frm_main_menu, menuFragment).commit();
@@ -74,7 +86,6 @@ public class MainMenuActivity extends AppCompatActivity implements BottomNavigat
          * este fragment que estoy 'inflando' sea sacado dandole atras el fragment que se va a cargar no será el que estaba antes sino el que cargué en
          * algun momento en el fm con dicho TAG.
          */
-
     }
 
     @Override
@@ -86,6 +97,13 @@ public class MainMenuActivity extends AppCompatActivity implements BottomNavigat
                 break;
             case R.id.btm_nav_plantar:
                 fm.beginTransaction().replace(R.id.frm_main_menu, agregarFragment).commit();
+                break;
+
+            case R.id.btm_nav_agregar:
+                fm.beginTransaction().replace(R.id.frm_main_menu,agregarPlantaFragment ).commit();
+                break;
+            case R.id.btm_nav_remover:
+                fm.beginTransaction().replace(R.id.frm_main_menu , removerPlantaFragment ).commit();
                 break;
             default:
                 return false;

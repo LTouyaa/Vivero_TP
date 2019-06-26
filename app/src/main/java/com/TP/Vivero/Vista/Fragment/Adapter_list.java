@@ -9,7 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.TP.Vivero.Object.Etapa;
 import com.TP.Vivero.Object.Planta;
 import com.TP.Vivero.R;
 
@@ -33,10 +35,6 @@ public class Adapter_list extends ArrayAdapter<Planta> {
         this.plantas = plantas;
         holders = new ArrayList<lista_holder>();
         flag= false;
-
-
-
-
     }
 
     public View getView (int posicion, View vista, ViewGroup parent)
@@ -65,20 +63,26 @@ public class Adapter_list extends ArrayAdapter<Planta> {
         {holder = (lista_holder) row.getTag();
         }
 
+
+
+
         Planta planta  = plantas.get(posicion);
-        holder.name.setText(((Planta) planta).getID());
-        holder.datoTemp.setText("Temperatura: "+Integer.toString(planta.getEtapaActual().getTempMin())+" - "+Integer.toString(((Planta) planta).getTempActual())+" - "+Integer.toString(planta.getEtapaActual().getTempMax())+"  °C");
-        holder.datoHum.setText("Humedad: "+Integer.toString(planta.getEtapaActual().getHumMin())+" - "+Integer.toString(((Planta)  planta).getHumedadActual())+" - "+Integer.toString(planta.getEtapaActual().getHumMax())+" %");
-        holder.datoLuz.setText("Luz: "+Integer.toString(planta.getEtapaActual().getLuzMin())+" - "+Integer.toString(((Planta) planta).getLuzActual())+ " - "+Integer.toString(planta.getEtapaActual().getLuzMin()));
-        holder.datoHormona.setText("Hormona: "+Integer.toString(planta.getEtapaActual().getHormona())+" - "+Integer.toString(((Planta) planta).getHormona()));
-        holder.datoSustrato.setText("Sustrato: "+Integer.toString(planta.getEtapaActual().getSustrato())+" - "+Integer.toString(((Planta) planta).getSustrato()));
+        Etapa etapaActual = planta.getEtapas().get(0);
+
+        holder.name.setText(((Planta) planta).getNombre());
+        holder.datoTemp.setText("Temperatura: "+Integer.toString(etapaActual.getTempMin())+" - "+Integer.toString(((Planta) planta).getTempActual())+" - "+Integer.toString(etapaActual.getTempMax())+"  °C");
+        holder.datoHum.setText("Humedad: "+Integer.toString(etapaActual.getHumMin())+" - "+Integer.toString(((Planta)  planta).getHumedadActual())+" - "+Integer.toString(etapaActual.getHumMax())+" %");
+        holder.datoLuz.setText("Luz: "+Integer.toString(etapaActual.getLuzMin())+" - "+Integer.toString(((Planta) planta).getLuzActual())+ " - "+Integer.toString(etapaActual.getLuzMin()));
+        holder.datoHormona.setText("Hormona: "+Integer.toString(etapaActual.getHormona())+" - "+Integer.toString(((Planta) planta).getHormona()));
+        holder.datoSustrato.setText("Sustrato: "+Integer.toString(etapaActual.getSustrato())+" - "+Integer.toString(((Planta) planta).getSustrato()));
 
         holders.add(holder);
 
 
-
         return row;
     }
+
+
 
     public void cambiarVisibilidad(int posicion)
     {
