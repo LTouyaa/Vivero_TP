@@ -1,5 +1,10 @@
 package com.TP.Vivero.Object;
 
+import android.content.Context;
+import android.provider.ContactsContract;
+
+import com.TP.Vivero.Model.DatabaseHandler;
+
 import java.util.ArrayList;
 
 public class Planta {
@@ -121,4 +126,12 @@ public class Planta {
     public void setUbicacion(int ubicacion) {
         this.ubicacion = ubicacion;
     }
+
+    public void setPlanta(Planta planta, Context context){
+
+        DatabaseHandler db = new DatabaseHandler(context);
+        db.savePlanta(planta);
+    }
+
+
 }
