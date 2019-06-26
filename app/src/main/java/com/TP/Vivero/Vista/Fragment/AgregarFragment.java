@@ -8,16 +8,24 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import com.TP.Vivero.Model.DatabaseHandler;
 import com.TP.Vivero.Model.SimuladorAleatorios;
+import com.TP.Vivero.Object.Planta;
 import com.TP.Vivero.R;
+
+import java.util.ArrayList;
+
+import static com.TP.Vivero.R.layout.lista_plantas;
 
 public class AgregarFragment extends Fragment {
 
 
     Context context;
-
+    ListView listaPlantas;
 
 
 
@@ -32,9 +40,25 @@ public class AgregarFragment extends Fragment {
     public void onViewCreated(View view,  Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         context = getActivity();
+        DatabaseHandler bd = new DatabaseHandler(context);
+        ArrayList<Planta> plantadas = new ArrayList<Planta>();
+        plantadas= (ArrayList) bd.getAllPlantada();
 
 
 
+         listaPlantas = (ListView) getView().findViewById(R.id.listaView);
+
+        Adapter_list adapter = new Adapter_list(context, lista_plantas, plantadas);
+
+        listaPlantas.setAdapter(adapter);
+
+        listaPlantas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                adapter.cambiarVisibilidad(position);
+            }
+        });
 
 
 
