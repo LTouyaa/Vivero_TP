@@ -2,16 +2,14 @@ package com.TP.Vivero.Object;
 
 public class PlantaPerenne extends Planta {
 
-    public PlantaPerenne(String id) {
+    CambioEtapaPerenne cambioEtapaPerenne;
 
-
-        super(id);
+    public PlantaPerenne() {
+        super();
+        cambioEtapaPerenne = new CambioEtapaPerenne();
     }
 
     public void siguiente(){
-
-        CambioEstapaPerenne cambioEstapaPerenne = new CambioEstapaPerenne();
-
-        cambioEstapaPerenne.siguiente();
+        cambioEtapaPerenne.siguiente(etapas);
     }
 }

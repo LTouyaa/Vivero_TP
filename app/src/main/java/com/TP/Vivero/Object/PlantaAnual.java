@@ -2,15 +2,16 @@ package com.TP.Vivero.Object;
 
 public class PlantaAnual extends Planta {
 
-    public PlantaAnual(String id) {
-        super(id);
+    CambioEtapaAnual cambioEtapaAnual;
+
+    public PlantaAnual() {
+        super();
+        cambioEtapaAnual = new CambioEtapaAnual();
     }
 
     public void siguiente(){
 
-        CambioEstapaAnual cambioEstapaAnual = new CambioEstapaAnual();
-
-        cambioEstapaAnual.siguiente();
+        cambioEtapaAnual.siguiente(etapas);
 
     }
 }
