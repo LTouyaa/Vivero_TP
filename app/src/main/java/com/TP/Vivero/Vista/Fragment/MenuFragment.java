@@ -11,13 +11,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.TP.Vivero.Controller.Controller;
 import com.TP.Vivero.Model.Model;
 import com.TP.Vivero.Object.Planta;
 import com.TP.Vivero.R;
 
-public class MenuFragment extends Fragment {
+public class MenuFragment extends Fragment implements View.OnClickListener {
 
     private Button button;
+    Model model;
+
+    Controller controller;
+
+    public void setController(Controller controller){
+        this.controller = controller;
+    }
 
     @Nullable
     @Override
@@ -31,11 +39,16 @@ public class MenuFragment extends Fragment {
 
         button = view.findViewById(R.id.buton);
 
-        Model model = ViewModelProviders.of((FragmentActivity) getActivity()).get(Model.class);
+        model = ViewModelProviders.of((FragmentActivity) getActivity()).get(Model.class);
 //
         Planta planta = new Planta();
         planta.setNombre("Pepino");
 
         button.setOnClickListener(v -> model.planta(planta, getActivity()));
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

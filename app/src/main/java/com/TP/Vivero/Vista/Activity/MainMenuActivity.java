@@ -4,6 +4,7 @@ import android.app.FragmentManager;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
@@ -14,6 +15,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.TP.Vivero.Controller.Controller;
+import com.TP.Vivero.Controller.TimeController;
 import com.TP.Vivero.Model.DatabaseHandler;
 import com.TP.Vivero.Model.Model;
 import com.TP.Vivero.Object.Etapa;
@@ -25,6 +28,7 @@ import com.TP.Vivero.Vista.Fragment.MenuFragment;
 import com.TP.Vivero.Vista.Fragment.RemoverPlantaFragment;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
 public class MainMenuActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -41,6 +45,10 @@ public class MainMenuActivity extends AppCompatActivity implements BottomNavigat
 
     private Context context;
 
+    private Model model;
+
+
+    private TimeController timeController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +64,8 @@ public class MainMenuActivity extends AppCompatActivity implements BottomNavigat
 
         context =this;
 
+        Controller controller = new Controller();
+
         /**
          * Barra de navegacion que se encuentra en la inferior.
          */
@@ -70,8 +80,14 @@ public class MainMenuActivity extends AppCompatActivity implements BottomNavigat
          */
 
         menuFragment = new MenuFragment();
+        menuFragment.setController(controller);
+
         agregarFragment = new AgregarFragment();
         agregarPlantaFragment = new AgregarPlantaFragment();
+        removerPlantaFragment = new RemoverPlantaFragment();
+
+        agregarPlantaFragment = new AgregarPlantaFragment();
+
         removerPlantaFragment = new RemoverPlantaFragment();
 
         fm = getFragmentManager();
@@ -95,11 +111,12 @@ public class MainMenuActivity extends AppCompatActivity implements BottomNavigat
 
         db = new DatabaseHandler(context);
 
-        Model model = ViewModelProviders.of(this).get(Model.class);
-        model.getPlant().observe(this, planta -> Toast.makeText(context, "Hubo un cambio", Toast.LENGTH_LONG).show());
+        model = ViewModelProviders.of(this).get(Model.class);
+        model.getPlant().observe(this, planta -> {
+            Toast.makeText(context, "Cambio", Toast.LENGTH_SHORT).show();
+        });
 
-
-
+        timeController = new TimeController(context, controller);
     }
 
     @Override

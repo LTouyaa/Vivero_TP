@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.TP.Vivero.Controller.Controller;
 import com.TP.Vivero.Model.DatabaseHandler;
 import com.TP.Vivero.R;
 
@@ -19,6 +20,8 @@ public class RemoverPlantaFragment extends Fragment {
 
     private Context context;
     private Button boton;
+
+    Controller controller;
 
 
     @Nullable
@@ -67,10 +70,11 @@ public class RemoverPlantaFragment extends Fragment {
         }else{
 
             //Medida a tomar si el campo esta vacio
-
         }
+    }
 
-
+    public void setController(Controller controller){
+        this.controller = controller;
     }
 
 }
