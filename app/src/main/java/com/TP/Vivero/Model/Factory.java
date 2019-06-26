@@ -106,6 +106,7 @@ public class Factory {
 
         setPlantadaBd(nomb, ubic);
     }
+
     public void setPlantadaBd(String nombre, int ubic){
 
         Planta planta = db.getPlantaByNomb(nombre);
