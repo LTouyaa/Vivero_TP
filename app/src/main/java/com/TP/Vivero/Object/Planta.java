@@ -1,5 +1,10 @@
 package com.TP.Vivero.Object;
 
+import android.content.Context;
+import android.provider.ContactsContract;
+
+import com.TP.Vivero.Model.DatabaseHandler;
+
 import java.util.ArrayList;
 
 public class Planta {
@@ -122,8 +127,11 @@ public class Planta {
         this.ubicacion = ubicacion;
     }
 
-    public Etapa getEtapaActual()
-    {
-        return etapas.get(0);
+    public void setPlanta(Planta planta, Context context){
+
+        DatabaseHandler db = new DatabaseHandler(context);
+        db.savePlanta(planta);
     }
+
+
 }
