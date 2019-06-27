@@ -37,7 +37,7 @@ public class Adapter_list extends ArrayAdapter<Planta> {
         this.layout_list = layout_list;
         this.plantas = plantas;
         holders = new ArrayList<lista_holder>();
-        flag = false;
+
     }
 
     public View getView(int posicion, View vista, ViewGroup parent) {
@@ -98,16 +98,16 @@ public class Adapter_list extends ArrayAdapter<Planta> {
 
     public void cambiarVisibilidad(int posicion)
     {
-        if(!flag)
+        if(holders.get(posicion).date.getVisibility()== View.VISIBLE)
         {
-            holders.get(posicion).date.setVisibility( View.VISIBLE);
-            flag = true;
+            holders.get(posicion).date.setVisibility( View.GONE);
+
         }
         else
         {
 
-            flag= false;
-            holders.get(posicion).date.setVisibility( View.GONE);
+
+            holders.get(posicion).date.setVisibility( View.VISIBLE);
         }
 
     }
