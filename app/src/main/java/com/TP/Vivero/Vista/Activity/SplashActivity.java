@@ -24,7 +24,7 @@ public class SplashActivity extends Activity {
         setContentView(R.layout.splash);
 
         db = new DatabaseHandler(this);
-        deleteDatabase(db.getDatabaseName());
+        //deleteDatabase(db.getDatabaseName());
 
         handler = new Handler();
         handler.postDelayed(new Runnable() {
