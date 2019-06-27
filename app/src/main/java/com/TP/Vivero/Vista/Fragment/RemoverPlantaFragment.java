@@ -51,7 +51,7 @@ public class RemoverPlantaFragment extends Fragment {
 
     public void removerPlanta(){
 
-        EditText ubicacionPlanta = (EditText)getView().findViewById(R.id.edit_ubicacion_planta_remover);
+        EditText ubicacionPlanta = (EditText)getView().findViewById(R.id.edit_ubicacion_plantaremover);
 
         DatabaseHandler BasedeDatos = new DatabaseHandler(context);
 

@@ -75,7 +75,7 @@ public class Adapter_list extends ArrayAdapter<Planta> {
         Planta planta  = plantas.get(posicion);
 
 
-        holder.name.setText(((Planta) planta).getNombre());
+        holder.name.setText( planta.getNombre());
         holder.ubic.setText(String.valueOf(planta.getUbicacion()));
         holder.datoTemp.setText("Temperatura: "+Integer.toString(planta.getEtapaActual().getTempMin())+" - "+Integer.toString(((Planta) planta).getTempActual())+" - "+Integer.toString(planta.getEtapaActual().getTempMax())+"  °C");
         holder.datoHum.setText("Humedad: "+Integer.toString(planta.getEtapaActual().getHumMin())+" - "+Integer.toString(((Planta)  planta).getHumedadActual())+" - "+Integer.toString(planta.getEtapaActual().getHumMax())+" %");

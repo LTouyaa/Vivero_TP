@@ -8,10 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.TP.Vivero.Controller.Controller;
 import com.TP.Vivero.Model.DatabaseHandler;
 import com.TP.Vivero.Model.TimeModel;
+import com.TP.Vivero.Object.Planta;
 import com.TP.Vivero.R;
 import com.TP.Vivero.Vista.Fragment.AgregarFragment;
 import com.TP.Vivero.Vista.Fragment.AgregarPlantaFragment;
@@ -96,7 +98,12 @@ public class MainMenuActivity extends AppCompatActivity implements BottomNavigat
 
         db = new DatabaseHandler(context);
 
-        timeModel = new TimeModel(context, controller);
+        if(db.getAllPlanta()!=null)Toast.makeText(context, Integer.toString(db.getAllPlanta().size()), Toast.LENGTH_SHORT).show();
+
+        for(Planta planta:db.getAllPlanta()) Toast.makeText(context, planta.getNombre(), Toast.LENGTH_SHORT).show();
+
+
+     //   timeModel = new TimeModel(context, controller);
     }
 
     @Override

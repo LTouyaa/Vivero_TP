@@ -11,15 +11,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.TP.Vivero.Controller.Controller;
 import com.TP.Vivero.Model.DatabaseHandler;
 import com.TP.Vivero.Object.Planta;
 import com.TP.Vivero.R;
 
 public class AgregarPlantaFragment extends Fragment {
 
-
     private Context context;
     private Button boton;
+
+    private Controller controller;
 
     @Nullable
     @Override
@@ -42,6 +44,10 @@ public class AgregarPlantaFragment extends Fragment {
                 crearPlanta();
             }
         });
+    }
+
+    public void setController(Controller controller){
+        this.controller = controller;
     }
 
     public void crearPlanta(){
@@ -83,4 +89,6 @@ public class AgregarPlantaFragment extends Fragment {
         } else{
             //Medida a tomar si no se ingresan textos en los EditText
             Toast.makeText(context,"Datos vacios",Toast.LENGTH_SHORT).show();
-        }}}
+        }
+    }
+}

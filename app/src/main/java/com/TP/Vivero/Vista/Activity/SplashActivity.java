@@ -16,7 +16,6 @@ import com.TP.Vivero.R;
 public class SplashActivity extends Activity {
 
     Handler handler;
-
     DatabaseHandler db;
 
     @Override

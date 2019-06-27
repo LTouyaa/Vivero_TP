@@ -18,6 +18,7 @@ public class Planta {
 
 
     public ArrayList<Etapa> getEtapas() {
+        if(this.etapas==null) etapas = new ArrayList<>();
         return etapas;
     }
 
@@ -120,5 +121,11 @@ public class Planta {
     }
 
     public void siguiente(){}
+
+    public Etapa getEtapaActual()
+    {
+        return etapas.get(0);
+    }
+
 
 }
