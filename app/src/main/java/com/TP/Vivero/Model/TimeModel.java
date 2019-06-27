@@ -1,9 +1,10 @@
-package com.TP.Vivero.Controller;
+package com.TP.Vivero.Model;
 
 import android.content.Context;
 import android.os.Handler;
 import android.widget.Toast;
 
+import com.TP.Vivero.Controller.Controller;
 import com.TP.Vivero.Model.DatabaseHandler;
 import com.TP.Vivero.Object.Planta;
 
@@ -12,7 +13,7 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class TimeController extends Observable{
+public class TimeModel extends Observable{
 
     private Handler handler;
     private Runnable runnable;
@@ -21,7 +22,7 @@ public class TimeController extends Observable{
 
     private Context context;
 
-    public TimeController(Context context, Controller controller){
+    public TimeModel(Context context, Controller controller){
 
         this.context = context;
         this.controller = controller;

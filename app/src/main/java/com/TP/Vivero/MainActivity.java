@@ -49,46 +49,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         usr = findViewById(R.id.edt_1);
         pass = findViewById(R.id.ed_2);
         login = findViewById(R.id.btm_1);
-//        ver = findViewById(R.id.btm_view_model);
-
-//       Planta planta = new PlantaAnual("Hola");
-//       Planta planta2 = new PlantaPerenne("Adios");
-
-//       ((PlantaAnual) planta).siguiente();
-
-//       ((PlantaPerenne) planta2).siguiente();
-
-//       Planta plantaAnual = new PlantaAnual("adada");
+//
 
         login.setOnClickListener(v -> {
 
-//            if(usr.getText().toString().equals("Hola") && pass.getText().toString().equals("Mundo")){
+            if(usr.getText().toString().equals("Hola") && pass.getText().toString().equals("Mundo")){
 
                 Intent intent = new Intent(context, MainMenuActivity.class);
                 startActivity(intent);
-//            }else{
-//
-//                AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-//                dialog.setTitle("ERROR");
-//                dialog.setMessage("Usuario ó Contraseña incorrectos");
-//
-//                dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        Toast.makeText(context, "sos un puto, pero ok", Toast.LENGTH_LONG).show();
-//                    }
-//                });
-//
-//                dialog.setNegativeButton("CANCELAR", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//
-//                        Toast.makeText(context, "sos un puto, cancelar", Toast.LENGTH_LONG).show();
-//
-//                    }
-//                });
-//                dialog.show();
-//            }
+            }else{
+
+                AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+                dialog.setTitle("ERROR");
+                dialog.setMessage("Usuario ó Contraseña incorrectos");
+
+                dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(context, "sos un puto, pero ok", Toast.LENGTH_LONG).show();
+                    }
+                });
+
+                dialog.setNegativeButton("CANCELAR", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        Toast.makeText(context, "sos un puto, cancelar", Toast.LENGTH_LONG).show();
+
+                    }
+                });
+                dialog.show();
+            }
         });
     }
 
