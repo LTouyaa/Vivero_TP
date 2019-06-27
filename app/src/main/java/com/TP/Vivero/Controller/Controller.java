@@ -44,18 +44,11 @@ public class Controller implements Observer {
 
                 for (Planta planta : plantas) {
 
-//                    FabricaPlantas fabricaPlantas = new FabricaPlantas();
-//
-//                    Planta plantada = fabricaPlantas.crearPlanta(planta.getNombre());
-
                     if (planta.siguiente()) {
                         db.deletePlantadaByUbicacion(planta.getUbicacion());
                     }
-
+                    db.savePlantadas(planta);
                 }
-
-                MainMenuActivity activity = (MainMenuActivity) context;
-                activity.getAgFragment().getAdapter().addPlantas((ArrayList<Planta>) db.getAllPlantada());
             }
         }
 

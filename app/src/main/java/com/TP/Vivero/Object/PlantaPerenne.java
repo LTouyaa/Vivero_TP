@@ -10,6 +10,6 @@ public class PlantaPerenne extends Planta {
     }
 
     public boolean siguiente(){
-        return cambioEtapaPerenne.siguiente(etapas);
+        return cambioEtapaPerenne.siguiente(this.etapas);
     }
 }

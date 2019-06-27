@@ -91,7 +91,7 @@ public class Adapter_list extends ArrayAdapter<Planta> {
 
                 holder.datoLuz.setText("Luz: " + Integer.toString(planta.getEtapaActual().getLuzMin()) + " / " + Integer.toString(((Planta) planta).getLuzActual()) + " / " + Integer.toString(planta.getEtapaActual().getLuzMax()));
                 if (!planta.luzCorrecta()) holder.datoLuz.setTextColor(Color.RED);
-                else holder.datoHum.setTextColor(Color.GRAY);
+                else holder.datoLuz.setTextColor(Color.GRAY);
 
                 holder.datoHormona.setText("Hormona: " + Integer.toString(planta.getEtapaActual().getHormona()) + " / " + Integer.toString(((Planta) planta).getHormona()));
 
@@ -134,9 +134,11 @@ public class Adapter_list extends ArrayAdapter<Planta> {
 
     public void addPlantas (ArrayList<Planta> arrayPlantas)
     {
-        plantas.clear();
-        plantas.addAll(arrayPlantas);
-        notifyDataSetChanged();
+        if(arrayPlantas!=null) {
+            plantas.clear();
+            plantas.addAll(arrayPlantas);
+            notifyDataSetChanged();
+        }
     }
 
     public void resetear()

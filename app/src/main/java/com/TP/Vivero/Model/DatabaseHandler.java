@@ -65,6 +65,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             "hormona INT, " +
             "sustrato INT, " +
             "duracion INT, " +
+            "progreso INT, " +
             "edad INT, " +
             "PRIMARY KEY (nombre, edad))";
 
@@ -256,6 +257,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put("hormona", etapa.getHormona());
         values.put("sustrato", etapa.getSustrato());
         values.put("duracion", etapa.getDuracion());
+        values.put("progreso", etapa.getProgreso_duracion());
         values.put("edad", etapa.getNumetapa());
 
         if(this.existEtapa(etapa.getNombre(), etapa.getNumetapa())) db.update("etapa", values, "nombre=? AND edad=?", new String[]{etapa.getNombre(), Integer.toString(etapa.getNumetapa())});
@@ -307,6 +309,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             etapa.setHormona(cursor.getInt(cursor.getColumnIndex("hormona")));
             etapa.setSustrato(cursor.getInt(cursor.getColumnIndex("sustrato")));
             etapa.setDuracion(cursor.getInt(cursor.getColumnIndex("duracion")));
+            etapa.setProgreso_duracion(cursor.getInt(cursor.getColumnIndex("progreso")));
             etapa.setNumetapa(cursor.getInt(cursor.getColumnIndex("edad")));
         }
         db.close();
@@ -339,6 +342,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 etapa.setHormona(cursor.getInt(cursor.getColumnIndex("hormona")));
                 etapa.setSustrato(cursor.getInt(cursor.getColumnIndex("sustrato")));
                 etapa.setDuracion(cursor.getInt(cursor.getColumnIndex("duracion")));
+                etapa.setProgreso_duracion(cursor.getInt(cursor.getColumnIndex("progreso")));
                 etapa.setNumetapa(cursor.getInt(cursor.getColumnIndex("edad")));
 
                 etapaList.add(etapa);
@@ -378,6 +382,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 etapa.setHormona(cursor.getInt(cursor.getColumnIndex("hormona")));
                 etapa.setSustrato(cursor.getInt(cursor.getColumnIndex("sustrato")));
                 etapa.setDuracion(cursor.getInt(cursor.getColumnIndex("duracion")));
+                etapa.setProgreso_duracion(cursor.getInt(cursor.getColumnIndex("progreso")));
                 etapa.setNumetapa(cursor.getInt(cursor.getColumnIndex("edad")));
 
                 etapaList.add(etapa);
@@ -443,7 +448,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public Planta getPlantadaByUbicacion(int ubicacion){
 
-        Planta planta = new Planta();
+        Planta planta;
 
         SQLiteDatabase db = getReadableDatabase();
 
@@ -456,6 +461,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
             cursor.moveToFirst();
 
+            FabricaPlantas fabricaPlantas = new FabricaPlantas();
+
+            planta = fabricaPlantas.crearPlanta(cursor.getString(cursor.getColumnIndex("nombre")));
+
             planta.setUbicacion(cursor.getInt(cursor.getColumnIndex("ubicacion")));
             planta.setNombre(cursor.getString(cursor.getColumnIndex("nombre")));
             planta.setTempActual(cursor.getInt(cursor.getColumnIndex("tempActual")));
@@ -465,9 +474,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             planta.setSustrato(cursor.getInt(cursor.getColumnIndex("sustrato")));
 
             planta.setEtapas((ArrayList<Etapa>) this.getAllEtapaByName(planta.getNombre()));
+
+            db.close();
+            return planta;
         }
         db.close();
-        return planta;
+        return planta = new Planta();
     }
 
     public List<Planta> getAllPlantada(){
