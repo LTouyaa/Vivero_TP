@@ -157,9 +157,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      */
     public Planta getPlantaByNomb(String nombre){
 
-        FabricaPlantas fabrica = new FabricaPlantas();
+//        FabricaPlantas fabrica = new FabricaPlantas();
 
-        Planta planta = fabrica.crearPlanta(nombre);   //Creo un objeto planta que será el que devuelva.
+        Planta planta =new Planta(); //Creo un objeto planta que será el que devuelva.
 
         SQLiteDatabase db = getReadableDatabase();
 
@@ -484,7 +484,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             cursor.moveToFirst();
             do{
 
-                Planta planta = new Planta();
+                FabricaPlantas fabricaPlantas = new FabricaPlantas();
+
+                Planta planta = fabricaPlantas.crearPlanta(cursor.getString(cursor.getColumnIndex("nombre")));
 
                 planta.setUbicacion(cursor.getInt(cursor.getColumnIndex("ubicacion")));
                 planta.setNombre(cursor.getString(cursor.getColumnIndex("nombre")));

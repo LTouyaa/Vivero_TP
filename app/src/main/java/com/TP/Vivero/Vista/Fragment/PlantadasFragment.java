@@ -59,14 +59,6 @@ public class PlantadasFragment extends Fragment {
                 }
             });
 
-
-
-
-
-
-
-
-
     }
 
     public Adapter_list getAdapter() {

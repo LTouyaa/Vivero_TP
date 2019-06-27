@@ -10,6 +10,7 @@ import com.TP.Vivero.Model.PasoTiempoModel;
 import com.TP.Vivero.Model.RemoverModel;
 import com.TP.Vivero.Model.SimuladorAleatorios;
 import com.TP.Vivero.Model.TimeModel;
+import com.TP.Vivero.Object.FabricaPlantas;
 import com.TP.Vivero.Object.Planta;
 import com.TP.Vivero.Vista.Activity.MainMenuActivity;
 
@@ -39,12 +40,22 @@ public class Controller implements Observer {
 
             ArrayList<Planta> plantas = (ArrayList<Planta>) db.getAllPlantada();
 
-            for(Planta planta: plantas){
+            if(plantas!=null) {
 
-                if(planta.siguiente()){
-                    db.deletePlantadaByUbicacion(planta.getUbicacion());
+                for (Planta planta : plantas) {
+
+//                    FabricaPlantas fabricaPlantas = new FabricaPlantas();
+//
+//                    Planta plantada = fabricaPlantas.crearPlanta(planta.getNombre());
+
+                    if (planta.siguiente()) {
+                        db.deletePlantadaByUbicacion(planta.getUbicacion());
+                    }
+
                 }
 
+                MainMenuActivity activity = (MainMenuActivity) context;
+                activity.getAgFragment().getAdapter().addPlantas((ArrayList<Planta>) db.getAllPlantada());
             }
         }
 
@@ -61,7 +72,7 @@ public class Controller implements Observer {
 
             db.savePlantadas(planta);
 
-            Toast.makeText(context, "Agregar", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Agregado", Toast.LENGTH_SHORT).show();
         }
 
         if(o.getClass().equals(RemoverModel.class)){

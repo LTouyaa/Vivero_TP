@@ -7,8 +7,6 @@ class CambioEtapaPerenne implements Cambio{
     Etapa vegetativa;
     Etapa reproduccion;
 
-
-
     @Override
     public boolean siguiente(ArrayList<Etapa> etapas) {
 
