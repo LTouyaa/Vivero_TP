@@ -41,9 +41,10 @@ public class PlantadasFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         context = getActivity();
         DatabaseHandler bd = new DatabaseHandler(context);
-        ArrayList<Planta> plantadas = new ArrayList<Planta>();
-        plantadas= (ArrayList) bd.getAllPlantada();
+        ArrayList<Planta> plantadas;
 
+        if(bd.getAllPlantada()==null) plantadas = new ArrayList<>();
+        else plantadas = (ArrayList<Planta>) bd.getAllPlantada();
 
 
 

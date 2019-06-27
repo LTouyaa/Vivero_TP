@@ -97,21 +97,15 @@ public class Planta {
     }
 
     public boolean tempCorrecta() {
-        if ((tempActual > etapas.get(0).getTempMax()) || (tempActual < etapas.get(0).getTempMin())) {
-            return false;
-        } else return true;
+        return (tempActual <= etapas.get(0).getTempMax()) && (tempActual >= etapas.get(0).getTempMin());
     }
 
     public boolean humCorrecta() {
-        if ((humedadActual > etapas.get(0).getHumMax()) || (humedadActual < etapas.get(0).getHumMin())) {
-            return false;
-        } else return true;
+        return (humedadActual <= etapas.get(0).getHumMax()) && (humedadActual >= etapas.get(0).getHumMin());
     }
 
     public boolean luzCorrecta() {
-        if ((luzActual > etapas.get(0).getLuzMax()) || (luzActual < etapas.get(0).getLuzMin())) {
-            return false;
-        } else return true;
+        return (luzActual <= etapas.get(0).getLuzMax()) && (luzActual >= etapas.get(0).getLuzMin());
     }
 
     public void actualizarParametros(int tempActual, int humedadActual, int luzActual) {

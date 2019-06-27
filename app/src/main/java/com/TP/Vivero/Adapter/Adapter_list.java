@@ -17,6 +17,7 @@ import com.TP.Vivero.Object.Planta;
 import com.TP.Vivero.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Adapter_list extends ArrayAdapter<Planta> {
 
@@ -35,7 +36,10 @@ public class Adapter_list extends ArrayAdapter<Planta> {
 
         this.context = context;
         this.layout_list = layout_list;
-        this.plantas = plantas;
+
+        if(plantas.isEmpty()) this.plantas = new ArrayList<>();
+        else this.plantas = plantas;
+
         holders = new ArrayList<lista_holder>();
 
     }
@@ -68,27 +72,31 @@ public class Adapter_list extends ArrayAdapter<Planta> {
                 holder = (lista_holder) row.getTag();
             }
 
-            Planta planta = plantas.get(posicion);
+            if(!plantas.isEmpty()) {
 
-            holder.name.setText(planta.getNombre());
-            holder.ubic.setText("Ubicacion: " + String.valueOf(planta.getUbicacion()));
-            holder.etapa.setText("Etapa: "+planta.getEtapaActual().getNumetapa());
-            holder.datoTemp.setText("Temperatura: " + Integer.toString(planta.getEtapaActual().getTempMin()) + " / " + Integer.toString(((Planta) planta).getTempActual()) + " / " + Integer.toString(planta.getEtapaActual().getTempMax()) + "  °C");
-            if (!planta.tempCorrecta()) holder.datoTemp.setTextColor(Color.RED);
-            else holder.datoTemp.setTextColor(Color.GRAY);
+                Planta planta = plantas.get(posicion);
 
+                holder.name.setText(planta.getNombre());
+                holder.ubic.setText("Ubicacion: " + String.valueOf(planta.getUbicacion()));
+                holder.etapa.setText("Etapa: " + planta.getEtapaActual().getNumetapa());
 
-            holder.datoHum.setText("Humedad: " + Integer.toString(planta.getEtapaActual().getHumMin()) + " / " + Integer.toString(((Planta) planta).getHumedadActual()) + " / " + Integer.toString(planta.getEtapaActual().getHumMax()) + " %");
-            if (!planta.humCorrecta()) holder.datoHum.setTextColor(Color.RED);
-            else holder.datoHum.setTextColor(Color.GRAY);
-            holder.datoLuz.setText("Luz: " + Integer.toString(planta.getEtapaActual().getLuzMin()) + " / " + Integer.toString(((Planta) planta).getLuzActual()) + " / " + Integer.toString(planta.getEtapaActual().getLuzMin()));
-            if (!planta.luzCorrecta()) holder.datoLuz.setTextColor(Color.RED);
-            else holder.datoHum.setTextColor(Color.GRAY);
-            holder.datoHormona.setText("Hormona: " + Integer.toString(planta.getEtapaActual().getHormona()) + " / " + Integer.toString(((Planta) planta).getHormona()));
-
-            holders.add(holder);
+                holder.datoTemp.setText("Temperatura: " + Integer.toString(planta.getEtapaActual().getTempMin()) + " / " + Integer.toString(((Planta) planta).getTempActual()) + " / " + Integer.toString(planta.getEtapaActual().getTempMax()) + "  °C");
+                if (!planta.tempCorrecta()) holder.datoTemp.setTextColor(Color.RED);
+                else holder.datoTemp.setTextColor(Color.GRAY);
 
 
+                holder.datoHum.setText("Humedad: " + Integer.toString(planta.getEtapaActual().getHumMin()) + " / " + Integer.toString(((Planta) planta).getHumedadActual()) + " / " + Integer.toString(planta.getEtapaActual().getHumMax()) + " %");
+                if (!planta.humCorrecta()) holder.datoHum.setTextColor(Color.RED);
+                else holder.datoHum.setTextColor(Color.GRAY);
+
+                holder.datoLuz.setText("Luz: " + Integer.toString(planta.getEtapaActual().getLuzMin()) + " / " + Integer.toString(((Planta) planta).getLuzActual()) + " / " + Integer.toString(planta.getEtapaActual().getLuzMax()));
+                if (!planta.luzCorrecta()) holder.datoLuz.setTextColor(Color.RED);
+                else holder.datoHum.setTextColor(Color.GRAY);
+
+                holder.datoHormona.setText("Hormona: " + Integer.toString(planta.getEtapaActual().getHormona()) + " / " + Integer.toString(((Planta) planta).getHormona()));
+
+                holders.add(holder);
+            }
             return row;
         }
 
@@ -128,7 +136,7 @@ public class Adapter_list extends ArrayAdapter<Planta> {
     {
         plantas.clear();
         plantas.addAll(arrayPlantas);
-        resetear();
+        notifyDataSetChanged();
     }
 
     public void resetear()

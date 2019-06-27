@@ -37,7 +37,7 @@ public class Controller implements Observer {
 
             //Toast.makeText(context, "Un Paso", Toast.LENGTH_SHORT).show();
 
-            ArrayList<Planta> plantas = (ArrayList)db.getAllPlantada();
+            ArrayList<Planta> plantas = (ArrayList<Planta>) db.getAllPlantada();
 
             for(Planta planta: plantas){
 
@@ -79,22 +79,21 @@ public class Controller implements Observer {
         MainMenuActivity activity =(MainMenuActivity) context;
         ArrayList<Planta> plantas =(ArrayList<Planta>) db.getAllPlantada();
 
-        if(activity.getAgFragment().getAdapter()== null)
-        {
-            return false;
-        }
-        else
-        {
-            for(Planta planta: plantas)
-            {
-                int temp= simuladorAleatorios.getTempSimulada();
-                int hum = simuladorAleatorios.getPorcentajeSimulado();
-                int luz = simuladorAleatorios.getLuzSimulado();
+        if(plantas!=null) {
 
-                planta.actualizarParametros(temp,hum,luz);
-                db.savePlantadas(planta);
+            if (activity.getAgFragment().getAdapter() == null) {
+                return false;
+            } else {
+                for (Planta planta : plantas) {
+                    int temp = simuladorAleatorios.getTempSimulada();
+                    int hum = simuladorAleatorios.getPorcentajeSimulado();
+                    int luz = simuladorAleatorios.getLuzSimulado();
+
+                    planta.actualizarParametros(temp, hum, luz);
+                    db.savePlantadas(planta);
+                }
+                activity.getAgFragment().getAdapter().addPlantas((ArrayList<Planta>) db.getAllPlantada());
             }
-            activity.getAgFragment().getAdapter().addPlantas((ArrayList<Planta>)db.getAllPlantada());
         }
         return true;
     }
