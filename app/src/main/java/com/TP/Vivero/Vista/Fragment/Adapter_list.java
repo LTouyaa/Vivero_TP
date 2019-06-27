@@ -26,7 +26,7 @@ public class Adapter_list extends ArrayAdapter<Planta> {
     ArrayList<lista_holder> holders;
     int cont;
     Boolean flag;
-    int redColor = Color.RED;
+
 
 
 
