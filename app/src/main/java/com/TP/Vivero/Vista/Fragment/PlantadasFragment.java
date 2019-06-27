@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.TP.Vivero.Adapter.Adapter_list;
 import com.TP.Vivero.Controller.Controller;
@@ -45,19 +46,26 @@ public class PlantadasFragment extends Fragment {
 
 
 
-         listaPlantas = (ListView) getView().findViewById(R.id.listaView);
 
-         adapter = new Adapter_list(context, lista_plantas, plantadas);
+            adapter = new Adapter_list(context, lista_plantas, plantadas);
+            listaPlantas = (ListView) getView().findViewById(R.id.listaView);
+            listaPlantas.setAdapter(adapter);
+            listaPlantas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        listaPlantas.setAdapter(adapter);
+                    adapter.cambiarVisibilidad(position);
+                }
+            });
 
-        listaPlantas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-              adapter.cambiarVisibilidad(position);
-            }
-        });
+
+
+
+
+
+
+
     }
 
     public Adapter_list getAdapter() {

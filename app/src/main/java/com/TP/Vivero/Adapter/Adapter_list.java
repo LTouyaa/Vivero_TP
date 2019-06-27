@@ -29,68 +29,70 @@ public class Adapter_list extends ArrayAdapter<Planta> {
     int redColor = Color.RED;
 
 
+    public Adapter_list(Context context, int layout_list, ArrayList<Planta> plantas) {
 
-    public Adapter_list(Context context, int layout_list, ArrayList<Planta> plantas)
-    {
-        super(context,layout_list,plantas);
+        super(context, layout_list, plantas);
 
-        this.context=context;
+        this.context = context;
         this.layout_list = layout_list;
         this.plantas = plantas;
         holders = new ArrayList<lista_holder>();
-        flag= false;
+        flag = false;
     }
 
-    public View getView (int posicion, View vista, ViewGroup parent)
-    {
-        View row = vista;
-        lista_holder holder = null;
-
-        if(row == null) {
-            LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-            row = inflater.inflate(layout_list, parent,false);
-
-            holder = new lista_holder();
-
-            holder.name = (TextView) row.findViewById(R.id.text_1);
-            holder.date = (LinearLayout) row.findViewById(R.id.parametros);
-            holder.ubic=(TextView) row.findViewById(R.id.ubic);
-            holder.datoTemp = (TextView)  row.findViewById(R.id.temp) ;
-            holder.datoHum = (TextView) row.findViewById(R.id.hum) ;
-            holder.datoLuz = (TextView) row.findViewById(R.id.luz) ;
-            holder.datoHormona = (TextView) row.findViewById(R.id.hormonas) ;
+    public View getView(int posicion, View vista, ViewGroup parent) {
 
 
+            View row = vista;
+            lista_holder holder = null;
 
-            row.setTag(holder);
+            if (row == null) {
+                LayoutInflater inflater = ((Activity) context).getLayoutInflater();
+                row = inflater.inflate(layout_list, parent, false);
 
+                holder = new lista_holder();
+
+                holder.name = (TextView) row.findViewById(R.id.text_1);
+                holder.date = (LinearLayout) row.findViewById(R.id.parametros);
+                holder.ubic = (TextView) row.findViewById(R.id.ubic);
+                holder.etapa= (TextView) row.findViewById(R.id.etapa);
+                holder.datoTemp = (TextView) row.findViewById(R.id.temp);
+                holder.datoHum = (TextView) row.findViewById(R.id.hum);
+                holder.datoLuz = (TextView) row.findViewById(R.id.luz);
+                holder.datoHormona = (TextView) row.findViewById(R.id.hormonas);
+
+
+                row.setTag(holder);
+
+            } else {
+                holder = (lista_holder) row.getTag();
+            }
+
+            Planta planta = plantas.get(posicion);
+
+            holder.name.setText(planta.getNombre());
+            holder.ubic.setText("Ubicacion: " + String.valueOf(planta.getUbicacion()));
+            holder.etapa.setText("Etapa: "+planta.getEtapaActual().getNumetapa());
+            holder.datoTemp.setText("Temperatura: " + Integer.toString(planta.getEtapaActual().getTempMin()) + " / " + Integer.toString(((Planta) planta).getTempActual()) + " / " + Integer.toString(planta.getEtapaActual().getTempMax()) + "  °C");
+            if (!planta.tempCorrecta()) holder.datoTemp.setTextColor(Color.RED);
+            else holder.datoTemp.setTextColor(Color.GRAY);
+
+
+            holder.datoHum.setText("Humedad: " + Integer.toString(planta.getEtapaActual().getHumMin()) + " / " + Integer.toString(((Planta) planta).getHumedadActual()) + " / " + Integer.toString(planta.getEtapaActual().getHumMax()) + " %");
+            if (!planta.humCorrecta()) holder.datoHum.setTextColor(Color.RED);
+            else holder.datoHum.setTextColor(Color.GRAY);
+            holder.datoLuz.setText("Luz: " + Integer.toString(planta.getEtapaActual().getLuzMin()) + " / " + Integer.toString(((Planta) planta).getLuzActual()) + " / " + Integer.toString(planta.getEtapaActual().getLuzMin()));
+            if (!planta.luzCorrecta()) holder.datoLuz.setTextColor(Color.RED);
+            else holder.datoHum.setTextColor(Color.GRAY);
+            holder.datoHormona.setText("Hormona: " + Integer.toString(planta.getEtapaActual().getHormona()) + " / " + Integer.toString(((Planta) planta).getHormona()));
+
+            holders.add(holder);
+
+
+            return row;
         }
-        else
-        {holder = (lista_holder) row.getTag();
-        }
-
-        Planta planta  = plantas.get(posicion);
-
-        holder.name.setText( planta.getNombre());
-        holder.ubic.setText("Ubicacion: "+String.valueOf(planta.getUbicacion()));
-        holder.datoTemp.setText("Temperatura: "+Integer.toString(planta.getEtapaActual().getTempMin())+" / "+Integer.toString(((Planta) planta).getTempActual())+" / "+Integer.toString(planta.getEtapaActual().getTempMax())+"  °C");
-        if(!planta.tempCorrecta()) holder.datoTemp.setTextColor(Color.RED);
-        else holder.datoTemp.setTextColor(Color.GRAY);
 
 
-        holder.datoHum.setText("Humedad: "+Integer.toString(planta.getEtapaActual().getHumMin())+" / "+Integer.toString(((Planta)  planta).getHumedadActual())+" / "+Integer.toString(planta.getEtapaActual().getHumMax())+" %");
-         if(!planta.humCorrecta()) holder.datoHum.setTextColor(Color.RED);
-         else holder.datoHum.setTextColor(Color.GRAY);
-         holder.datoLuz.setText("Luz: "+Integer.toString(planta.getEtapaActual().getLuzMin())+" / "+Integer.toString(((Planta) planta).getLuzActual())+ " / "+Integer.toString(planta.getEtapaActual().getLuzMin()));
-        if(!planta.luzCorrecta()) holder.datoLuz.setTextColor(Color.RED);
-        else holder.datoHum.setTextColor(Color.GRAY);
-         holder.datoHormona.setText("Hormona: "+Integer.toString(planta.getEtapaActual().getHormona())+" / "+Integer.toString(((Planta) planta).getHormona()));
-
-        holders.add(holder);
-
-
-        return row;
-    }
 
 
 
@@ -144,6 +146,7 @@ public class Adapter_list extends ArrayAdapter<Planta> {
         TextView name;
         LinearLayout date;
         TextView ubic;
+        TextView etapa;
         TextView datoTemp;
         TextView datoHum;
         TextView datoLuz;
