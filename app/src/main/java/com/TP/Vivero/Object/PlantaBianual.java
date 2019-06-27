@@ -1,5 +1,7 @@
 package com.TP.Vivero.Object;
 
+import android.support.annotation.NonNull;
+
 public class PlantaBianual extends Planta{
 
     CambioEtapaBianual cambioEtapaBianual;
@@ -11,5 +13,11 @@ public class PlantaBianual extends Planta{
 
     public boolean siguiente(){
         return cambioEtapaBianual.siguiente(etapas);
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "Bianual";
     }
 }

@@ -1,5 +1,7 @@
 package com.TP.Vivero.Object;
 
+import android.support.annotation.NonNull;
+
 public class PlantaAnual extends Planta {
 
     CambioEtapaAnual cambioEtapaAnual;
@@ -13,5 +15,11 @@ public class PlantaAnual extends Planta {
 
         return cambioEtapaAnual.siguiente(etapas);
 
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "Anual";
     }
 }

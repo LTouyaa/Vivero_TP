@@ -1,5 +1,7 @@
 package com.TP.Vivero.Object;
 
+import android.support.annotation.NonNull;
+
 public class PlantaPerenne extends Planta {
 
     CambioEtapaPerenne cambioEtapaPerenne;
@@ -11,5 +13,11 @@ public class PlantaPerenne extends Planta {
 
     public boolean siguiente(){
         return cambioEtapaPerenne.siguiente(this.etapas);
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "Perenne";
     }
 }

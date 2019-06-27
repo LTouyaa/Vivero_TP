@@ -79,7 +79,7 @@ public class DatabaseInstrumentedTest {
 
         assertTrue(db.existPlanta(planta2.getNombre()));
 
-        assertEquals(2, db.getAllPlanta().size());  //Compruebo que el List<Planta> haya aumentado de tamaño.
+        assertEquals(8, db.getAllPlanta().size());  //Compruebo que el List<Planta> haya aumentado de tamaño.
 
         db.deletePlantaByName(planta.getNombre());
 
