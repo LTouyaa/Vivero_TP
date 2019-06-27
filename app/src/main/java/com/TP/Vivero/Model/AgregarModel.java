@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.TP.Vivero.Controller.Controller;
 import com.TP.Vivero.Object.Planta;
-import com.TP.Vivero.Vista.Fragment.AgregarFragment;
+import com.TP.Vivero.Vista.Fragment.PlantadasFragment;
 
 import java.util.Observable;
 

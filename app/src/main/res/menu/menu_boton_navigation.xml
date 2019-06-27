@@ -9,7 +9,7 @@
     <item
         android:id="@+id/btm_nav_plantar"
         android:icon="@android:drawable/ic_menu_edit"
-        android:title="PLANTAR" />
+        android:title="PLANTAS" />
 
     <item
         android:id="@+id/btm_nav_agregar"

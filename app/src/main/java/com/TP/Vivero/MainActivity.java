@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(context, "sos un puto, pero ok", Toast.LENGTH_LONG).show();
+
                     }
                 });
 
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        Toast.makeText(context, "sos un puto, cancelar", Toast.LENGTH_LONG).show();
+
 
                     }
                 });

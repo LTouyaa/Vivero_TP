@@ -28,5 +28,12 @@ public class SimuladorAleatorios {
         return hum;
   }
 
+  public int getLuzSimulado()
+  {
+      int luz =random.nextInt(30);
+      return luz;
+
+  }
+
 
 }

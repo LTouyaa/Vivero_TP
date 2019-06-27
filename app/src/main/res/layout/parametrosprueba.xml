@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:id="@+id/parametros">
+    android:id="@+id/parametros"
+    android:visibility="gone">
 
     <TextView
         android:id="@+id/ubic"
@@ -15,6 +16,17 @@
         android:text="TextView"
         tools:layout_editor_absoluteX="-267dp"
         tools:layout_editor_absoluteY="76dp"
+        android:textSize="20dp"
+        />
+
+    <TextView
+        android:id="@+id/etapa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="-267dp"
+        tools:layout_editor_absoluteY="76dp"
+        android:textSize="20dp"
         />
 
     <TextView
@@ -24,6 +36,7 @@
         android:text="TextView"
         tools:layout_editor_absoluteX="-267dp"
         tools:layout_editor_absoluteY="76dp"
+        android:textSize="20dp"
         />
 
     <TextView
@@ -33,6 +46,7 @@
         android:text="TextView"
         tools:layout_editor_absoluteX="-267dp"
         tools:layout_editor_absoluteY="76dp"
+        android:textSize="20dp"
         />
 
     <TextView
@@ -42,6 +56,7 @@
         android:text="TextView"
         tools:layout_editor_absoluteX="-267dp"
         tools:layout_editor_absoluteY="76dp"
+        android:textSize="20dp"
         />
 
     <TextView
@@ -51,16 +66,10 @@
         android:text="TextView"
         tools:layout_editor_absoluteX="-267dp"
         tools:layout_editor_absoluteY="76dp"
+        android:textSize="20dp"
         />
 
-    <TextView
-        android:id="@+id/sustrato"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="-267dp"
-        tools:layout_editor_absoluteY="76dp"
-        />
+
 
 
 

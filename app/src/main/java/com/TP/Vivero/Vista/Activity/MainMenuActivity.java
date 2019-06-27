@@ -15,9 +15,10 @@ import com.TP.Vivero.Model.DatabaseHandler;
 import com.TP.Vivero.Model.TimeModel;
 import com.TP.Vivero.Object.Planta;
 import com.TP.Vivero.R;
-import com.TP.Vivero.Vista.Fragment.AgregarFragment;
+import com.TP.Vivero.Vista.Fragment.PlantadasFragment;
 import com.TP.Vivero.Vista.Fragment.AgregarPlantaFragment;
 import com.TP.Vivero.Vista.Fragment.MenuFragment;
+import com.TP.Vivero.Vista.Fragment.PlantadasFragment;
 import com.TP.Vivero.Vista.Fragment.RemoverPlantaFragment;
 
 public class MainMenuActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -26,7 +27,7 @@ public class MainMenuActivity extends AppCompatActivity implements BottomNavigat
     private BottomNavigationView bottomNavigationView;
 
     private MenuFragment menuFragment;
-    private AgregarFragment agregarFragment;
+    private PlantadasFragment agregarFragment;
     private AgregarPlantaFragment agregarPlantaFragment;
     private RemoverPlantaFragment removerPlantaFragment;
     private FragmentManager fm;
@@ -70,7 +71,7 @@ public class MainMenuActivity extends AppCompatActivity implements BottomNavigat
         menuFragment = new MenuFragment();
         menuFragment.setController(controller);
 
-        agregarFragment = new AgregarFragment();
+        agregarFragment = new PlantadasFragment();
         agregarFragment.setController(controller);
 
         agregarPlantaFragment = new AgregarPlantaFragment();
@@ -124,5 +125,10 @@ public class MainMenuActivity extends AppCompatActivity implements BottomNavigat
                 return false;
         }
         return true;
+    }
+
+    public PlantadasFragment getAgFragment()
+    {
+        return agregarFragment ;
     }
 }
