@@ -72,21 +72,25 @@ public class Adapter_list extends ArrayAdapter<Planta> {
         Planta planta  = plantas.get(posicion);
 
         holder.name.setText( planta.getNombre());
-        holder.ubic.setText(String.valueOf(planta.getUbicacion()));
+        holder.ubic.setText("Ubicacion: "+ String.valueOf(planta.getUbicacion()));
 
 
 
 
-        holder.datoTemp.setText("Temperatura: "+Integer.toString(planta.getEtapaActual().getTempMin())+" - "+Integer.toString(((Planta) planta).getTempActual())+" - "+Integer.toString(planta.getEtapaActual().getTempMax())+"  °C");
+        holder.datoTemp.setText("Temperatura: "+Integer.toString(planta.getEtapaActual().getTempMin())+" / "+Integer.toString(((Planta) planta).getTempActual())+" /"+Integer.toString(planta.getEtapaActual().getTempMax())+"  °C");
 
         if(!planta.tempCorrecta()) holder.datoTemp.setTextColor(Color.RED);
-        else holder.datoTemp.setTextColor(Color.BLACK);
+        else holder.datoTemp.setTextColor(Color.GRAY);
 
 
-        holder.datoHum.setText("Humedad: "+Integer.toString(planta.getEtapaActual().getHumMin())+" - "+Integer.toString(((Planta)  planta).getHumedadActual())+" - "+Integer.toString(planta.getEtapaActual().getHumMax())+" %");
-        holder.datoLuz.setText("Luz: "+Integer.toString(planta.getEtapaActual().getLuzMin())+" - "+Integer.toString(((Planta) planta).getLuzActual())+ " - "+Integer.toString(planta.getEtapaActual().getLuzMax()));
-        holder.datoHormona.setText("Hormona: "+Integer.toString(planta.getEtapaActual().getHormona())+" - "+Integer.toString(((Planta) planta).getHormona()));
-        holder.datoSustrato.setText("Sustrato: "+Integer.toString(planta.getEtapaActual().getSustrato())+" - "+Integer.toString(((Planta) planta).getSustrato()));
+        holder.datoHum.setText("Humedad: "+Integer.toString(planta.getEtapaActual().getHumMin())+" / "+Integer.toString(((Planta)  planta).getHumedadActual())+" / "+Integer.toString(planta.getEtapaActual().getHumMax())+" %");
+        if(!planta.humCorrecta()) holder.datoHum.setTextColor(Color.RED);
+        else holder.datoTemp.setTextColor(Color.GRAY);
+        holder.datoLuz.setText("Luz: "+Integer.toString(planta.getEtapaActual().getLuzMin())+" /"+Integer.toString(((Planta) planta).getLuzActual())+ " / "+Integer.toString(planta.getEtapaActual().getLuzMax()));
+        if(!planta.luzCorrecta()) holder.datoLuz.setTextColor(Color.RED);
+        else holder.datoTemp.setTextColor(Color.GRAY);
+        holder.datoHormona.setText("Hormona: "+Integer.toString(planta.getEtapaActual().getHormona())+" /"+Integer.toString(((Planta) planta).getHormona()));
+        holder.datoSustrato.setText("Sustrato: "+Integer.toString(planta.getEtapaActual().getSustrato())+" / "+Integer.toString(((Planta) planta).getSustrato()));
 
         holders.add(holder);
 
