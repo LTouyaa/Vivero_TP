@@ -12,12 +12,20 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.TP.Vivero.Controller.Controller;
+<<<<<<< HEAD
+=======
+import com.TP.Vivero.Model.Model;
+>>>>>>> RamaLucas
 import com.TP.Vivero.Object.Planta;
 import com.TP.Vivero.R;
 
 public class MenuFragment extends Fragment implements View.OnClickListener {
 
     private Button button;
+<<<<<<< HEAD
+=======
+    Model model;
+>>>>>>> RamaLucas
 
     Controller controller;
 
@@ -37,6 +45,11 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
 
         button = view.findViewById(R.id.buton);
 
+<<<<<<< HEAD
+=======
+        model = ViewModelProviders.of((FragmentActivity) getActivity()).get(Model.class);
+//
+>>>>>>> RamaLucas
         Planta planta = new Planta();
         planta.setNombre("Pepino");
 

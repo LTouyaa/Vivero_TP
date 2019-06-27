@@ -51,7 +51,11 @@ public class RemoverPlantaFragment extends Fragment {
 
     public void removerPlanta(){
 
+<<<<<<< HEAD
         EditText ubicacionPlanta = (EditText)getView().findViewById(R.id.edit_ubicacion_plantaremover);
+=======
+        EditText ubicacionPlanta = (EditText)getView().findViewById(R.id.edit_ubicacion_planta_remover);
+>>>>>>> RamaLucas
 
         DatabaseHandler BasedeDatos = new DatabaseHandler(context);
 

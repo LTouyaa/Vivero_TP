@@ -10,7 +10,10 @@
         android:id="@+id/btm_nav_plantar"
         android:icon="@android:drawable/ic_menu_edit"
         android:title="PLANTAR" />
+<<<<<<< HEAD
 
+=======
+>>>>>>> RamaLucas
     <item
         android:id="@+id/btm_nav_agregar"
         android:icon="@android:drawable/ic_menu_add"
