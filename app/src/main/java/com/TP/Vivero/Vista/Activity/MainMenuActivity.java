@@ -50,7 +50,7 @@ public class MainMenuActivity extends AppCompatActivity implements BottomNavigat
 
         context =this;
 
-        Controller controller = new Controller();
+        Controller controller = new Controller(context);
 
         /**
          * Barra de navegacion que se encuentra en la inferior.
@@ -123,4 +123,10 @@ public class MainMenuActivity extends AppCompatActivity implements BottomNavigat
         }
         return true;
     }
+
+    public AgregarFragment getAgFragment()
+    {
+        return agregarFragment;
+    }
+
 }

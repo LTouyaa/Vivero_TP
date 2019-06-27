@@ -33,7 +33,7 @@ public class TimeModel extends Observable{
             public void run() {
                 notifyObservers(context);
 
-                handler.postDelayed(runnable, 8000);
+                handler.postDelayed(runnable, 15000);
             }
         };
 

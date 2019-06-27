@@ -61,6 +61,11 @@ public class AgregarFragment extends Fragment {
         });
     }
 
+    public Adapter_list getAdapter()
+    {
+        return adapter;
+    }
+
     public void setController(Controller controller){
         this.controller = controller;
     }

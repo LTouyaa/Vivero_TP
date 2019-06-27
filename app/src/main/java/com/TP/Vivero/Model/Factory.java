@@ -45,7 +45,7 @@ public class Factory {
         Etapa etapa = new Etapa();
         etapa.setNombre(nomb);
         etapa.setDuracion(5);
-        etapa.setHumMax(2);
+        etapa.setHumMax(20);
         etapa.setHumMin(1);
         etapa.setLuzMax(20);
         etapa.setLuzMin(5);
@@ -58,7 +58,7 @@ public class Factory {
         Etapa etapa1 = new Etapa();
         etapa1.setNombre(nomb);
         etapa1.setDuracion(5);
-        etapa1.setHumMax(2);
+        etapa1.setHumMax(20);
         etapa1.setHumMin(1);
         etapa1.setLuzMax(20);
         etapa1.setLuzMin(5);
@@ -71,7 +71,7 @@ public class Factory {
         Etapa etapa2 = new Etapa();
         etapa2.setNombre(nomb);
         etapa2.setDuracion(5);
-        etapa2.setHumMax(2);
+        etapa2.setHumMax(20);
         etapa2.setHumMin(1);
         etapa2.setLuzMax(20);
         etapa2.setLuzMin(5);
@@ -84,7 +84,7 @@ public class Factory {
         Etapa etapa3 = new Etapa();
         etapa3.setNombre(nomb);
         etapa3.setDuracion(5);
-        etapa3.setHumMax(2);
+        etapa3.setHumMax(20);
         etapa3.setHumMin(1);
         etapa3.setLuzMax(20);
         etapa3.setLuzMin(5);

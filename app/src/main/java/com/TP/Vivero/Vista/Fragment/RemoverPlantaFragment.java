@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.TP.Vivero.Controller.Controller;
 import com.TP.Vivero.Model.DatabaseHandler;
@@ -55,20 +56,24 @@ public class RemoverPlantaFragment extends Fragment {
 
         DatabaseHandler BasedeDatos = new DatabaseHandler(context);
 
-        if(ubicacionPlanta.getText()!=null){
+        if(!ubicacionPlanta.getText().toString().isEmpty()){
 
             if(BasedeDatos.existPlantada(Integer.parseInt(ubicacionPlanta.getText().toString()))){
 
                 //Eliminar la planta ingresando la ubicacion en la base de datos
+                BasedeDatos.deletePlantadaByUbicacion(Integer.parseInt(ubicacionPlanta.getText().toString()));
+                Toast.makeText(context,"La planta se removió en forma exitosa",Toast.LENGTH_SHORT).show();
 
             }else{
 
+                Toast.makeText(context,"La ubicacion ingresada no contiene una planta.",Toast.LENGTH_SHORT).show();
                 //Medida a tomar si la ubicacion ingresada no tiene ninguna planta
+
 
             }
 
         }else{
-
+            Toast.makeText(context,"Ingrese una ubicacion.",Toast.LENGTH_SHORT).show();
             //Medida a tomar si el campo esta vacio
         }
     }

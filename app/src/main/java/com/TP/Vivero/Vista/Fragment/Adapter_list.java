@@ -69,17 +69,22 @@ public class Adapter_list extends ArrayAdapter<Planta> {
         {holder = (lista_holder) row.getTag();
         }
 
-
-
-
         Planta planta  = plantas.get(posicion);
-
 
         holder.name.setText( planta.getNombre());
         holder.ubic.setText(String.valueOf(planta.getUbicacion()));
+
+
+
+
         holder.datoTemp.setText("Temperatura: "+Integer.toString(planta.getEtapaActual().getTempMin())+" - "+Integer.toString(((Planta) planta).getTempActual())+" - "+Integer.toString(planta.getEtapaActual().getTempMax())+"  °C");
+
+        if(!planta.tempCorrecta()) holder.datoTemp.setTextColor(Color.RED);
+        else holder.datoTemp.setTextColor(Color.BLACK);
+
+
         holder.datoHum.setText("Humedad: "+Integer.toString(planta.getEtapaActual().getHumMin())+" - "+Integer.toString(((Planta)  planta).getHumedadActual())+" - "+Integer.toString(planta.getEtapaActual().getHumMax())+" %");
-        holder.datoLuz.setText("Luz: "+Integer.toString(planta.getEtapaActual().getLuzMin())+" - "+Integer.toString(((Planta) planta).getLuzActual())+ " - "+Integer.toString(planta.getEtapaActual().getLuzMin()));
+        holder.datoLuz.setText("Luz: "+Integer.toString(planta.getEtapaActual().getLuzMin())+" - "+Integer.toString(((Planta) planta).getLuzActual())+ " - "+Integer.toString(planta.getEtapaActual().getLuzMax()));
         holder.datoHormona.setText("Hormona: "+Integer.toString(planta.getEtapaActual().getHormona())+" - "+Integer.toString(((Planta) planta).getHormona()));
         holder.datoSustrato.setText("Sustrato: "+Integer.toString(planta.getEtapaActual().getSustrato())+" - "+Integer.toString(((Planta) planta).getSustrato()));
 
@@ -105,10 +110,32 @@ public class Adapter_list extends ArrayAdapter<Planta> {
             holders.get(posicion).date.setVisibility( View.GONE);
         }
 
-    }
+   }
+//
+//    public void check(){
+//
+//        for(Planta item: plantas){
+//
+//            if(!item.tempCorrecta()){
+//                tempFueraDeRango(item.getUbicacion());
+//            }
+//
+//            if(!item.humCorrecta()) humFueraDeRango(item.getUbicacion());
+//
+//            if(!item.luzCorrecta()) LuzFueraDeRango(item.getUbicacion());
+//
+//            Toast.makeText(context, item.getTempActual() + " - " + item.getEtapas().get(0).getTempMax(), Toast.LENGTH_SHORT).show();
+//
+//        }
+//
+//        notifyDataSetChanged();
+//
+//    }
 
-    public void addPlantas(Planta planta) {
+    public void addPlanta(Planta planta) {
         plantas.add(planta);
+
+
 
         notifyDataSetChanged();
     }
@@ -121,11 +148,11 @@ public class Adapter_list extends ArrayAdapter<Planta> {
 
     public void addPlantas (ArrayList<Planta> arrayPlantas)
     {
-        for( Planta planta: arrayPlantas)
-        {
-            plantas.add(planta);
-        }
-        resetear();
+        plantas.clear();
+       plantas.addAll(arrayPlantas);
+//       check();
+       notifyDataSetChanged();
+
     }
 
     public void resetear()
@@ -133,43 +160,47 @@ public class Adapter_list extends ArrayAdapter<Planta> {
         notifyDataSetChanged();
     }
 
-    public Boolean tempFueraDeRango(int Ubicacion)
-    {
-        for(lista_holder holder: holders)
-        {
-            if(Ubicacion == Integer.parseInt(holder.ubic.getText().toString()))
-            {
-                holder.datoTemp.setTextColor(Color.RED);
-                return true;
-            }
-        }
-        return false;
-    }
 
-    public Boolean humFueraDeRango(int Ubicacion){
-        for(lista_holder holder: holders)
-        {
-            if(Ubicacion == Integer.parseInt(holder.ubic.getText().toString()))
-            {
-                holder.datoHum.setTextColor(Color.RED);
-                return true;
-            }
-        }
-        return false;
-    }
 
-    public Boolean LuzFueraDeRango(int Ubicacion,Boolean flag)
-    {
-        for(lista_holder holder: holders)
-        {
-            if(Ubicacion == Integer.parseInt(holder.ubic.getText().toString()))
-            {
-                holder.datoLuz.setTextColor(Color.RED);
-                return true;
-            }
-        }
-        return false;
-    }
+//    public Boolean tempFueraDeRango(int Ubicacion)
+//    {
+//        for(lista_holder holder: holders)
+//        {
+//            if(Ubicacion == Integer.parseInt(holder.ubic.getText().toString()))
+//            {
+//                holder.datoTemp.setTextColor(Color.RED);
+//                return true;
+//            }
+//
+//        }
+//        return false;
+//    }
+//
+//    public Boolean humFueraDeRango(int Ubicacion){
+//        for(lista_holder holder: holders)
+//        {
+//            if(Ubicacion == Integer.parseInt(holder.ubic.getText().toString()))
+//            {
+//                holder.datoHum.setTextColor(Color.RED);
+//                return true;
+//            }
+//
+//        }
+//        return false;
+//    }
+//
+//    public Boolean LuzFueraDeRango(int Ubicacion)
+//    {
+//        for(lista_holder holder: holders)
+//        {
+//            if(Ubicacion == Integer.parseInt(holder.ubic.getText().toString()))
+//            {
+//                holder.datoLuz.setTextColor(Color.RED);
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 
 
 
