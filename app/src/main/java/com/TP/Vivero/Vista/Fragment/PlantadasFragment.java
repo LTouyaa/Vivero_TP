@@ -17,6 +17,7 @@ import com.TP.Vivero.Controller.Controller;
 import com.TP.Vivero.Model.DatabaseHandler;
 import com.TP.Vivero.Object.Planta;
 import com.TP.Vivero.R;
+import com.TP.Vivero.Vista.Activity.MainMenuActivity;
 
 import java.util.ArrayList;
 
@@ -27,6 +28,7 @@ public class PlantadasFragment extends Fragment {
     Context context;
     ListView listaPlantas;
     Adapter_list adapter;
+    MainMenuActivity mainMenuActivity;
 
     Controller controller;
 
@@ -40,15 +42,17 @@ public class PlantadasFragment extends Fragment {
     public void onViewCreated(View view,  Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         context = getActivity();
-        DatabaseHandler bd = new DatabaseHandler(context);
+        mainMenuActivity= (MainMenuActivity) context;
+
         ArrayList<Planta> plantadas;
+//
+//        if(mainMenuActivity.getModelo().getAllPlantadas()==null) plantadas = new ArrayList<>();
+//        else plantadas =  mainMenuActivity.getModelo().getAllPlantadas();
 
-        if(bd.getAllPlantada()==null) plantadas = new ArrayList<>();
-        else plantadas = (ArrayList<Planta>) bd.getAllPlantada();
+//            if(controller.getModelo().getAllPlantadas()==null) plantadas = new ArrayList<>();
+//            else plantadas = controller.getModelo().getAllPlantadas();
 
-
-
-            adapter = new Adapter_list(context, lista_plantas, plantadas);
+            adapter = new Adapter_list(context, lista_plantas, controller.getModelo().getAllPlantadas());
             listaPlantas = (ListView) getView().findViewById(R.id.listaView);
             listaPlantas.setAdapter(adapter);
             listaPlantas.setOnItemClickListener(new AdapterView.OnItemClickListener() {

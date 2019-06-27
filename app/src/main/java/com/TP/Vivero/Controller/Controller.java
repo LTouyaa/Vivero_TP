@@ -6,6 +6,7 @@ import android.widget.Toast;
 import com.TP.Vivero.MainActivity;
 import com.TP.Vivero.Model.AgregarModel;
 import com.TP.Vivero.Model.DatabaseHandler;
+import com.TP.Vivero.Model.Modelo;
 import com.TP.Vivero.Model.PasoTiempoModel;
 import com.TP.Vivero.Model.RemoverModel;
 import com.TP.Vivero.Model.SimuladorAleatorios;
@@ -23,12 +24,22 @@ public class Controller implements Observer {
     private Context context;
     private DatabaseHandler db;
     private SimuladorAleatorios simuladorAleatorios;
+    private Modelo modelo;
 
     public Controller(Context context){
 
         this.context = context;
         db = new DatabaseHandler(context);
         simuladorAleatorios = new SimuladorAleatorios();
+        this.modelo= new Modelo();
+    }
+
+    public Modelo getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(Modelo modelo) {
+        this.modelo = modelo;
     }
 
     @Override
@@ -38,18 +49,23 @@ public class Controller implements Observer {
 
             //Toast.makeText(context, "Un Paso", Toast.LENGTH_SHORT).show();
 
-            ArrayList<Planta> plantas = (ArrayList<Planta>) db.getAllPlantada();
+            ArrayList<Planta> plantas = (ArrayList<Planta>) modelo.getAllPlantadas().clone();
 
-            if(plantas!=null) {
+            FabricaPlantas fabricaPlantas = new FabricaPlantas();
+
+            if(!plantas.isEmpty()) {
 
                 for (Planta planta : plantas) {
 
                     if (planta.siguiente()) {
-                        db.deletePlantadaByUbicacion(planta.getUbicacion());
+                        plantas.remove(planta);
                     }
-                    db.savePlantadas(planta);
+
                 }
+
+                modelo.agregarPlanta(plantas);
             }
+
         }
 
         if(o.getClass().equals(TimeModel.class)) {
@@ -63,7 +79,8 @@ public class Controller implements Observer {
 
             Planta planta = (Planta) arg;
 
-            db.savePlantadas(planta);
+            modelo.agregarPlanta(planta);
+
 
             Toast.makeText(context, "Agregado", Toast.LENGTH_SHORT).show();
         }
@@ -71,8 +88,9 @@ public class Controller implements Observer {
         if(o.getClass().equals(RemoverModel.class)){
 
             Planta planta = (Planta) arg;
+            modelo.removerPlanta(planta.getUbicacion());
 
-            db.deletePlantadaByUbicacion(planta.getUbicacion());
+
 
             //Toast.makeText(context, "Remove", Toast.LENGTH_SHORT).show();
         }
@@ -81,7 +99,9 @@ public class Controller implements Observer {
     public Boolean actualizarParametros()
     {
         MainMenuActivity activity =(MainMenuActivity) context;
-        ArrayList<Planta> plantas =(ArrayList<Planta>) db.getAllPlantada();
+
+        ArrayList<Planta> plantas;
+        plantas = (ArrayList<Planta>) modelo.getAllPlantadas().clone();
 
         if(plantas!=null) {
 
@@ -89,14 +109,20 @@ public class Controller implements Observer {
                 return false;
             } else {
                 for (Planta planta : plantas) {
+
                     int temp = simuladorAleatorios.getTempSimulada();
                     int hum = simuladorAleatorios.getPorcentajeSimulado();
                     int luz = simuladorAleatorios.getLuzSimulado();
 
                     planta.actualizarParametros(temp, hum, luz);
-                    db.savePlantadas(planta);
                 }
-                activity.getAgFragment().getAdapter().addPlantas((ArrayList<Planta>) db.getAllPlantada());
+
+
+                //modelo.clearPlantadas();
+
+
+
+                activity.getAgFragment().getAdapter().addPlantas(plantas);
             }
         }
         return true;

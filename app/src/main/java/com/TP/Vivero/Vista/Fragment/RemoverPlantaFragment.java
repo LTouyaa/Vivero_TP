@@ -16,6 +16,7 @@ import com.TP.Vivero.Controller.Controller;
 import com.TP.Vivero.Model.DatabaseHandler;
 import com.TP.Vivero.Model.RemoverModel;
 import com.TP.Vivero.R;
+import com.TP.Vivero.Vista.Activity.MainMenuActivity;
 
 public class RemoverPlantaFragment extends Fragment {
 
@@ -60,6 +61,7 @@ public class RemoverPlantaFragment extends Fragment {
     }
 
     public void removerPlanta(){
+        MainMenuActivity mainMenuActivity = (MainMenuActivity) context;
 
         ubicacionPlanta  = getView().findViewById(R.id.edit_ubicacion_plantaremover);
 
@@ -69,9 +71,9 @@ public class RemoverPlantaFragment extends Fragment {
 
             int ubic = Integer.parseInt(ubicacionPlanta.getText().toString());
 
-            if(BasedeDatos.existPlantada(ubic)){
+            if(controller.getModelo().existPlantada(ubic)){
 
-                removerModel.removerPlanta(BasedeDatos.getPlantadaByUbicacion(ubic));
+                removerModel.removerPlanta(controller.getModelo().getPlantada(ubic));
                 clear();
 
                 //Eliminar la planta ingresando la ubicacion en la base de datos

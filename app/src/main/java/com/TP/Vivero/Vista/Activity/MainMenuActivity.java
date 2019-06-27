@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.TP.Vivero.Controller.Controller;
 import com.TP.Vivero.Model.DatabaseHandler;
+import com.TP.Vivero.Model.Modelo;
 import com.TP.Vivero.Model.TimeModel;
 import com.TP.Vivero.Object.Planta;
 import com.TP.Vivero.R;
@@ -35,6 +36,7 @@ public class MainMenuActivity extends AppCompatActivity implements BottomNavigat
     private DatabaseHandler db;
 
     private Context context;
+    private Modelo modelo;
 
     private Controller controller;
     private TimeModel timeModel;
@@ -52,8 +54,7 @@ public class MainMenuActivity extends AppCompatActivity implements BottomNavigat
         setSupportActionBar(toolbar);
 
         context =this;
-
-         controller = new Controller(this);
+        controller = new Controller(this);
 
         /**
          * Barra de navegacion que se encuentra en la inferior.
@@ -125,6 +126,11 @@ public class MainMenuActivity extends AppCompatActivity implements BottomNavigat
                 return false;
         }
         return true;
+    }
+
+    public Modelo getModelo()
+    {
+        return modelo;
     }
 
     public PlantadasFragment getAgFragment()

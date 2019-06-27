@@ -16,6 +16,7 @@ import com.TP.Vivero.Model.AgregarModel;
 import com.TP.Vivero.Model.DatabaseHandler;
 import com.TP.Vivero.Object.Planta;
 import com.TP.Vivero.R;
+import com.TP.Vivero.Vista.Activity.MainMenuActivity;
 
 public class AgregarPlantaFragment extends Fragment {
 
@@ -63,7 +64,9 @@ public class AgregarPlantaFragment extends Fragment {
         nombrePlanta = (EditText)getView().findViewById(R.id.edit_nombre_planta);
         ubicacionPlanta  = (EditText)getView().findViewById(R.id.edit_ubicacion_planta);
 
-        DatabaseHandler BasedeDatos = new DatabaseHandler(context);
+        MainMenuActivity mainMenuActivity = (MainMenuActivity) context;
+
+       DatabaseHandler BasedeDatos = new DatabaseHandler(context);
         
         Planta P;
 
@@ -71,8 +74,7 @@ public class AgregarPlantaFragment extends Fragment {
 
             if(BasedeDatos.existPlanta(nombrePlanta.getText().toString())){
 
-
-                if(!BasedeDatos.existPlantada(Integer.parseInt(ubicacionPlanta.getText().toString()))){
+                if(!controller.getModelo().existPlantada(Integer.parseInt(ubicacionPlanta.getText().toString()))){
 
                     P = BasedeDatos.getPlantaByNomb(nombrePlanta.getText().toString());
                     P.setUbicacion(Integer.parseInt(ubicacionPlanta.getText().toString()));

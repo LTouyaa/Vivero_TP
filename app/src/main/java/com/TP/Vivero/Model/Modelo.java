@@ -1,52 +1,94 @@
 package com.TP.Vivero.Model;
 
 
+import com.TP.Vivero.Object.FabricaPlantas;
 import com.TP.Vivero.Object.Planta;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
 public class Modelo {
 
-    private HashMap<Integer, Planta> vivero;
+    private ArrayList<Planta> plantadas;
 
 
     public Modelo() {
-        vivero = new HashMap<Integer, Planta>();
+        plantadas = new ArrayList<>();
     }
 
-    public void agregarPlanta(Integer lugar, Planta p) {
-        if (vivero.containsKey(lugar)) {
-            // Toast.makeText(this, "Lugar ocupado", Toast.LENGTH_SHORT).show();
-        } else {
-            vivero.put(lugar, p);
+    public void agregarPlanta(Planta planta) {
+        plantadas.add(planta);
+
+    }
+
+    public void agregarPlanta(ArrayList<Planta> arrayList){
+        plantadas.clear();
+        plantadas.addAll(arrayList);
+    }
+
+    public void removerPlanta(int ubicacion) {
+
+        for(Planta planta: plantadas )
+        {
+            if(planta.getUbicacion() == ubicacion);
+            {plantadas.remove(planta);
+            return ;}
         }
     }
 
-    public void removerPlanta(Integer lugar) {
-        if (vivero.containsKey(lugar)) {
-            vivero.remove(lugar);
-        } else {
-            // Toast.makeText(this, "El lugar estaba vacio", Toast.LENGTH_SHORT).show();
+    public ArrayList<Planta> getAllPlantadas()
+    {
+        FabricaPlantas fabricaPlantas = new FabricaPlantas();
+
+        ArrayList<Planta> arrayList= new ArrayList<>();
+
+        for(Planta item : plantadas){
+
+            Planta planta = fabricaPlantas.crearPlanta(item.getNombre());
+            planta.setNombre(item.getNombre());
+            planta.setUbicacion(item.getUbicacion());
+            planta.setEtapas(item.getEtapas());
+            planta.setHumedadActual(item.getHumedadActual());
+            planta.setTempActual(item.getTempActual());
+            planta.setLuzActual(item.getLuzActual());
+            planta.setHormona(item.getHormona());
+            planta.setSustrato(item.getSustrato());
+
+            arrayList.add(planta);
         }
+
+        return arrayList;
     }
 
-    public Planta getPlanta(Integer lugar) {
-        if (vivero.containsKey(lugar)) {
-            return vivero.get(lugar);
-        } else {
-            // Toast.makeText(this, "El lugar esta vacio", Toast.LENGTH_SHORT).show();
-            return null;
+    public Boolean existPlantada (int ubicacion)
+    {
+        for (Planta planta: plantadas)
+        {
+            if( planta.getUbicacion()== ubicacion)
+            {
+                return true;
+            }
         }
+        return false;
     }
 
-    public Collection<Planta> obtenerColeccion() {
-        return vivero.values();
+    public Planta getPlantada (int ubicacion)
+    {
+        for (Planta planta: plantadas)
+        {
+            if( planta.getUbicacion()== ubicacion)
+            {
+                return planta;
+            }
+        }
+
+        return null;
+
     }
 
-    public void avanzar() {
-        Collection<Planta> C = obtenerColeccion();
-        for (Planta P : C) {
-        }
+    public void clearPlantadas()
+    {
+        plantadas.clear();
     }
 }
