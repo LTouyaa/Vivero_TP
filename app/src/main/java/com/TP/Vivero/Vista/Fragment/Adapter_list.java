@@ -28,6 +28,8 @@ public class Adapter_list extends ArrayAdapter<Planta> {
     Boolean flag;
     int redColor = Color.RED;
 
+
+
     public Adapter_list(Context context, int layout_list, ArrayList<Planta> plantas)
     {
         super(context,layout_list,plantas);
@@ -74,7 +76,7 @@ public class Adapter_list extends ArrayAdapter<Planta> {
 
 
         holder.name.setText(((Planta) planta).getNombre());
-        holder.ubic.setText(planta.getUbicacion());
+        holder.ubic.setText(String.valueOf(planta.getUbicacion()));
         holder.datoTemp.setText("Temperatura: "+Integer.toString(planta.getEtapaActual().getTempMin())+" - "+Integer.toString(((Planta) planta).getTempActual())+" - "+Integer.toString(planta.getEtapaActual().getTempMax())+"  °C");
         holder.datoHum.setText("Humedad: "+Integer.toString(planta.getEtapaActual().getHumMin())+" - "+Integer.toString(((Planta)  planta).getHumedadActual())+" - "+Integer.toString(planta.getEtapaActual().getHumMax())+" %");
         holder.datoLuz.setText("Luz: "+Integer.toString(planta.getEtapaActual().getLuzMin())+" - "+Integer.toString(((Planta) planta).getLuzActual())+ " - "+Integer.toString(planta.getEtapaActual().getLuzMin()));
@@ -98,6 +100,7 @@ public class Adapter_list extends ArrayAdapter<Planta> {
         }
         else
         {
+
             flag= false;
             holders.get(posicion).date.setVisibility( View.GONE);
         }
@@ -110,16 +113,27 @@ public class Adapter_list extends ArrayAdapter<Planta> {
         notifyDataSetChanged();
     }
 
+    public void RemovePlanta( int ubicacion)
+    {
+        plantas.remove(ubicacion);
+        resetear();
+    }
+
     public void addPlantas (ArrayList<Planta> arrayPlantas)
     {
         for( Planta planta: arrayPlantas)
         {
             plantas.add(planta);
         }
+        resetear();
+    }
+
+    public void resetear()
+    {
         notifyDataSetChanged();
     }
 
-    public Boolean TempFueraDeRango(int Ubicacion)
+    public Boolean tempFueraDeRango(int Ubicacion)
     {
         for(lista_holder holder: holders)
         {
@@ -132,8 +146,7 @@ public class Adapter_list extends ArrayAdapter<Planta> {
         return false;
     }
 
-    public Boolean HumFueraDeRango(int Ubicacion)
-    {
+    public Boolean humFueraDeRango(int Ubicacion){
         for(lista_holder holder: holders)
         {
             if(Ubicacion == Integer.parseInt(holder.ubic.getText().toString()))
@@ -145,7 +158,7 @@ public class Adapter_list extends ArrayAdapter<Planta> {
         return false;
     }
 
-    public Boolean LuzFueraDeRango(int Ubicacion)
+    public Boolean LuzFueraDeRango(int Ubicacion,Boolean flag)
     {
         for(lista_holder holder: holders)
         {
@@ -163,7 +176,6 @@ public class Adapter_list extends ArrayAdapter<Planta> {
 
     static class lista_holder
     {
-
         TextView name;
         LinearLayout date;
         TextView ubic;
@@ -173,11 +185,4 @@ public class Adapter_list extends ArrayAdapter<Planta> {
         TextView datoHormona;
         TextView datoSustrato;
         TextView ubicacion;
-
-
-    }
-
-
-
-
-}
+    }}
