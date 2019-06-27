@@ -24,11 +24,12 @@ class CambioEtapaBianual implements Cambio{
                 reproduccion = etapas.get(1);
             }
             if(etapas.isEmpty()){
-                if(flag==false){
+                if(!flag){
                     etapas.add(vegetativa);
                     etapas.get(0).setProgreso_duracion(0);
                     etapas.add(reproduccion);
                     etapas.get(1).setProgreso_duracion(0);
+                    flag = true;
                 }else{
                     flagremover = true;
                     //Accion fin de vida de la planta
