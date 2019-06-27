@@ -111,11 +111,6 @@ public class MainMenuActivity extends AppCompatActivity implements BottomNavigat
 
         db = new DatabaseHandler(context);
 
-        model = ViewModelProviders.of(this).get(Model.class);
-        model.getPlant().observe(this, planta -> {
-            Toast.makeText(context, "Cambio", Toast.LENGTH_SHORT).show();
-        });
-
         timeController = new TimeController(context, controller);
     }
 

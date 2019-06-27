@@ -10,19 +10,19 @@ import com.TP.Vivero.Object.Planta;
 
 public class Model extends ViewModel {
 
-    private MutableLiveData<Planta> planta;
-
-    public void planta(Planta planta, Context context){
-
-        planta.setPlanta(planta, context);
-    }
-
-    public LiveData<Planta> getPlant(){
-
-        if(planta==null){
-            planta = new MutableLiveData<>();
-        }
-
-        return planta;
-    }
+//    private MutableLiveData<Planta> planta;
+//
+//    public void planta(Planta planta, Context context){
+//
+//        planta.setPlanta(planta, context);
+//    }
+//
+//    public LiveData<Planta> getPlant(){
+//
+//        if(planta==null){
+//            planta = new MutableLiveData<>();
+//        }
+//
+//        return planta;
+//    }
 }

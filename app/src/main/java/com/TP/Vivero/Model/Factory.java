@@ -53,7 +53,7 @@ public class Factory {
         etapa.setTempMin(10);
         etapa.setHormona(500);
         etapa.setSustrato(45);
-        etapa.setEdad(0);
+        etapa.setNumetapa(0);
 
         Etapa etapa1 = new Etapa();
         etapa1.setNombre(nomb);
@@ -66,7 +66,7 @@ public class Factory {
         etapa1.setTempMin(10);
         etapa1.setHormona(500);
         etapa1.setSustrato(45);
-        etapa1.setEdad(1);
+        etapa1.setNumetapa(1);
 
         Etapa etapa2 = new Etapa();
         etapa2.setNombre(nomb);
@@ -79,7 +79,7 @@ public class Factory {
         etapa2.setTempMin(10);
         etapa2.setHormona(500);
         etapa2.setSustrato(45);
-        etapa2.setEdad(2);
+        etapa2.setNumetapa(2);
 
         Etapa etapa3 = new Etapa();
         etapa3.setNombre(nomb);
@@ -92,7 +92,7 @@ public class Factory {
         etapa3.setTempMin(10);
         etapa3.setHormona(500);
         etapa3.setSustrato(45);
-        etapa3.setEdad(3);
+        etapa3.setNumetapa(3);
 
         db.savePlanta(planta);
 
