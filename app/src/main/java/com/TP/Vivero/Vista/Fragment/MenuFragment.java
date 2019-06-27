@@ -44,7 +44,12 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
         Planta planta = new Planta();
         planta.setNombre("Pepino");
 
-        button.setOnClickListener(v -> model.planta(planta, getActivity()));
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override

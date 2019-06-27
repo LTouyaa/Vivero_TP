@@ -10,4 +10,15 @@
         android:id="@+id/btm_nav_plantar"
         android:icon="@android:drawable/ic_menu_edit"
         android:title="PLANTAR" />
+    <item
+        android:id="@+id/btm_nav_agregar"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="AGREGAR"
+        />
+
+    <item
+        android:id="@+id/btm_nav_remover"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:title="REMOVER"
+        />
 </menu>

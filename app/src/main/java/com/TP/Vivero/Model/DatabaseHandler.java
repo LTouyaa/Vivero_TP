@@ -253,9 +253,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put("hormona", etapa.getHormona());
         values.put("sustrato", etapa.getSustrato());
         values.put("duracion", etapa.getDuracion());
-        values.put("edad", etapa.getEdad());
+        values.put("edad", etapa.getNumetapa());
 
-        if(this.existEtapa(etapa.getNombre(), etapa.getEdad())) db.update("etapa", values, "nombre=? AND edad=?", new String[]{etapa.getNombre(), Integer.toString(etapa.getEdad())});
+        if(this.existEtapa(etapa.getNombre(), etapa.getNumetapa())) db.update("etapa", values, "nombre=? AND edad=?", new String[]{etapa.getNombre(), Integer.toString(etapa.getNumetapa())});
         else db.insert("etapa", null, values);
 
         db.close();
@@ -304,7 +304,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             etapa.setHormona(cursor.getInt(cursor.getColumnIndex("hormona")));
             etapa.setSustrato(cursor.getInt(cursor.getColumnIndex("sustrato")));
             etapa.setDuracion(cursor.getInt(cursor.getColumnIndex("duracion")));
-            etapa.setEdad(cursor.getInt(cursor.getColumnIndex("edad")));
+            etapa.setNumetapa(cursor.getInt(cursor.getColumnIndex("edad")));
         }
         db.close();
         return etapa;
@@ -336,7 +336,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 etapa.setHormona(cursor.getInt(cursor.getColumnIndex("hormona")));
                 etapa.setSustrato(cursor.getInt(cursor.getColumnIndex("sustrato")));
                 etapa.setDuracion(cursor.getInt(cursor.getColumnIndex("duracion")));
-                etapa.setEdad(cursor.getInt(cursor.getColumnIndex("edad")));
+                etapa.setNumetapa(cursor.getInt(cursor.getColumnIndex("edad")));
 
                 etapaList.add(etapa);
             } while (cursor.moveToNext());
@@ -375,7 +375,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 etapa.setHormona(cursor.getInt(cursor.getColumnIndex("hormona")));
                 etapa.setSustrato(cursor.getInt(cursor.getColumnIndex("sustrato")));
                 etapa.setDuracion(cursor.getInt(cursor.getColumnIndex("duracion")));
-                etapa.setEdad(cursor.getInt(cursor.getColumnIndex("edad")));
+                etapa.setNumetapa(cursor.getInt(cursor.getColumnIndex("edad")));
 
                 etapaList.add(etapa);
             } while (cursor.moveToNext());
