@@ -125,4 +125,9 @@ public class MainMenuActivity extends AppCompatActivity implements BottomNavigat
         }
         return true;
     }
+
+    public AgregarFragment getAgFragment()
+    {
+        return agregarFragment;
+    }
 }
