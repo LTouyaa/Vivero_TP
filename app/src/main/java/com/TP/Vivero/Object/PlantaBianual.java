@@ -9,7 +9,7 @@ public class PlantaBianual extends Planta{
         cambioEtapaBianual = new CambioEtapaBianual();
     }
 
-    public void siguiente(){
-        cambioEtapaBianual.siguiente(etapas);
+    public boolean siguiente(){
+        return cambioEtapaBianual.siguiente(etapas);
     }
 }

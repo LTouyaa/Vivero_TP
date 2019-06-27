@@ -37,6 +37,7 @@ public class TimeModel extends Observable{
         };
 
         handler.post(runnable);
+
     }
 
     @Override

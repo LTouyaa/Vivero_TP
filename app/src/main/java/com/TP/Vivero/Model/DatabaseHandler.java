@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteQuery;
 import android.widget.LinearLayout;
 
 import com.TP.Vivero.Object.Etapa;
+import com.TP.Vivero.Object.FabricaPlantas;
 import com.TP.Vivero.Object.Planta;
 
 import java.util.ArrayList;
@@ -156,7 +157,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      */
     public Planta getPlantaByNomb(String nombre){
 
-        Planta planta = new Planta();   //Creo un objeto planta que será el que devuelva.
+        FabricaPlantas fabrica = new FabricaPlantas();
+
+        Planta planta = fabrica.crearPlanta(nombre);   //Creo un objeto planta que será el que devuelva.
 
         SQLiteDatabase db = getReadableDatabase();
 

@@ -120,7 +120,9 @@ public class Planta {
         setLuzActual(luzActual);
     }
 
-    public void siguiente(){}
+    public boolean siguiente(){
+        return false;
+    }
 
     public Etapa getEtapaActual()
     {

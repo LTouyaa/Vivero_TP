@@ -9,7 +9,7 @@ public class PlantaPerenne extends Planta {
         cambioEtapaPerenne = new CambioEtapaPerenne();
     }
 
-    public void siguiente(){
-        cambioEtapaPerenne.siguiente(etapas);
+    public boolean siguiente(){
+        return cambioEtapaPerenne.siguiente(etapas);
     }
 }

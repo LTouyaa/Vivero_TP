@@ -5,15 +5,17 @@ import java.util.ArrayList;
 class CambioEtapaBianual implements Cambio{
 
     boolean flag;
+    boolean flagremover;
     Etapa vegetativa;
     Etapa reproduccion;
 
     public CambioEtapaBianual(){
         flag = false;
+        flagremover = false;
     }
 
     @Override
-    public void siguiente(ArrayList<Etapa> etapas) {
+    public boolean siguiente(ArrayList<Etapa> etapas) {
 
         if(etapas.get(0).unPaso()){
             etapas.remove(0);
@@ -28,10 +30,11 @@ class CambioEtapaBianual implements Cambio{
                     etapas.add(reproduccion);
                     etapas.get(1).setProgreso_duracion(0);
                 }else{
+                    flagremover = true;
                     //Accion fin de vida de la planta
                 }
             }
         }
-
+        return flagremover;
     }
 }

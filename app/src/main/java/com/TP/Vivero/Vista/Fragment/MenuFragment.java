@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.TP.Vivero.Controller.Controller;
+import com.TP.Vivero.Model.PasoTiempoModel;
 import com.TP.Vivero.Object.Planta;
 import com.TP.Vivero.R;
 
@@ -19,7 +20,8 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
 
     private Button button;
 
-    Controller controller;
+    private Controller controller;
+    private PasoTiempoModel pasoTiempoModel;
 
     public void setController(Controller controller){
         this.controller = controller;
@@ -35,14 +37,15 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
     public void onViewCreated(View view,  Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        button = view.findViewById(R.id.buton);
+        pasoTiempoModel = new PasoTiempoModel(controller);
 
-        Planta planta = new Planta();
-        planta.setNombre("Pepino");
+        button = view.findViewById(R.id.buton);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                pasoTiempoModel.pasar();
 
             }
         });

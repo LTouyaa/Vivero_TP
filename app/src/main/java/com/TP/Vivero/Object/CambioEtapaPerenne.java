@@ -8,8 +8,9 @@ class CambioEtapaPerenne implements Cambio{
     Etapa reproduccion;
 
 
+
     @Override
-    public void siguiente(ArrayList<Etapa> etapas) {
+    public boolean siguiente(ArrayList<Etapa> etapas) {
 
         if(etapas.get(0).unPaso()){
             etapas.remove(0);
@@ -24,6 +25,8 @@ class CambioEtapaPerenne implements Cambio{
                 etapas.get(1).setProgreso_duracion(0);
             }
         }
+
+        return false;
 
     }
 }

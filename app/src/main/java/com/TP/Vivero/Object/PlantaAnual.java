@@ -9,9 +9,9 @@ public class PlantaAnual extends Planta {
         cambioEtapaAnual = new CambioEtapaAnual();
     }
 
-    public void siguiente(){
+    public boolean siguiente(){
 
-        cambioEtapaAnual.siguiente(etapas);
+        return cambioEtapaAnual.siguiente(etapas);
 
     }
 }

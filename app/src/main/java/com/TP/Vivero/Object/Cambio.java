@@ -4,5 +4,5 @@ import java.util.ArrayList;
 
 interface Cambio {
 
-    public void siguiente(ArrayList<Etapa> etapas);
+    public boolean siguiente(ArrayList<Etapa> etapas);
 }

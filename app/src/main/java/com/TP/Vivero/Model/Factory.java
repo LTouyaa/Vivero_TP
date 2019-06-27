@@ -11,51 +11,35 @@ import java.util.HashMap;
 public class Factory {
 
     private DatabaseHandler db;
-    private ArrayList<String> arrayListName;
+
 
     public Factory(Activity activity) {
 
         db = new DatabaseHandler(activity);
-        arrayListName = new ArrayList<>();
     }
 
-    public void initName(){
 
-        arrayListName.add("Rosa");
-        arrayListName.add("Pino");
-        arrayListName.add("Sauce");
-        arrayListName.add("Girasol");
-        arrayListName.add("Margarita");
-    }
+
 
     public void init(){
 
-        initName();
 
-        int cont = 0;
-
-        for(String item:arrayListName) setPlantaDb(item, cont++);
-    }
-
-    public void setPlantaDb(String nomb, int ubic) {
-
+        //Creacion de variables auxiliares
+        String nomb;
         Planta planta = new Planta();
-        planta.setNombre(nomb);
-
-        Etapa etapa = new Etapa();
-        etapa.setNombre(nomb);
-        etapa.setDuracion(5);
-        etapa.setHumMax(2);
-        etapa.setHumMin(1);
-        etapa.setLuzMax(20);
-        etapa.setLuzMin(5);
-        etapa.setTempMax(25);
-        etapa.setTempMin(10);
-        etapa.setHormona(500);
-        etapa.setSustrato(45);
-        etapa.setNumetapa(0);
-
         Etapa etapa1 = new Etapa();
+        Etapa etapa2 = new Etapa();
+        Etapa etapa3 = new Etapa();
+        Etapa etapa4 = new Etapa();
+        Etapa etapa5 = new Etapa();
+
+        //===========================================================
+        //Cargado planta Soja
+
+        nomb = "Soja";
+        planta.setNombre(nomb);
+        db.savePlanta(planta);
+
         etapa1.setNombre(nomb);
         etapa1.setDuracion(5);
         etapa1.setHumMax(2);
@@ -68,7 +52,6 @@ public class Factory {
         etapa1.setSustrato(45);
         etapa1.setNumetapa(1);
 
-        Etapa etapa2 = new Etapa();
         etapa2.setNombre(nomb);
         etapa2.setDuracion(5);
         etapa2.setHumMax(2);
@@ -81,7 +64,6 @@ public class Factory {
         etapa2.setSustrato(45);
         etapa2.setNumetapa(2);
 
-        Etapa etapa3 = new Etapa();
         etapa3.setNombre(nomb);
         etapa3.setDuracion(5);
         etapa3.setHumMax(2);
@@ -94,30 +76,851 @@ public class Factory {
         etapa3.setSustrato(45);
         etapa3.setNumetapa(3);
 
+        etapa4.setNombre(nomb);
+        etapa4.setDuracion(5);
+        etapa4.setHumMax(2);
+        etapa4.setHumMin(1);
+        etapa4.setLuzMax(20);
+        etapa4.setLuzMin(5);
+        etapa4.setTempMax(25);
+        etapa4.setTempMin(10);
+        etapa4.setHormona(500);
+        etapa4.setSustrato(45);
+        etapa4.setNumetapa(4);
+
+        etapa5.setNombre(nomb);
+        etapa5.setDuracion(5);
+        etapa5.setHumMax(2);
+        etapa5.setHumMin(1);
+        etapa5.setLuzMax(20);
+        etapa5.setLuzMin(5);
+        etapa5.setTempMax(25);
+        etapa5.setTempMin(10);
+        etapa5.setHormona(500);
+        etapa5.setSustrato(45);
+        etapa5.setNumetapa(5);
+
+        db.saveEtapa(etapa1);
+        db.saveEtapa(etapa2);
+        db.saveEtapa(etapa3);
+        db.saveEtapa(etapa4);
+        db.saveEtapa(etapa5);
+
+        //===========================================================
+        //Cargado planta Maiz
+
+        nomb = "Maiz";
+        planta.setNombre(nomb);
         db.savePlanta(planta);
 
-        if(ubic%2==0){
-            db.saveEtapa(etapa);
-            db.saveEtapa(etapa2);
-        }else{
-            db.saveEtapa(etapa1);
-            db.saveEtapa(etapa3);
-        }
+        etapa1.setNombre(nomb);
+        etapa1.setDuracion(2);
+        etapa1.setHumMax(2);
+        etapa1.setHumMin(1);
+        etapa1.setLuzMax(20);
+        etapa1.setLuzMin(5);
+        etapa1.setTempMax(25);
+        etapa1.setTempMin(10);
+        etapa1.setHormona(500);
+        etapa1.setSustrato(45);
+        etapa1.setNumetapa(1);
 
-        setPlantadaBd(nomb, ubic);
+        etapa2.setNombre(nomb);
+        etapa2.setDuracion(2);
+        etapa2.setHumMax(2);
+        etapa2.setHumMin(1);
+        etapa2.setLuzMax(20);
+        etapa2.setLuzMin(5);
+        etapa2.setTempMax(25);
+        etapa2.setTempMin(10);
+        etapa2.setHormona(500);
+        etapa2.setSustrato(45);
+        etapa2.setNumetapa(2);
+
+        etapa3.setNombre(nomb);
+        etapa3.setDuracion(2);
+        etapa3.setHumMax(2);
+        etapa3.setHumMin(1);
+        etapa3.setLuzMax(20);
+        etapa3.setLuzMin(5);
+        etapa3.setTempMax(25);
+        etapa3.setTempMin(10);
+        etapa3.setHormona(500);
+        etapa3.setSustrato(45);
+        etapa3.setNumetapa(3);
+
+        etapa4.setNombre(nomb);
+        etapa4.setDuracion(2);
+        etapa4.setHumMax(2);
+        etapa4.setHumMin(1);
+        etapa4.setLuzMax(20);
+        etapa4.setLuzMin(5);
+        etapa4.setTempMax(25);
+        etapa4.setTempMin(10);
+        etapa4.setHormona(500);
+        etapa4.setSustrato(45);
+        etapa4.setNumetapa(4);
+
+        etapa5.setNombre(nomb);
+        etapa5.setDuracion(2);
+        etapa5.setHumMax(2);
+        etapa5.setHumMin(1);
+        etapa5.setLuzMax(20);
+        etapa5.setLuzMin(5);
+        etapa5.setTempMax(25);
+        etapa5.setTempMin(10);
+        etapa5.setHormona(500);
+        etapa5.setSustrato(45);
+        etapa5.setNumetapa(5);
+
+        db.saveEtapa(etapa1);
+        db.saveEtapa(etapa2);
+        db.saveEtapa(etapa3);
+        db.saveEtapa(etapa4);
+        db.saveEtapa(etapa5);
+
+        //===========================================================
+        //Cargado planta Alfa
+
+        nomb = "Alfa";
+        planta.setNombre(nomb);
+        db.savePlanta(planta);
+
+        etapa1.setNombre(nomb);
+        etapa1.setDuracion(5);
+        etapa1.setHumMax(2);
+        etapa1.setHumMin(1);
+        etapa1.setLuzMax(20);
+        etapa1.setLuzMin(5);
+        etapa1.setTempMax(25);
+        etapa1.setTempMin(10);
+        etapa1.setHormona(500);
+        etapa1.setSustrato(45);
+        etapa1.setNumetapa(1);
+
+        etapa2.setNombre(nomb);
+        etapa2.setDuracion(5);
+        etapa2.setHumMax(2);
+        etapa2.setHumMin(1);
+        etapa2.setLuzMax(20);
+        etapa2.setLuzMin(5);
+        etapa2.setTempMax(25);
+        etapa2.setTempMin(10);
+        etapa2.setHormona(500);
+        etapa2.setSustrato(45);
+        etapa2.setNumetapa(2);
+
+        etapa3.setNombre(nomb);
+        etapa3.setDuracion(5);
+        etapa3.setHumMax(2);
+        etapa3.setHumMin(1);
+        etapa3.setLuzMax(20);
+        etapa3.setLuzMin(5);
+        etapa3.setTempMax(25);
+        etapa3.setTempMin(10);
+        etapa3.setHormona(500);
+        etapa3.setSustrato(45);
+        etapa3.setNumetapa(3);
+
+        etapa4.setNombre(nomb);
+        etapa4.setDuracion(5);
+        etapa4.setHumMax(2);
+        etapa4.setHumMin(1);
+        etapa4.setLuzMax(20);
+        etapa4.setLuzMin(5);
+        etapa4.setTempMax(25);
+        etapa4.setTempMin(10);
+        etapa4.setHormona(500);
+        etapa4.setSustrato(45);
+        etapa4.setNumetapa(4);
+
+        etapa5.setNombre(nomb);
+        etapa5.setDuracion(5);
+        etapa5.setHumMax(2);
+        etapa5.setHumMin(1);
+        etapa5.setLuzMax(20);
+        etapa5.setLuzMin(5);
+        etapa5.setTempMax(25);
+        etapa5.setTempMin(10);
+        etapa5.setHormona(500);
+        etapa5.setSustrato(45);
+        etapa5.setNumetapa(5);
+
+        db.saveEtapa(etapa1);
+        db.saveEtapa(etapa2);
+        db.saveEtapa(etapa3);
+        db.saveEtapa(etapa4);
+        db.saveEtapa(etapa5);
+
+
+        //===========================================================
+        //Cargado planta Mani
+
+        nomb = "Mani";
+        planta.setNombre(nomb);
+        db.savePlanta(planta);
+
+        etapa1.setNombre(nomb);
+        etapa1.setDuracion(5);
+        etapa1.setHumMax(2);
+        etapa1.setHumMin(1);
+        etapa1.setLuzMax(20);
+        etapa1.setLuzMin(5);
+        etapa1.setTempMax(25);
+        etapa1.setTempMin(10);
+        etapa1.setHormona(500);
+        etapa1.setSustrato(45);
+        etapa1.setNumetapa(1);
+
+        etapa2.setNombre(nomb);
+        etapa2.setDuracion(5);
+        etapa2.setHumMax(2);
+        etapa2.setHumMin(1);
+        etapa2.setLuzMax(20);
+        etapa2.setLuzMin(5);
+        etapa2.setTempMax(25);
+        etapa2.setTempMin(10);
+        etapa2.setHormona(500);
+        etapa2.setSustrato(45);
+        etapa2.setNumetapa(2);
+
+        etapa3.setNombre(nomb);
+        etapa3.setDuracion(5);
+        etapa3.setHumMax(2);
+        etapa3.setHumMin(1);
+        etapa3.setLuzMax(20);
+        etapa3.setLuzMin(5);
+        etapa3.setTempMax(25);
+        etapa3.setTempMin(10);
+        etapa3.setHormona(500);
+        etapa3.setSustrato(45);
+        etapa3.setNumetapa(3);
+
+        etapa4.setNombre(nomb);
+        etapa4.setDuracion(5);
+        etapa4.setHumMax(2);
+        etapa4.setHumMin(1);
+        etapa4.setLuzMax(20);
+        etapa4.setLuzMin(5);
+        etapa4.setTempMax(25);
+        etapa4.setTempMin(10);
+        etapa4.setHormona(500);
+        etapa4.setSustrato(45);
+        etapa4.setNumetapa(4);
+
+        etapa5.setNombre(nomb);
+        etapa5.setDuracion(5);
+        etapa5.setHumMax(2);
+        etapa5.setHumMin(1);
+        etapa5.setLuzMax(20);
+        etapa5.setLuzMin(5);
+        etapa5.setTempMax(25);
+        etapa5.setTempMin(10);
+        etapa5.setHormona(500);
+        etapa5.setSustrato(45);
+        etapa5.setNumetapa(5);
+
+        db.saveEtapa(etapa1);
+        db.saveEtapa(etapa2);
+        db.saveEtapa(etapa3);
+        db.saveEtapa(etapa4);
+        db.saveEtapa(etapa5);
+
+
+        //===========================================================
+        //Cargado planta Zanahoria
+
+        nomb = "Zanahoria";
+        planta.setNombre(nomb);
+        db.savePlanta(planta);
+
+        etapa1.setNombre(nomb);
+        etapa1.setDuracion(5);
+        etapa1.setHumMax(2);
+        etapa1.setHumMin(1);
+        etapa1.setLuzMax(20);
+        etapa1.setLuzMin(5);
+        etapa1.setTempMax(25);
+        etapa1.setTempMin(10);
+        etapa1.setHormona(500);
+        etapa1.setSustrato(45);
+        etapa1.setNumetapa(1);
+
+        etapa2.setNombre(nomb);
+        etapa2.setDuracion(5);
+        etapa2.setHumMax(2);
+        etapa2.setHumMin(1);
+        etapa2.setLuzMax(20);
+        etapa2.setLuzMin(5);
+        etapa2.setTempMax(25);
+        etapa2.setTempMin(10);
+        etapa2.setHormona(500);
+        etapa2.setSustrato(45);
+        etapa2.setNumetapa(2);
+
+        etapa3.setNombre(nomb);
+        etapa3.setDuracion(5);
+        etapa3.setHumMax(2);
+        etapa3.setHumMin(1);
+        etapa3.setLuzMax(20);
+        etapa3.setLuzMin(5);
+        etapa3.setTempMax(25);
+        etapa3.setTempMin(10);
+        etapa3.setHormona(500);
+        etapa3.setSustrato(45);
+        etapa3.setNumetapa(3);
+
+        etapa4.setNombre(nomb);
+        etapa4.setDuracion(5);
+        etapa4.setHumMax(2);
+        etapa4.setHumMin(1);
+        etapa4.setLuzMax(20);
+        etapa4.setLuzMin(5);
+        etapa4.setTempMax(25);
+        etapa4.setTempMin(10);
+        etapa4.setHormona(500);
+        etapa4.setSustrato(45);
+        etapa4.setNumetapa(4);
+
+        etapa5.setNombre(nomb);
+        etapa5.setDuracion(5);
+        etapa5.setHumMax(2);
+        etapa5.setHumMin(1);
+        etapa5.setLuzMax(20);
+        etapa5.setLuzMin(5);
+        etapa5.setTempMax(25);
+        etapa5.setTempMin(10);
+        etapa5.setHormona(500);
+        etapa5.setSustrato(45);
+        etapa5.setNumetapa(5);
+
+        db.saveEtapa(etapa1);
+        db.saveEtapa(etapa2);
+        db.saveEtapa(etapa3);
+        db.saveEtapa(etapa4);
+        db.saveEtapa(etapa5);
+
+
+        //===========================================================
+        //Cargado planta Perejil
+
+        nomb = "Perejil";
+        planta.setNombre(nomb);
+        db.savePlanta(planta);
+
+        etapa1.setNombre(nomb);
+        etapa1.setDuracion(5);
+        etapa1.setHumMax(2);
+        etapa1.setHumMin(1);
+        etapa1.setLuzMax(20);
+        etapa1.setLuzMin(5);
+        etapa1.setTempMax(25);
+        etapa1.setTempMin(10);
+        etapa1.setHormona(500);
+        etapa1.setSustrato(45);
+        etapa1.setNumetapa(1);
+
+        etapa2.setNombre(nomb);
+        etapa2.setDuracion(5);
+        etapa2.setHumMax(2);
+        etapa2.setHumMin(1);
+        etapa2.setLuzMax(20);
+        etapa2.setLuzMin(5);
+        etapa2.setTempMax(25);
+        etapa2.setTempMin(10);
+        etapa2.setHormona(500);
+        etapa2.setSustrato(45);
+        etapa2.setNumetapa(2);
+
+        etapa3.setNombre(nomb);
+        etapa3.setDuracion(5);
+        etapa3.setHumMax(2);
+        etapa3.setHumMin(1);
+        etapa3.setLuzMax(20);
+        etapa3.setLuzMin(5);
+        etapa3.setTempMax(25);
+        etapa3.setTempMin(10);
+        etapa3.setHormona(500);
+        etapa3.setSustrato(45);
+        etapa3.setNumetapa(3);
+
+        etapa4.setNombre(nomb);
+        etapa4.setDuracion(5);
+        etapa4.setHumMax(2);
+        etapa4.setHumMin(1);
+        etapa4.setLuzMax(20);
+        etapa4.setLuzMin(5);
+        etapa4.setTempMax(25);
+        etapa4.setTempMin(10);
+        etapa4.setHormona(500);
+        etapa4.setSustrato(45);
+        etapa4.setNumetapa(4);
+
+        etapa5.setNombre(nomb);
+        etapa5.setDuracion(5);
+        etapa5.setHumMax(2);
+        etapa5.setHumMin(1);
+        etapa5.setLuzMax(20);
+        etapa5.setLuzMin(5);
+        etapa5.setTempMax(25);
+        etapa5.setTempMin(10);
+        etapa5.setHormona(500);
+        etapa5.setSustrato(45);
+        etapa5.setNumetapa(5);
+
+        db.saveEtapa(etapa1);
+        db.saveEtapa(etapa2);
+        db.saveEtapa(etapa3);
+        db.saveEtapa(etapa4);
+        db.saveEtapa(etapa5);
+
+        //===========================================================
+        //Cargado planta Cebolla
+
+        nomb = "Cebolla";
+        planta.setNombre(nomb);
+        db.savePlanta(planta);
+
+        etapa1.setNombre(nomb);
+        etapa1.setDuracion(5);
+        etapa1.setHumMax(2);
+        etapa1.setHumMin(1);
+        etapa1.setLuzMax(20);
+        etapa1.setLuzMin(5);
+        etapa1.setTempMax(25);
+        etapa1.setTempMin(10);
+        etapa1.setHormona(500);
+        etapa1.setSustrato(45);
+        etapa1.setNumetapa(1);
+
+        etapa2.setNombre(nomb);
+        etapa2.setDuracion(5);
+        etapa2.setHumMax(2);
+        etapa2.setHumMin(1);
+        etapa2.setLuzMax(20);
+        etapa2.setLuzMin(5);
+        etapa2.setTempMax(25);
+        etapa2.setTempMin(10);
+        etapa2.setHormona(500);
+        etapa2.setSustrato(45);
+        etapa2.setNumetapa(2);
+
+        etapa3.setNombre(nomb);
+        etapa3.setDuracion(5);
+        etapa3.setHumMax(2);
+        etapa3.setHumMin(1);
+        etapa3.setLuzMax(20);
+        etapa3.setLuzMin(5);
+        etapa3.setTempMax(25);
+        etapa3.setTempMin(10);
+        etapa3.setHormona(500);
+        etapa3.setSustrato(45);
+        etapa3.setNumetapa(3);
+
+        etapa4.setNombre(nomb);
+        etapa4.setDuracion(5);
+        etapa4.setHumMax(2);
+        etapa4.setHumMin(1);
+        etapa4.setLuzMax(20);
+        etapa4.setLuzMin(5);
+        etapa4.setTempMax(25);
+        etapa4.setTempMin(10);
+        etapa4.setHormona(500);
+        etapa4.setSustrato(45);
+        etapa4.setNumetapa(4);
+
+        etapa5.setNombre(nomb);
+        etapa5.setDuracion(5);
+        etapa5.setHumMax(2);
+        etapa5.setHumMin(1);
+        etapa5.setLuzMax(20);
+        etapa5.setLuzMin(5);
+        etapa5.setTempMax(25);
+        etapa5.setTempMin(10);
+        etapa5.setHormona(500);
+        etapa5.setSustrato(45);
+        etapa5.setNumetapa(5);
+
+        db.saveEtapa(etapa1);
+        db.saveEtapa(etapa2);
+        db.saveEtapa(etapa3);
+        db.saveEtapa(etapa4);
+        db.saveEtapa(etapa5);
+
+
+        //===========================================================
+        //Cargado planta Remolacha
+
+        nomb = "Remolacha";
+        planta.setNombre(nomb);
+        db.savePlanta(planta);
+
+        etapa1.setNombre(nomb);
+        etapa1.setDuracion(5);
+        etapa1.setHumMax(2);
+        etapa1.setHumMin(1);
+        etapa1.setLuzMax(20);
+        etapa1.setLuzMin(5);
+        etapa1.setTempMax(25);
+        etapa1.setTempMin(10);
+        etapa1.setHormona(500);
+        etapa1.setSustrato(45);
+        etapa1.setNumetapa(1);
+
+        etapa2.setNombre(nomb);
+        etapa2.setDuracion(5);
+        etapa2.setHumMax(2);
+        etapa2.setHumMin(1);
+        etapa2.setLuzMax(20);
+        etapa2.setLuzMin(5);
+        etapa2.setTempMax(25);
+        etapa2.setTempMin(10);
+        etapa2.setHormona(500);
+        etapa2.setSustrato(45);
+        etapa2.setNumetapa(2);
+
+        etapa3.setNombre(nomb);
+        etapa3.setDuracion(5);
+        etapa3.setHumMax(2);
+        etapa3.setHumMin(1);
+        etapa3.setLuzMax(20);
+        etapa3.setLuzMin(5);
+        etapa3.setTempMax(25);
+        etapa3.setTempMin(10);
+        etapa3.setHormona(500);
+        etapa3.setSustrato(45);
+        etapa3.setNumetapa(3);
+
+        etapa4.setNombre(nomb);
+        etapa4.setDuracion(5);
+        etapa4.setHumMax(2);
+        etapa4.setHumMin(1);
+        etapa4.setLuzMax(20);
+        etapa4.setLuzMin(5);
+        etapa4.setTempMax(25);
+        etapa4.setTempMin(10);
+        etapa4.setHormona(500);
+        etapa4.setSustrato(45);
+        etapa4.setNumetapa(4);
+
+        etapa5.setNombre(nomb);
+        etapa5.setDuracion(5);
+        etapa5.setHumMax(2);
+        etapa5.setHumMin(1);
+        etapa5.setLuzMax(20);
+        etapa5.setLuzMin(5);
+        etapa5.setTempMax(25);
+        etapa5.setTempMin(10);
+        etapa5.setHormona(500);
+        etapa5.setSustrato(45);
+        etapa5.setNumetapa(5);
+
+        db.saveEtapa(etapa1);
+        db.saveEtapa(etapa2);
+        db.saveEtapa(etapa3);
+        db.saveEtapa(etapa4);
+        db.saveEtapa(etapa5);
+
+
+        //===========================================================
+        //Cargado planta Pino
+
+        nomb = "Pino";
+        planta.setNombre(nomb);
+        db.savePlanta(planta);
+
+        etapa1.setNombre(nomb);
+        etapa1.setDuracion(5);
+        etapa1.setHumMax(2);
+        etapa1.setHumMin(1);
+        etapa1.setLuzMax(20);
+        etapa1.setLuzMin(5);
+        etapa1.setTempMax(25);
+        etapa1.setTempMin(10);
+        etapa1.setHormona(500);
+        etapa1.setSustrato(45);
+        etapa1.setNumetapa(1);
+
+        etapa2.setNombre(nomb);
+        etapa2.setDuracion(5);
+        etapa2.setHumMax(2);
+        etapa2.setHumMin(1);
+        etapa2.setLuzMax(20);
+        etapa2.setLuzMin(5);
+        etapa2.setTempMax(25);
+        etapa2.setTempMin(10);
+        etapa2.setHormona(500);
+        etapa2.setSustrato(45);
+        etapa2.setNumetapa(2);
+
+        etapa3.setNombre(nomb);
+        etapa3.setDuracion(5);
+        etapa3.setHumMax(2);
+        etapa3.setHumMin(1);
+        etapa3.setLuzMax(20);
+        etapa3.setLuzMin(5);
+        etapa3.setTempMax(25);
+        etapa3.setTempMin(10);
+        etapa3.setHormona(500);
+        etapa3.setSustrato(45);
+        etapa3.setNumetapa(3);
+
+        etapa4.setNombre(nomb);
+        etapa4.setDuracion(5);
+        etapa4.setHumMax(2);
+        etapa4.setHumMin(1);
+        etapa4.setLuzMax(20);
+        etapa4.setLuzMin(5);
+        etapa4.setTempMax(25);
+        etapa4.setTempMin(10);
+        etapa4.setHormona(500);
+        etapa4.setSustrato(45);
+        etapa4.setNumetapa(4);
+
+        etapa5.setNombre(nomb);
+        etapa5.setDuracion(5);
+        etapa5.setHumMax(2);
+        etapa5.setHumMin(1);
+        etapa5.setLuzMax(20);
+        etapa5.setLuzMin(5);
+        etapa5.setTempMax(25);
+        etapa5.setTempMin(10);
+        etapa5.setHormona(500);
+        etapa5.setSustrato(45);
+        etapa5.setNumetapa(5);
+
+        db.saveEtapa(etapa1);
+        db.saveEtapa(etapa2);
+        db.saveEtapa(etapa3);
+        db.saveEtapa(etapa4);
+        db.saveEtapa(etapa5);
+
+
+        //===========================================================
+        //Cargado planta Rosa
+
+        nomb = "Rosa";
+        planta.setNombre(nomb);
+        db.savePlanta(planta);
+
+        etapa1.setNombre(nomb);
+        etapa1.setDuracion(5);
+        etapa1.setHumMax(2);
+        etapa1.setHumMin(1);
+        etapa1.setLuzMax(20);
+        etapa1.setLuzMin(5);
+        etapa1.setTempMax(25);
+        etapa1.setTempMin(10);
+        etapa1.setHormona(500);
+        etapa1.setSustrato(45);
+        etapa1.setNumetapa(1);
+
+        etapa2.setNombre(nomb);
+        etapa2.setDuracion(5);
+        etapa2.setHumMax(2);
+        etapa2.setHumMin(1);
+        etapa2.setLuzMax(20);
+        etapa2.setLuzMin(5);
+        etapa2.setTempMax(25);
+        etapa2.setTempMin(10);
+        etapa2.setHormona(500);
+        etapa2.setSustrato(45);
+        etapa2.setNumetapa(2);
+
+        etapa3.setNombre(nomb);
+        etapa3.setDuracion(5);
+        etapa3.setHumMax(2);
+        etapa3.setHumMin(1);
+        etapa3.setLuzMax(20);
+        etapa3.setLuzMin(5);
+        etapa3.setTempMax(25);
+        etapa3.setTempMin(10);
+        etapa3.setHormona(500);
+        etapa3.setSustrato(45);
+        etapa3.setNumetapa(3);
+
+        etapa4.setNombre(nomb);
+        etapa4.setDuracion(5);
+        etapa4.setHumMax(2);
+        etapa4.setHumMin(1);
+        etapa4.setLuzMax(20);
+        etapa4.setLuzMin(5);
+        etapa4.setTempMax(25);
+        etapa4.setTempMin(10);
+        etapa4.setHormona(500);
+        etapa4.setSustrato(45);
+        etapa4.setNumetapa(4);
+
+        etapa5.setNombre(nomb);
+        etapa5.setDuracion(5);
+        etapa5.setHumMax(2);
+        etapa5.setHumMin(1);
+        etapa5.setLuzMax(20);
+        etapa5.setLuzMin(5);
+        etapa5.setTempMax(25);
+        etapa5.setTempMin(10);
+        etapa5.setHormona(500);
+        etapa5.setSustrato(45);
+        etapa5.setNumetapa(5);
+
+        db.saveEtapa(etapa1);
+        db.saveEtapa(etapa2);
+        db.saveEtapa(etapa3);
+        db.saveEtapa(etapa4);
+        db.saveEtapa(etapa5);
+
+
+        //===========================================================
+        //Cargado planta Jazmin
+
+        nomb = "Jazmin";
+        planta.setNombre(nomb);
+        db.savePlanta(planta);
+
+        etapa1.setNombre(nomb);
+        etapa1.setDuracion(5);
+        etapa1.setHumMax(2);
+        etapa1.setHumMin(1);
+        etapa1.setLuzMax(20);
+        etapa1.setLuzMin(5);
+        etapa1.setTempMax(25);
+        etapa1.setTempMin(10);
+        etapa1.setHormona(500);
+        etapa1.setSustrato(45);
+        etapa1.setNumetapa(1);
+
+        etapa2.setNombre(nomb);
+        etapa2.setDuracion(5);
+        etapa2.setHumMax(2);
+        etapa2.setHumMin(1);
+        etapa2.setLuzMax(20);
+        etapa2.setLuzMin(5);
+        etapa2.setTempMax(25);
+        etapa2.setTempMin(10);
+        etapa2.setHormona(500);
+        etapa2.setSustrato(45);
+        etapa2.setNumetapa(2);
+
+        etapa3.setNombre(nomb);
+        etapa3.setDuracion(5);
+        etapa3.setHumMax(2);
+        etapa3.setHumMin(1);
+        etapa3.setLuzMax(20);
+        etapa3.setLuzMin(5);
+        etapa3.setTempMax(25);
+        etapa3.setTempMin(10);
+        etapa3.setHormona(500);
+        etapa3.setSustrato(45);
+        etapa3.setNumetapa(3);
+
+        etapa4.setNombre(nomb);
+        etapa4.setDuracion(5);
+        etapa4.setHumMax(2);
+        etapa4.setHumMin(1);
+        etapa4.setLuzMax(20);
+        etapa4.setLuzMin(5);
+        etapa4.setTempMax(25);
+        etapa4.setTempMin(10);
+        etapa4.setHormona(500);
+        etapa4.setSustrato(45);
+        etapa4.setNumetapa(4);
+
+        etapa5.setNombre(nomb);
+        etapa5.setDuracion(5);
+        etapa5.setHumMax(2);
+        etapa5.setHumMin(1);
+        etapa5.setLuzMax(20);
+        etapa5.setLuzMin(5);
+        etapa5.setTempMax(25);
+        etapa5.setTempMin(10);
+        etapa5.setHormona(500);
+        etapa5.setSustrato(45);
+        etapa5.setNumetapa(5);
+
+        db.saveEtapa(etapa1);
+        db.saveEtapa(etapa2);
+        db.saveEtapa(etapa3);
+        db.saveEtapa(etapa4);
+        db.saveEtapa(etapa5);
+
+
+        //===========================================================
+        //Cargado planta Limon
+
+        nomb = "Limon";
+        planta.setNombre(nomb);
+        db.savePlanta(planta);
+
+        etapa1.setNombre(nomb);
+        etapa1.setDuracion(5);
+        etapa1.setHumMax(2);
+        etapa1.setHumMin(1);
+        etapa1.setLuzMax(20);
+        etapa1.setLuzMin(5);
+        etapa1.setTempMax(25);
+        etapa1.setTempMin(10);
+        etapa1.setHormona(500);
+        etapa1.setSustrato(45);
+        etapa1.setNumetapa(1);
+
+        etapa2.setNombre(nomb);
+        etapa2.setDuracion(5);
+        etapa2.setHumMax(2);
+        etapa2.setHumMin(1);
+        etapa2.setLuzMax(20);
+        etapa2.setLuzMin(5);
+        etapa2.setTempMax(25);
+        etapa2.setTempMin(10);
+        etapa2.setHormona(500);
+        etapa2.setSustrato(45);
+        etapa2.setNumetapa(2);
+
+        etapa3.setNombre(nomb);
+        etapa3.setDuracion(5);
+        etapa3.setHumMax(2);
+        etapa3.setHumMin(1);
+        etapa3.setLuzMax(20);
+        etapa3.setLuzMin(5);
+        etapa3.setTempMax(25);
+        etapa3.setTempMin(10);
+        etapa3.setHormona(500);
+        etapa3.setSustrato(45);
+        etapa3.setNumetapa(3);
+
+        etapa4.setNombre(nomb);
+        etapa4.setDuracion(5);
+        etapa4.setHumMax(2);
+        etapa4.setHumMin(1);
+        etapa4.setLuzMax(20);
+        etapa4.setLuzMin(5);
+        etapa4.setTempMax(25);
+        etapa4.setTempMin(10);
+        etapa4.setHormona(500);
+        etapa4.setSustrato(45);
+        etapa4.setNumetapa(4);
+
+        etapa5.setNombre(nomb);
+        etapa5.setDuracion(5);
+        etapa5.setHumMax(2);
+        etapa5.setHumMin(1);
+        etapa5.setLuzMax(20);
+        etapa5.setLuzMin(5);
+        etapa5.setTempMax(25);
+        etapa5.setTempMin(10);
+        etapa5.setHormona(500);
+        etapa5.setSustrato(45);
+        etapa5.setNumetapa(5);
+
+        db.saveEtapa(etapa1);
+        db.saveEtapa(etapa2);
+        db.saveEtapa(etapa3);
+        db.saveEtapa(etapa4);
+        db.saveEtapa(etapa5);
+
+
+
     }
 
-    public void setPlantadaBd(String nombre, int ubic){
 
-        Planta planta = db.getPlantaByNomb(nombre);
 
-        planta.setUbicacion(ubic);
-        planta.setTempActual(15);
-        planta.setHumedadActual(5);
-        planta.setLuzActual(50);
-        planta.setHormona(10);
-        planta.setSustrato(46);
-
-        db.savePlantadas(planta);
-    }
 }
