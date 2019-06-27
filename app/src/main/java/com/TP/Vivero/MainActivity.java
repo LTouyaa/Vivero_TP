@@ -49,11 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         usr = findViewById(R.id.edt_1);
         pass = findViewById(R.id.ed_2);
         login = findViewById(R.id.btm_1);
-<<<<<<< HEAD
 //
-=======
-//        ver = findViewById(R.id.btm_view_model);
->>>>>>> RamaLucas
 
         login.setOnClickListener(v -> {
 
@@ -80,40 +76,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                         Toast.makeText(context, "sos un puto, cancelar", Toast.LENGTH_LONG).show();
 
-<<<<<<< HEAD
                     }
                 });
                 dialog.show();
             }
-=======
-//            if(usr.getText().toString().equals("Hola") && pass.getText().toString().equals("Mundo")){
-
-                Intent intent = new Intent(context, MainMenuActivity.class);
-                startActivity(intent);
-//            }else{
-//
-//                AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-//                dialog.setTitle("ERROR");
-//                dialog.setMessage("Usuario ó Contraseña incorrectos");
-//
-//                dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        Toast.makeText(context, "sos un puto, pero ok", Toast.LENGTH_LONG).show();
-//                    }
-//                });
-//
-//                dialog.setNegativeButton("CANCELAR", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//
-//                        Toast.makeText(context, "sos un puto, cancelar", Toast.LENGTH_LONG).show();
-//
-//                    }
-//                });
-//                dialog.show();
-//            }
->>>>>>> RamaLucas
         });
     }
 

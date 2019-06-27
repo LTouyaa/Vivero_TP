@@ -122,13 +122,10 @@ public class Planta {
 
     public void siguiente(){}
 
-<<<<<<< HEAD
     public Etapa getEtapaActual()
     {
         return etapas.get(0);
     }
 
 
-=======
->>>>>>> RamaLucas
 }

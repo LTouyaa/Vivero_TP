@@ -1,14 +1,9 @@
 package com.TP.Vivero.Vista.Activity;
 
 import android.app.FragmentManager;
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
-import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -16,27 +11,14 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.TP.Vivero.Controller.Controller;
-<<<<<<< HEAD
 import com.TP.Vivero.Model.DatabaseHandler;
 import com.TP.Vivero.Model.TimeModel;
-=======
-import com.TP.Vivero.Controller.TimeController;
-import com.TP.Vivero.Model.DatabaseHandler;
-import com.TP.Vivero.Model.Model;
-import com.TP.Vivero.Object.Etapa;
->>>>>>> RamaLucas
 import com.TP.Vivero.Object.Planta;
 import com.TP.Vivero.R;
 import com.TP.Vivero.Vista.Fragment.AgregarFragment;
 import com.TP.Vivero.Vista.Fragment.AgregarPlantaFragment;
 import com.TP.Vivero.Vista.Fragment.MenuFragment;
 import com.TP.Vivero.Vista.Fragment.RemoverPlantaFragment;
-<<<<<<< HEAD
-=======
-
-import java.util.ArrayList;
-import java.util.Observable;
->>>>>>> RamaLucas
 
 public class MainMenuActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -50,19 +32,9 @@ public class MainMenuActivity extends AppCompatActivity implements BottomNavigat
     private FragmentManager fm;
 
     private DatabaseHandler db;
-<<<<<<< HEAD
 
     private Context context;
     private TimeModel timeModel;
-=======
-
-    private Context context;
-
-    private Model model;
-
-
-    private TimeController timeController;
->>>>>>> RamaLucas
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,10 +77,6 @@ public class MainMenuActivity extends AppCompatActivity implements BottomNavigat
         removerPlantaFragment = new RemoverPlantaFragment();
         removerPlantaFragment.setController(controller);
 
-        agregarPlantaFragment = new AgregarPlantaFragment();
-
-        removerPlantaFragment = new RemoverPlantaFragment();
-
         fm = getFragmentManager();
         fm.beginTransaction().replace(R.id.frm_main_menu, menuFragment).commit();
         /**
@@ -130,11 +98,7 @@ public class MainMenuActivity extends AppCompatActivity implements BottomNavigat
 
         db = new DatabaseHandler(context);
 
-<<<<<<< HEAD
         timeModel = new TimeModel(context, controller);
-=======
-        timeController = new TimeController(context, controller);
->>>>>>> RamaLucas
     }
 
     @Override

@@ -9,10 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-<<<<<<< HEAD
 import android.widget.Toast;
-=======
->>>>>>> RamaLucas
 
 import com.TP.Vivero.Controller.Controller;
 import com.TP.Vivero.Model.DatabaseHandler;
@@ -24,11 +21,7 @@ public class AgregarPlantaFragment extends Fragment {
     private Context context;
     private Button boton;
 
-<<<<<<< HEAD
     private Controller controller;
-=======
-    Controller controller;
->>>>>>> RamaLucas
 
     @Nullable
     @Override
@@ -51,15 +44,10 @@ public class AgregarPlantaFragment extends Fragment {
                 crearPlanta();
             }
         });
-<<<<<<< HEAD
     }
 
     public void setController(Controller controller){
         this.controller = controller;
-=======
-
-
->>>>>>> RamaLucas
     }
 
     public void crearPlanta(){
@@ -71,7 +59,6 @@ public class AgregarPlantaFragment extends Fragment {
         
         Planta P;
 
-<<<<<<< HEAD
         if(!nombrePlanta.getText().toString().isEmpty() && !ubicacionPlanta.getText().toString().isEmpty()){
 
             if(BasedeDatos.existPlanta(nombrePlanta.getText().toString())){
@@ -104,48 +91,4 @@ public class AgregarPlantaFragment extends Fragment {
             Toast.makeText(context,"Datos vacios",Toast.LENGTH_SHORT).show();
         }
     }
-=======
-        if(nombrePlanta.getText()!=null && ubicacionPlanta.getText()!=null){    //Compruebo que no esten los campos vacios
-
-            if(BasedeDatos.existPlanta(nombrePlanta.getText().toString())){     //Compruebo que el nombre de la planta sea un dato valido
-
-                if(BasedeDatos.existPlantada(Integer.parseInt(ubicacionPlanta.getText().toString()))){  //Compruebo que la ubicacion no este ocupada
-
-                    P = BasedeDatos.getPlantaByNomb(nombrePlanta.getText().toString()); //Recibo una nueva planta de la base de datos mediante el ingreso del nombre
-                    assert(P!=null);
-                    assert(P.getNombre()!=null);
-
-                    P.setUbicacion(Integer.parseInt(ubicacionPlanta.getText().toString())); //Seteo su ubicacion
-
-                    BasedeDatos.savePlantadas(P);   //Guardo la nueva planta en la base de datos
-
-
-                } else{
-
-                    //Medida a tomar si la ubicacion ya esta ocupada
-
-                }
-
-
-            } else{
-
-                //Medida a tomar si el nombre de la planta ingresado no se corresponde con alguno de la base de datos
-
-            }
-
-
-        } else{
-
-            //Medida a tomar si no se ingresan textos en los EditText
-
-        }
-
-
-    }
-
-    public void setController(Controller controller){
-        this.controller = controller;
-    }
-
->>>>>>> RamaLucas
 }

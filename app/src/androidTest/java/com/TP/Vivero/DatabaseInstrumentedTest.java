@@ -138,31 +138,11 @@ public class DatabaseInstrumentedTest {
         etapa2.setSustrato(450);
         etapa2.setNumetapa(1);
 
-        Etapa etapa2 = new Etapa();
-        etapa2.setNombre("Pino");
-        etapa2.setDuracion(50);
-        etapa2.setHumMax(20);
-        etapa2.setHumMin(10);
-        etapa2.setLuzMax(200);
-        etapa2.setLuzMin(50);
-        etapa2.setTempMax(250);
-        etapa2.setTempMin(100);
-        etapa2.setHormona(5000);
-        etapa2.setSustrato(450);
-        etapa2.setEdad(1);
-
         db.saveEtapa(etapa1);
 
         db.saveEtapa(etapa2);
-<<<<<<< HEAD
 
         assertTrue(db.existEtapa(etapa1.getNombre(), etapa1.getNumetapa()));
-=======
-
-        assertTrue(db.existEtapa(etapa1.getNombre(), etapa1.getEdad()));
-
-        assertEquals(3, db.getAllEtapa().size());
->>>>>>> RamaLucas
 
         assertEquals(3, db.getAllEtapa().size());
 
