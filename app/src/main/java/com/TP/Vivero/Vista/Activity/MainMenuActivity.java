@@ -98,12 +98,7 @@ public class MainMenuActivity extends AppCompatActivity implements BottomNavigat
 
         db = new DatabaseHandler(context);
 
-        if(db.getAllPlanta()!=null)Toast.makeText(context, Integer.toString(db.getAllPlanta().size()), Toast.LENGTH_SHORT).show();
-
-        for(Planta planta:db.getAllPlanta()) Toast.makeText(context, planta.getNombre(), Toast.LENGTH_SHORT).show();
-
-
-     //   timeModel = new TimeModel(context, controller);
+        timeModel = new TimeModel(context, controller);
     }
 
     @Override
