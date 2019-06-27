@@ -20,7 +20,7 @@ import com.TP.Vivero.R;
 public class AgregarPlantaFragment extends Fragment {
 
     private Context context;
-    private Button boton;
+    private Button boton; //
 
     EditText nombrePlanta;
     EditText ubicacionPlanta;
