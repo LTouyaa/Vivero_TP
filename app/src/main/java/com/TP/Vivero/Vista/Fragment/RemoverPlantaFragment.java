@@ -10,9 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.TP.Vivero.Controller.Controller;
 import com.TP.Vivero.Model.DatabaseHandler;
+import com.TP.Vivero.Model.RemoverModel;
 import com.TP.Vivero.R;
 
 public class RemoverPlantaFragment extends Fragment {
@@ -21,7 +23,12 @@ public class RemoverPlantaFragment extends Fragment {
     private Context context;
     private Button boton;
 
+    EditText ubicacionPlanta;
+
+    DatabaseHandler BasedeDatos;
+
     Controller controller;
+    private RemoverModel removerModel;
 
 
     @Nullable
@@ -36,12 +43,15 @@ public class RemoverPlantaFragment extends Fragment {
 
         context = getActivity();
 
+        removerModel = new RemoverModel(controller);
+
         boton = (Button)getView().findViewById(R.id.boton_remover);
 
         boton.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
+
                 removerPlanta();
             }
         });
@@ -51,23 +61,32 @@ public class RemoverPlantaFragment extends Fragment {
 
     public void removerPlanta(){
 
-        EditText ubicacionPlanta = (EditText)getView().findViewById(R.id.edit_ubicacion_plantaremover);
+        ubicacionPlanta  = getView().findViewById(R.id.edit_ubicacion_plantaremover);
 
-        DatabaseHandler BasedeDatos = new DatabaseHandler(context);
+        BasedeDatos = new DatabaseHandler(context);
 
         if(ubicacionPlanta.getText()!=null){
 
-            if(BasedeDatos.existPlantada(Integer.parseInt(ubicacionPlanta.getText().toString()))){
+            int ubic = Integer.parseInt(ubicacionPlanta.getText().toString());
+
+            if(BasedeDatos.existPlantada(ubic)){
+
+                removerModel.removerPlanta(BasedeDatos.getPlantadaByUbicacion(ubic));
+                clear();
 
                 //Eliminar la planta ingresando la ubicacion en la base de datos
 
             }else{
+
+                Toast.makeText(context, "La planta no se encuentra plantada", Toast.LENGTH_SHORT).show();
 
                 //Medida a tomar si la ubicacion ingresada no tiene ninguna planta
 
             }
 
         }else{
+
+            Toast.makeText(context, "El campo esta vacio", Toast.LENGTH_SHORT).show();
 
             //Medida a tomar si el campo esta vacio
         }
@@ -77,4 +96,7 @@ public class RemoverPlantaFragment extends Fragment {
         this.controller = controller;
     }
 
+    public void clear(){
+        ubicacionPlanta.setText(null);
+    }
 }

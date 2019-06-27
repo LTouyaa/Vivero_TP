@@ -1,4 +1,4 @@
-package com.TP.Vivero.Vista.Fragment;
+package com.TP.Vivero.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -69,11 +69,7 @@ public class Adapter_list extends ArrayAdapter<Planta> {
         {holder = (lista_holder) row.getTag();
         }
 
-
-
-
         Planta planta  = plantas.get(posicion);
-
 
         holder.name.setText( planta.getNombre());
         holder.ubic.setText(String.valueOf(planta.getUbicacion()));

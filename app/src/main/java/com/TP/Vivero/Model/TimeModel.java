@@ -22,16 +22,15 @@ public class TimeModel extends Observable{
 
     private Context context;
 
-    public TimeModel(Context context, Controller controller){
+    public TimeModel(Controller controller){
 
-        this.context = context;
         this.controller = controller;
 
         handler = new Handler();
         runnable = new Runnable() {
             @Override
             public void run() {
-                notifyObservers(context);
+                notifyObservers();
 
                 handler.postDelayed(runnable, 8000);
             }
@@ -41,8 +40,8 @@ public class TimeModel extends Observable{
     }
 
     @Override
-    public void notifyObservers(Object arg) {
-        super.notifyObservers(arg);
-        controller.update(this,arg);
+    public void notifyObservers() {
+        super.notifyObservers();
+        controller.update(this, null);
     }
 }

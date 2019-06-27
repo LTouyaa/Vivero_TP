@@ -10,11 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
+import com.TP.Vivero.Adapter.Adapter_list;
 import com.TP.Vivero.Controller.Controller;
 import com.TP.Vivero.Model.DatabaseHandler;
-import com.TP.Vivero.Model.SimuladorAleatorios;
 import com.TP.Vivero.Object.Planta;
 import com.TP.Vivero.R;
 
@@ -65,3 +64,5 @@ public class AgregarFragment extends Fragment {
         this.controller = controller;
     }
 }
+
+

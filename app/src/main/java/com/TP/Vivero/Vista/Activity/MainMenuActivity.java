@@ -34,6 +34,8 @@ public class MainMenuActivity extends AppCompatActivity implements BottomNavigat
     private DatabaseHandler db;
 
     private Context context;
+
+    private Controller controller;
     private TimeModel timeModel;
 
     @Override
@@ -50,7 +52,7 @@ public class MainMenuActivity extends AppCompatActivity implements BottomNavigat
 
         context =this;
 
-        Controller controller = new Controller();
+         controller = new Controller(this);
 
         /**
          * Barra de navegacion que se encuentra en la inferior.
@@ -98,7 +100,7 @@ public class MainMenuActivity extends AppCompatActivity implements BottomNavigat
 
         db = new DatabaseHandler(context);
 
-        timeModel = new TimeModel(context, controller);
+        timeModel = new TimeModel(controller);
     }
 
     @Override
