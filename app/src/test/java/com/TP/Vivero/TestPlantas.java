@@ -18,7 +18,7 @@ public class TestPlantas {
         FabricaPlantas fabrica = new FabricaPlantas();
 
         Planta planta = fabrica.crearPlanta("Pino");
-        assertTrue(planta.toString().equals("Peren"));
+        assertTrue(planta.toString().equals("Perenne"));
 
         Planta planta2 = fabrica.crearPlanta("Soja");
         assertTrue(planta2.toString().equals("Anual"));
