@@ -59,7 +59,7 @@ public class Adapter_list extends ArrayAdapter<Planta> {
             holder.datoHum = (TextView) row.findViewById(R.id.hum) ;
             holder.datoLuz = (TextView) row.findViewById(R.id.luz) ;
             holder.datoHormona = (TextView) row.findViewById(R.id.hormonas) ;
-            holder.datoSustrato = (TextView) row.findViewById(R.id.sustrato) ;
+
 
 
             row.setTag(holder);
@@ -148,6 +148,6 @@ public class Adapter_list extends ArrayAdapter<Planta> {
         TextView datoHum;
         TextView datoLuz;
         TextView datoHormona;
-        TextView datoSustrato;
+
         TextView ubicacion;
     }}

@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 import static com.TP.Vivero.R.layout.lista_plantas;
 
-public class AgregarFragment extends Fragment {
+public class PlantadasFragment extends Fragment {
 
     Context context;
     ListView listaPlantas;
